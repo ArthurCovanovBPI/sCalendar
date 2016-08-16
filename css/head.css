@@ -1,0 +1,254 @@
+.pageHead
+{
+	display: block;
+	width: 100%;
+	margin: auto;
+	font-size: 15px;
+	line-height: 20px;
+}
+
+.headTitles
+{
+	display: table;
+	width: 100%;
+	height: 20px;
+	color: #CCCCCC;
+	font-size: 15px;
+}
+
+.headTitle
+{
+	white-space: nowrap;
+	display: table-cell;
+	padding: 15px;
+	border-bottom: 1px solid #4D4D4D;
+	vertical-align: middle;
+}
+
+.headTitle#title
+{
+	width: 100%;
+	background-color: #8070F0;
+	/*background-color: #A89647;*/
+	color: #FFFFFF;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.headTitle#title:hover
+{
+	background-color: #8A7AFA;
+	/*background-color: #B8A657;*/
+	color: #FFFFFF;
+}
+
+.headTitle.headButton
+{
+	background-color: #3A3A3A;
+	border-left: 1px solid #4D4D4D;
+}
+
+.headTitle.headButton:hover
+{
+	color: #000000;
+	background-color: #FFFFFF;
+	cursor: pointer;
+}
+
+.headTitle.toogled
+{
+	background-color: #333333 !important;
+	border-bottom-color: #333333 !important;
+	color: #FFFFFF !important;
+}
+
+.headSelections
+{
+	display: table;
+	width: 100%;
+	height: 50px;
+	background-color: #333333;
+	color: #CCCCCC;
+	font-size: 15px;
+}
+
+.headSelections a
+{
+	display: table-cell;
+	padding: 10px;
+	border-top: 5px solid #333333;
+	border-bottom: 5px solid #333333;
+	background-color: #333333;
+	text-decoration: none;
+	color: #CCCCCC;
+	font-size: 15px;
+	vertical-align: middle;
+}
+
+.headSelections a:hover
+{
+	border-bottom: 5px double #DADADA;
+	color: #DADADA;
+}
+
+.headSelections a.selected, .headSelections a:active
+{
+	border-bottom: 5px double #FFFFFF;
+	color: #FFFFFF;
+}
+
+.headSelection
+{
+	display: table-cell;
+	padding: 10px;
+	/*border: 1px solid #4D4D4D;*/
+	background-color: #333333;
+	color: #CCCCCC;
+	font-size: 15px;
+	vertical-align: middle;
+}
+
+.headSelection form
+{
+	height: 29px;
+	line-height: 14px;
+}
+
+.headSelection button
+{
+	height: 100%;
+}
+
+.headSelection input[type="text"], .headSelection input[type="password"], .headSelection button, .headSelection input[type="submit"]
+{
+	padding: 5px;
+	border: 2px solid #8070F0;
+	background-color: #FFFFFF;
+	line-height: 13px;
+	font-size: 13px;
+}
+
+.headSelection button, .headSelection input[type="submit"]
+{
+	color: #8070F0;
+	cursor: pointer;
+}
+
+.headSelection button:hover, .headSelection input[type="submit"]:hover
+{
+	background-color: #8A7AFA;
+	color: #FFFFFF;
+}
+
+.headSelection button:active, .headSelection input[type="submit"]:active
+{
+	border: 2px solid #FFFFFF;
+}
+
+.headSelection #leftArrowButton, .headSelection #rightArrowButton
+{
+	display: inline;
+	margin:0;
+}
+
+.headSelection #leftArrowButton
+{
+	margin-left:5px;
+}
+
+.headSelection #rightArrowButton
+{
+	margin-right:5px;
+}
+
+#dateSquare
+{
+	width: 140px;
+	height: 15px;
+	text-align: center;
+}
+
+.headSelection input[type="text"][disabled]::-webkit-input-placeholder, .headSelection input[type="password"][disabled]::-webkit-input-placeholder
+{
+	text-decoration: line-through;
+}
+
+.headSelection input[type="text"][disabled]::-moz-placeholder, .headSelection input[type="password"][disabled]::-moz-placeholder
+{
+	text-decoration: line-through;
+}
+
+.headSelection input[type="text"][disabled]:-ms-input-placeholder, .headSelection input[type="password"][disabled]:-ms-input-placeholder
+{
+	text-decoration: line-through;
+}
+
+.headSelection input[type="text"][disabled]:-moz-placeholder, .headSelection input[type="password"][disabled]:-moz-placeholder
+{
+	text-decoration: line-through;
+}
+
+.headSelection input[type="text"][disabled]:placeholder, .headSelection input[type="password"][disabled]:placeholder
+{
+	text-decoration: line-through;
+}
+
+.headSelection input[type="text"][disabled], .headSelection input[type="password"][disabled], .headSelection input[type="submit"][disabled]
+{
+	background-color: #FFFFFF !important;
+	border: 2px solid #808080 !important;
+	color: #808080;
+	text-decoration: line-through !important;
+	cursor: not-allowed !important;
+}
+
+.headSelection fieldset
+{
+	border: none;
+}
+
+.headSelections a.radio
+{
+	display: inline-block;
+	margin: 3px;
+	border: 2px solid #8070F0;
+	background-color: #FFFFFF;
+	font-size: 13px;
+	color: #8070F0;
+}
+
+.headSelections a.radio.selected
+{
+	border: 2px solid #FFFFFF;
+	background-color: #8070F0;
+	color: #FFFFFF;
+}
+
+.headSelection input[type="radio"]
+{
+	display: none;
+}
+
+.headSelection input[type="radio"] + label
+{
+	padding: 5px;
+	border: 2px solid #8070F0;
+	background-color: #FFFFFF;
+	font-size: 13px;
+	color: #8070F0;
+	cursor: pointer;
+}
+
+.headSelection input[type="radio"]:not(:checked) + label
+{
+	border: 2px solid #8070F0;
+	background-color: #FFFFFF;
+	color: #8070F0;
+}
+
+.headSelection input[type="radio"]:checked + label
+{
+	border: 2px solid #FFFFFF;
+	background-color: #8070F0;
+	color: #FFFFFF;
+}

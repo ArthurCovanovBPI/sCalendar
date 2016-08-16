@@ -1,0 +1,48 @@
+table
+{
+	border-collapse: collapse;
+	border: 1px solid #A0A0A0;
+}
+
+/*table tr:hover
+{
+	background-color: rgba(200, 200, 200, 0.4);
+}*/
+
+table th
+{
+	/*padding: 2px;
+	background-color: rgba(200, 200, 200, 0.6);*/
+	border: 1px solid #A0A0A0;
+}
+
+table th:hover
+{
+	background-color: rgba(200, 200, 200, 1);
+}
+
+table td
+{
+	/*padding: 2px;
+	padding-left: 5px;
+	padding-right: 5px;*/
+	border-left: 1px solid #A0A0A0;
+	border-right: 1px solid #A0A0A0;
+	background-color: rgba(200, 200, 200, 0.2);
+	vertical-align: top;
+}
+
+table td:hover
+{
+	background-color: #CCCCCC;
+}
+
+table tbody tr td a, table tbody tr th a
+{
+	padding: 2px;
+	height:100%;
+	width:100%;
+	display:block;
+	text-decoration: none;
+	color: inherit;
+}

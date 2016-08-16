@@ -1,0 +1,196 @@
+.pageMid
+{
+	display: inline-block;
+	width: 100%;
+	min-height: -webkit-calc(100% - 122px); /* WebKit */
+	min-height:    -moz-calc(100% - 122px); /* Firefox */
+	min-height:      -o-calc(100% - 122px); /* Opera */
+	min-height:         calc(100% - 122px); /* Standard */
+	margin: auto;
+	background-color: #FFFFFF;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.middleParts
+{
+	display:table;
+	width: 80%;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #EDEBE9;
+}
+
+.middlePart
+{
+	display:table-cell;
+	padding: 5px;
+}
+
+.middlePart fieldset
+{
+	margin-bottom: 2px;
+	padding: 5px;
+	padding-top: 2px;
+	background: #FFFFFF;
+	border: 1px solid #8A7AFA;
+}
+
+.middlePart fieldset legend
+{
+	margin-left: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background: #FFFFFF;
+	border: 1px solid #8070F0;
+	font-size: 13px;
+	line-height: 15px;
+	color: #8070F0;
+}
+
+.middlePart fieldset.menu
+{
+	padding: 0px;
+	background: #8A7AFA;
+	border: 1px solid #8A7AFA;
+	line-height: 30px;
+	color: #FFFFFF;
+}
+
+.middlePart fieldset div .eventCase
+{
+	display:block;
+	padding: 1px;
+	border: 1px solid #000000;
+	font-size: 12px;
+	color: inherit;
+	text-decoration: none;
+}
+
+.middlePart fieldset.menu a
+{
+	display:block;
+	width: auto;
+	height: auto;
+	padding: 5px;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.middlePart fieldset.menu legend
+{
+	background: #8070F0;
+	border: 1px solid #FFFFFF;
+	color: #FFFFFF;
+}
+
+.middlePart fieldset.menu:hover, .middlePart fieldset.menu.selected
+{
+	background: #FFFFFF;
+}
+
+.middlePart fieldset.menu:hover a, .middlePart fieldset.menu.selected a
+{
+	color: #8A7AFA;
+}
+
+fieldset.middleWarningMessage , fieldset.middleErrorMessage 
+{
+	border: 1px solid #333333;
+}
+
+fieldset.middleWarningMessage legend
+{
+	background: #333333;
+	border: 1px solid #FFCC00;
+	color: #FFCC00;
+}
+
+fieldset.middleErrorMessage legend
+{
+	background: #333333;
+	border: 1px solid #FF0000;
+	color: #FF0000;
+}
+
+.middlePart
+{
+	display:table-cell;
+	padding: 7px;
+	border: 1px solid #EDEBE9;
+}
+
+.middlePart table
+{
+	text-align: left;
+}
+
+.middlePart table th
+{
+	text-align: center;
+}
+
+.middlePart table.dayTable tr:hover
+{
+	background-color: #EEECEA;
+}
+
+.middlePart table.monthTable td
+{
+	width: 14%;
+	height: 110px;
+	vertical-align: top;
+	text-overflow: ellipsis;
+}
+
+.middlePart table.monthTable td#today
+{
+	background-color: #EEEEFF;
+	border: 2px solid #0000FF;
+}
+
+.middlePart table.monthTable td#today:hover
+{
+	background-color: #CCCCFF;
+}
+
+.middlePart table.monthTable td.outMonth, .middlePart table.yearTable td.outMonth
+{
+	background-color: #333333 !important;
+	color: #CCCCCC !important;
+}
+
+.eventsDescTable tr td,
+.eventsDescTable tr th
+{
+	padding: 1px;
+	padding-left: 5px;
+	padding-right: 3px;
+}
+
+.highlight
+{
+	background-color: #CCCCCC;
+}
+
+button
+{
+	padding: 1px;
+}
+
+button.danger
+{
+	background: #ff0000;
+	background-image: -webkit-linear-gradient(top, #FF0000, #BA0000);
+	background-image: -moz-linear-gradient(top, #FF0000, #BA0000);
+	background-image: -ms-linear-gradient(top, #FF0000, #BA0000);
+	background-image: -o-linear-gradient(top, #FF0000, #BA0000);
+	background-image: linear-gradient(to bottom, #FF0000, #BA0000);
+	border-color: #D43F3A;
+}
+
+button.danger:hover
+{
+	border-color: #8C2A26;
+}
