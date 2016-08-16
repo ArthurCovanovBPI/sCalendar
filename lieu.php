@@ -6,19 +6,19 @@
 		$password = "password";
 		$dbname = "bpi_calendar";
 
-		$conn = mysql_connect($servername, $username, $password, $dbname);
-		if ($conn->connect_error)
+		$conn = mysqli_connect($servername, $username, $password, $dbname);
+		if (!$conn)
 		{
 			echo
 				'<fieldset class="middlePart middleErrorMessage">
 					<legend>logs ERROR!</legend>'.
-					'Connection failed: ' . $conn->connect_error
+					'Connection failed: ' . mysqli_connect_errno() . ' : ' . mysqli_connect_error()
 				.'</fieldset>'
 			;
 			exit(1);
 		}
-		mysql_select_db($dbname, $conn);
-		mysql_query('SET character_set_results = "UTF8", character_set_client = "UTF8", character_set_connection = "UTF8", character_set_database = "UTF8", character_set_server = "UTF8"');
+		mysqli_select_db($dbname, $conn);
+		mysqli_query('SET character_set_results = "UTF8", character_set_client = "UTF8", character_set_connection = "UTF8", character_set_database = "UTF8", character_set_server = "UTF8"');
 	}
 	else
 	{
@@ -28,7 +28,7 @@
 				'Unrecognized espaceID: ' . $_GET['espaceID']
 			.'</fieldset>'
 		;
-		exit(1);
+		exit(1);/**/
 	}
 	$resultPerPages=40;
 ?>
@@ -41,14 +41,14 @@
 			FROM espace
 			WHERE ID = ' . $_GET['espaceID']
 		;
-		$req = mysql_query($sql);
+		$req = mysqli_query($conn, $sql);
 		if(!$req)
 		{
 			echo('ERROR');
 		}
 		else
 		{
-			$data = mysql_fetch_assoc($req);
+			$data = mysqli_fetch_assoc($req);
 			$espaceName = $data['espace'];
 			echo $espaceName;
 		}
@@ -63,14 +63,15 @@
 			FROM lieu
 			WHERE espace_ID = ' . $_GET['espaceID']
 		;
-		$req = mysql_query($sql);
+		$req = mysqli_query($conn, $sql);
 		if(!$req)
 		{
-			echo('ERROR');
+			echo('SQL ERROR: ' . $sql . '<br />');
+			echo(mysqli_errno($conn) . ' : ' . mysqli_error($conn) . '<br />');
 		}
 		else
 		{
-			$data = mysql_fetch_assoc($req);
+			$data = mysqli_fetch_assoc($req);
 			$numPages = ceil($data['count']/$resultPerPages);
 			if($page>$numPages)$page=$numPages;
 			if($page<=0)$page=1;
@@ -107,8 +108,7 @@
 				echo '<span onclick="loadLieu(' . $_GET['espaceID'] . ', ' . $numPages . ')" class="pageButton clickablePageButton">≫</span>';
 			echo '</span>';
 		}
-	?>
-	<?php
+
 		$sql =
 			/*'SELECT
 				lieu.ID AS ID,
@@ -124,11 +124,11 @@
 			' LIMIT ' . $resultPerPages .
 			' OFFSET ' . (($page-1)*$resultPerPages)
 		;
-		$req = mysql_query($sql);
+		$req = mysqli_query($conn, $sql);
 		if(!$req)
 		{
 			echo('SQL ERROR: ' . $sql . '<br />');
-			echo(mysql_errno($conn) . ' : ' . mysql_error($conn));
+			echo(mysqli_errno($conn) . ' : ' . mysqli_error($conn) . '<br />');
 		}
 		else
 		{
@@ -136,7 +136,7 @@
 			$i = 0;
 			//echo '<tr><th>ID</th><th style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Lieu</th><th>-</th></tr>';
 			echo '<tr><th style="padding-left: 2px; padding-right: 2px; text-align: right; width :100%;">Lieu</th><th>✎</th><th>-</th></tr>';
-			while($data = mysql_fetch_assoc($req))
+			while($data = mysqli_fetch_assoc($req))
 			{
 				echo '<tr id=\'seeLieu' . $data['ID'] . '\' style=\'display:table-row;\'>';
 					//echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.$data['ID'].'</td>';
@@ -159,5 +159,6 @@
 			echo '</tr>';
 			echo '</table>';
 		}
+		mysqli_close($conn);
 	?>
 </fieldset>
