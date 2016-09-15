@@ -417,7 +417,7 @@
 			</div>
 			<div class="headSelections" style="display:none;">
 				<div class="headSelection">
-					<form name="loginForm" action="index.php"><!-- method="post"><!---->
+					<form name="loginForm" action="index.php"><!-- method="post">-->
 						<input type="text" size="20" maxlength="20" name="login" placeholder="Login" disabled />
 						<input type="password" size="20" maxlength="20" name="password" placeholder="Password" disabled />
 						<input type="submit" value="Connexion" disabled="disabled" />
@@ -526,13 +526,14 @@
 			<div class="footParts">
 				<div class="footPart" id="mainFootPart">
 					<p><?php echo "<pre>"; print_r(getallheaders()); echo "</pre>"; ?></p>
+					<p><?php echo phpinfo() ?></p>
 				</div>
 				<!--<a class="footPart" class="footOption" id="facebookOption" href="https://fr-fr.facebook.com/bpi.pompidou"></a>
-				<a class="footPart" class="footOption" id="twitterOption" href="https://twitter.com/bpi_pompidou"></a><!---->
-				<!--<a class="footPart" class="footOption" id="googlePlusOption" href=""></footPart><!---->
+				<a class="footPart" class="footOption" id="twitterOption" href="https://twitter.com/bpi_pompidou"></a>-->
+				<!--<a class="footPart" class="footOption" id="googlePlusOption" href=""></footPart>-->
 				<!--<footPart class="footOption">
 					<p>Opt3</p>
-				</footPart><!---->
+				</footPart>-->
 			</div>
 		</div>
 	</body>
