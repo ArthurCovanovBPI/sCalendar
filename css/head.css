@@ -42,15 +42,20 @@
 	color: #FFFFFF;
 }
 
-.headTitle.headButton
+.headTitle.headButton,
+a.headTitle.headButton
 {
+	color: #FFFFFF;
 	background-color: #3A3A3A;
+	text-decoration: none;
 	border-left: 1px solid #4D4D4D;
 }
 
-.headTitle.headButton:hover
+.headTitle.headButton:hover,
+a.headTitle.headButton:hover
 {
 	color: #000000;
+	text-decoration: none;
 	background-color: #FFFFFF;
 	cursor: pointer;
 }

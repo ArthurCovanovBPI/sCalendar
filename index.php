@@ -310,9 +310,24 @@
 				<div class="headTitle headButton" style="display:none;" onclick="displayHeadSelection(2);">
 					<p>Recherche</p>
 				</div>
-				<div class="headTitle headButton" onclick="displayHeadSelection(3);"
-					<p>Connexion</p>
-				</div>
+				<?php
+					$allHeaders = getallheaders();
+					if(array_key_exists("AuthUser", $allHeaders))
+					{
+						echo("<div class=\"headTitle headButton\" onclick=\"disconnect();\">");
+						//echo("<a class=\"headTitle headButton\" href='http://portailtest-ldap.bpi.fr/index.pl?logout=1'>");
+								echo($allHeaders[AuthUser]);
+						//echo("</a>");
+						echo("</div>");
+					}
+					else
+					{
+						echo("<a class=\"headTitle headButton\" href='/connect'>");
+								echo("Se connecter");
+						echo("</a>");
+					}
+				?>
+				<!--<p>Connexion</p>-->
 			</div>
 			<div class="headSelections" <?php if($menu != 'Lieux' && $menu != 'NewEvenement' && $menu != 'Responsables') echo 'style="display:none;"'; ?>>
 				<a href="?menu=calendrier" <?php if($menu == 'Calendrier') echo ' class="selected"'; ?>>Calendrier</a>
@@ -417,7 +432,7 @@
 			</div>
 			<div class="headSelections" style="display:none;">
 				<div class="headSelection">
-					<form name="loginForm" action="index.php"><!-- method="post">-->
+					<form name="loginForm" action="index.php"><!-- method="post"><!---->
 						<input type="text" size="20" maxlength="20" name="login" placeholder="Login" disabled />
 						<input type="password" size="20" maxlength="20" name="password" placeholder="Password" disabled />
 						<input type="submit" value="Connexion" disabled="disabled" />
@@ -524,10 +539,7 @@
 		</div>
 		<div class="pageFoot">
 			<div class="footParts">
-				<div class="footPart" id="mainFootPart">
-					<p><?php echo "<pre>"; print_r(getallheaders()); echo "</pre>"; ?></p>
-					<p><?php echo phpinfo() ?></p>
-				</div>
+				£
 				<!--<a class="footPart" class="footOption" id="facebookOption" href="https://fr-fr.facebook.com/bpi.pompidou"></a>
 				<a class="footPart" class="footOption" id="twitterOption" href="https://twitter.com/bpi_pompidou"></a>-->
 				<!--<a class="footPart" class="footOption" id="googlePlusOption" href=""></footPart>-->
