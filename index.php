@@ -274,9 +274,10 @@
 						;
 					}
 				?>
-				<div class="headTitle headButton <?php if($menu == 'Calendrier' || $menu == 'NewEvenement') echo ' toogled'; ?>" onclick="displayHeadSelection(1);">
+				<!--<div class="headTitle headButton <?php if($menu == 'Calendrier' || $menu == 'NewEvenement') echo ' toogled'; ?>" onclick="displayHeadSelection(1);">
 					<p>Calendrier</p>
-				</div>
+				</div>-->
+				<a class="headTitle headButton <?php if($menu == 'Calendrier' || $menu == 'NewEvenement') echo ' toogled'; ?>" href='/'>Calendrier</a>
 				<?php
 					switch($menu)
 					{
@@ -333,67 +334,67 @@
 			</div>
 			<div class="headSelections" <?php if($menu != 'Calendrier' && $menu != 'NewEvenement') echo 'style="display:none;"'; ?>>
 				<?php
-							echo('<div class="headSelection">');
-							/*echo
-								'<a href="?menu=calendrier&timeAdvance=day"  class="radio'.(($timeAdvance == 'day') ? ' selected' : '').'">Jour</a>
-								<a href="?menu=calendrier&timeAdvance=month" class="radio'.(($timeAdvance == 'month') ? ' selected' : '').'">Mois</a>
-								<a href="?menu=calendrier&timeAdvance=year" class="radio'.(($timeAdvance == 'year') ? ' selected' : '').'">Année</a>'
-							;*/
-							echo("<input type=\"hidden\" name=\"timeStamp\" value=\"" . $today[0] . "\">");
-							echo('<form name="calForm" method="get">');
-							echo("<input onChange=\"this.form.submit();\" id=\"dayRadioButton\" type=\"radio\" name=\"timeAdvance\" value=\"day\"" . (($timeAdvance == "day") ? "checked" : "") . " />
-							<label for=\"dayRadioButton\">Jour</label>");
-							echo("<input onChange=\"this.form.submit();\" id=\"monthRadioButton\" type=\"radio\" name=\"timeAdvance\" value=\"month\"" . (($timeAdvance == "month") ? "checked" : "") . " />
-							<label for=\"monthRadioButton\">Mois</label>");
-							echo("<input onChange=\"this.form.submit();\" id=\"yearRadioButton\" type=\"radio\" name=\"timeAdvance\" value=\"year\"" . (($timeAdvance == "year") ? "checked" : "") . " />
-							<label for=\"yearRadioButton\">Année</label>");
-							echo("<input type=\"hidden\" name=\"timeStamp\" value=\"" . $today[0] . "\">");
+					echo('<div class="headSelection">');
+					/*echo
+						'<a href="?menu=calendrier&timeAdvance=day"  class="radio'.(($timeAdvance == 'day') ? ' selected' : '').'">Jour</a>
+						<a href="?menu=calendrier&timeAdvance=month" class="radio'.(($timeAdvance == 'month') ? ' selected' : '').'">Mois</a>
+						<a href="?menu=calendrier&timeAdvance=year" class="radio'.(($timeAdvance == 'year') ? ' selected' : '').'">Année</a>'
+					;*/
+					echo("<input type=\"hidden\" name=\"timeStamp\" value=\"" . $today[0] . "\">");
+					echo('<form name="calForm" method="get">');
+					echo("<input onChange=\"this.form.submit();\" id=\"dayRadioButton\" type=\"radio\" name=\"timeAdvance\" value=\"day\"" . (($timeAdvance == "day") ? "checked" : "") . " />
+					<label for=\"dayRadioButton\">Jour</label>");
+					echo("<input onChange=\"this.form.submit();\" id=\"monthRadioButton\" type=\"radio\" name=\"timeAdvance\" value=\"month\"" . (($timeAdvance == "month") ? "checked" : "") . " />
+					<label for=\"monthRadioButton\">Mois</label>");
+					echo("<input onChange=\"this.form.submit();\" id=\"yearRadioButton\" type=\"radio\" name=\"timeAdvance\" value=\"year\"" . (($timeAdvance == "year") ? "checked" : "") . " />
+					<label for=\"yearRadioButton\">Année</label>");
+					echo("<input type=\"hidden\" name=\"timeStamp\" value=\"" . $today[0] . "\">");
 
-							if($timeAdvance == "year")
-							{
-								$middleCalendarLegend=$today[year];
-								echo("<button id=\"leftArrowButton\" name=\"timeStamp\" type=\"submit\" value=\"" . strtotime(($today[year] - 1) . "/1/1") . "\"><</button>");
-								echo("<input id=\"dateSquare\" type=\"text\" value=\"" . $middleCalendarLegend . "\" readonly />");
-								echo("<button id=\"rightArrowButton\" name=\"timeStamp\" type=\"submit\" value=\"" . strtotime(($today[year] + 1) . "/1/1") . "\">></button>");
-							}
-							else if($timeAdvance == "day")
-							{
-								$middleCalendarLegend=$today[mday].' '.mon2mois($today[mon]).' '.$today[year];//date("jS F Y",$today[0]);
-								echo("<button id=\"leftArrowButton\" name=\"timeStamp\" type=\"submit\" value=\"" . ($today[0]-86400) . "\"><</button>");
-								echo("<input id=\"dateSquare\" type=\"text\" value=\"" . $middleCalendarLegend . "\" readonly />");
-								echo("<button id=\"rightArrowButton\" name=\"timeStamp\" type=\"submit\" value=\"" . ($today[0]+86400) . "\">></button>");
-							}
-							else
-							{
-								$middleCalendarLegend=mon2mois($today[mon]).' '.$today[year];//date("F Y",$today[0]);
-								$prevMonth=$today[mon]-1;
-								$nextMonth=$today[mon]+1;
-								$prevYear=$today[year];
-								$nextYear=$today[year];
-								if($nextMonth>=13)
-								{
-									$nextMonth=1;
-									$nextYear=$today[year]+1;
-								}
-								if($prevMonth<=0)
-								{
-									$prevMonth=12;
-									$prevYear=$today[year]-1;
-								}
-								echo('<button id="leftArrowButton" name="timeStamp" type="submit" value="' . strtotime($prevYear . '-' . $prevMonth . '-1') . '"><</button>');
-								echo('<input id="dateSquare" type="text" value="' . $middleCalendarLegend . '" readonly="true" />');
-								echo('<button id="rightArrowButton" name="timeStamp" type="submit" value="' . strtotime($nextYear . '-' . $nextMonth . '-1') . '">></button>');
-							}
+					if($timeAdvance == "year")
+					{
+						$middleCalendarLegend=$today[year];
+						echo("<button id=\"leftArrowButton\" name=\"timeStamp\" type=\"submit\" value=\"" . strtotime(($today[year] - 1) . "/1/1") . "\"><</button>");
+						echo("<input id=\"dateSquare\" type=\"text\" value=\"" . $middleCalendarLegend . "\" readonly />");
+						echo("<button id=\"rightArrowButton\" name=\"timeStamp\" type=\"submit\" value=\"" . strtotime(($today[year] + 1) . "/1/1") . "\">></button>");
+					}
+					else if($timeAdvance == "day")
+					{
+						$middleCalendarLegend=$today[mday].' '.mon2mois($today[mon]).' '.$today[year];//date("jS F Y",$today[0]);
+						echo("<button id=\"leftArrowButton\" name=\"timeStamp\" type=\"submit\" value=\"" . ($today[0]-86400) . "\"><</button>");
+						echo("<input id=\"dateSquare\" type=\"text\" value=\"" . $middleCalendarLegend . "\" readonly />");
+						echo("<button id=\"rightArrowButton\" name=\"timeStamp\" type=\"submit\" value=\"" . ($today[0]+86400) . "\">></button>");
+					}
+					else
+					{
+						$middleCalendarLegend=mon2mois($today[mon]).' '.$today[year];//date("F Y",$today[0]);
+						$prevMonth=$today[mon]-1;
+						$nextMonth=$today[mon]+1;
+						$prevYear=$today[year];
+						$nextYear=$today[year];
+						if($nextMonth>=13)
+						{
+							$nextMonth=1;
+							$nextYear=$today[year]+1;
+						}
+						if($prevMonth<=0)
+						{
+							$prevMonth=12;
+							$prevYear=$today[year]-1;
+						}
+						echo('<button id="leftArrowButton" name="timeStamp" type="submit" value="' . strtotime($prevYear . '-' . $prevMonth . '-1') . '"><</button>');
+						echo('<input id="dateSquare" type="text" value="' . $middleCalendarLegend . '" readonly="true" />');
+						echo('<button id="rightArrowButton" name="timeStamp" type="submit" value="' . strtotime($nextYear . '-' . $nextMonth . '-1') . '">></button>');
+					}
 
-							echo('<button name="timeStamp" type="submit" value="' . ($realToday[0]) . '">Aujourd\'hui</button>');
-							echo
-									'</form>
-								</div>'
-							;
-								if($menu == 'NewEvenement')
-									echo '<a href="?menu=newevenement&date='.date("Ymd",$today[0]).'" class="selected">Nouvel événement</a>';
-								else
-									echo '<a href="?menu=newevenement&date='.date("Ymd",$today[0]).'">Nouvel événement</a>';
+					echo('<button name="timeStamp" type="submit" value="' . ($realToday[0]) . '">Aujourd\'hui</button>');
+					echo
+							'</form>
+						</div>'
+					;
+					if($menu == 'NewEvenement')
+						echo '<a href="?menu=newevenement&date='.date("Ymd",$today[0]).'" class="selected">Nouvel événement</a>';
+					else
+						echo '<a href="?menu=newevenement&date='.date("Ymd",$today[0]).'">Nouvel événement</a>';
 				?>
 			</div>
 			<div class="headSelections" <?php if($menu != 'Espaces' && $menu != 'Evenement') echo 'style="display:none;"'; ?>>
