@@ -263,45 +263,41 @@
 				<div class="headTitle" id="title">
 					<p>S-Calendar</p>
 				</div>
-				<div class="headTitle headButton <?php if($menu == 'Lieux' || $menu == 'NewEvenement' || $menu == 'Responsables') echo ' toogled'; ?>" onclick="displayHeadSelection(0);">
-					<p>Menu Principal</p>
+				<?php
+					$allHeaders = getallheaders();
+					if(array_key_exists("AuthUser", $allHeaders))
+					{
+						echo
+							'<div class="headTitle headButton ' . (($menu == 'Lieux' || $menu == 'Responsables') ? ' toogled' : '') .'" onclick="displayHeadSelection(0);">
+								<p>Admin</p>
+							</div>'
+						;
+					}
+				?>
+				<div class="headTitle headButton <?php if($menu == 'Calendrier' || $menu == 'NewEvenement') echo ' toogled'; ?>" onclick="displayHeadSelection(1);">
+					<p>Calendrier</p>
 				</div>
 				<?php
 					switch($menu)
 					{
-						case 'Calendrier':
-							echo
-								'<div class="headTitle headButton toogled" onclick="displayHeadSelection(1);">
-									<p>Calendrier</p>
-								</div>'
-							;
-						break;
 						case 'Espaces':
 							echo
-								'<div class="headTitle headButton toogled" onclick="displayHeadSelection(1);">
+								'<div class="headTitle headButton toogled" onclick="displayHeadSelection(2);">
 									<p>Espaces</p>
 								</div>'
 							;
 						break;
 						case 'Evenement':
 							echo
-								'<div class="headTitle headButton toogled" onclick="displayHeadSelection(1);">
+								'<div class="headTitle headButton toogled" onclick="displayHeadSelection(2);">
 									<p>Événement</p>
 								</div>'
 							;
 						break;
 						case 'Evenements':
 							echo
-								'<div class="headTitle headButton toogled" onclick="displayHeadSelection(1);">
+								'<div class="headTitle headButton toogled" onclick="displayHeadSelection(2);">
 									<p>Événements</p>
-								</div>'
-							;
-						break;
-						case 'NewEvenement':
-						case 'Lieux':
-						case 'Responsables':
-							echo
-								'<div class="headTitle headButton toogled" style="display:none;" onclick="displayHeadSelection(1);">
 								</div>'
 							;
 						break;
@@ -314,10 +310,8 @@
 					$allHeaders = getallheaders();
 					if(array_key_exists("AuthUser", $allHeaders))
 					{
-						echo("<div class=\"headTitle headButton\" onclick=\"disconnect();\">");
-						//echo("<a class=\"headTitle headButton\" href='http://portailtest-ldap.bpi.fr/index.pl?logout=1'>");
+						echo('<div class="headTitle headButton">');
 								echo($allHeaders[AuthUser]);
-						//echo("</a>");
 						echo("</div>");
 					}
 					else
@@ -329,19 +323,16 @@
 				?>
 				<!--<p>Connexion</p>-->
 			</div>
-			<div class="headSelections" <?php if($menu != 'Lieux' && $menu != 'NewEvenement' && $menu != 'Responsables') echo 'style="display:none;"'; ?>>
-				<a href="?menu=calendrier" <?php if($menu == 'Calendrier') echo ' class="selected"'; ?>>Calendrier</a>
+			<div class="headSelections" <?php if($menu != 'Lieux' && $menu != 'Responsables') echo 'style="display:none;"'; ?>>
+				<!--<a href="?menu=calendrier" <?php if($menu == 'Calendrier') echo ' class="selected"'; ?>>Calendrier</a>-->
 				<!--<a href="?menu=espaces" <?php if($menu == 'Espaces') echo ' class="selected"'; ?>>Espaces</a>-->
-				<a href="?menu=newevenement" <?php if($menu == 'NewEvenement') echo ' class="selected"'; ?>>Nouvel événement</a>
+				<!--<a href="?menu=newevenement" <?php if($menu == 'NewEvenement') echo ' class="selected"'; ?>>Nouvel événement</a>-->
 				<!--<a href="?menu=evenements" <?php if($menu == 'Evenements') echo ' class="selected"'; ?>>Événements</a>-->
 				<a href="?menu=lieux" <?php if($menu == 'Lieux') echo ' class="selected"'; ?>>Lieux</a>
 				<a href="?menu=responsables" <?php if($menu == 'Responsables') echo ' class="selected"'; ?>>Utilisateurs</a>
 			</div>
-			<div class="headSelections" <?php if($menu == 'Lieux' || $menu == 'NewEvenement' || $menu == 'Responsables') echo 'style="display:none;"'; ?>>
+			<div class="headSelections" <?php if($menu != 'Calendrier' && $menu != 'NewEvenement') echo 'style="display:none;"'; ?>>
 				<?php
-					switch($menu)
-					{
-						case 'Calendrier':
 							echo('<div class="headSelection">');
 							/*echo
 								'<a href="?menu=calendrier&timeAdvance=day"  class="radio'.(($timeAdvance == 'day') ? ' selected' : '').'">Jour</a>
@@ -397,10 +388,18 @@
 							echo('<button name="timeStamp" type="submit" value="' . ($realToday[0]) . '">Aujourd\'hui</button>');
 							echo
 									'</form>
-								</div>
-								<a href="?menu=newevenement&date='.date("Ymd",$today[0]).'">Nouvel événement</a>'
+								</div>'
 							;
-							break;
+								if($menu == 'NewEvenement')
+									echo '<a href="?menu=newevenement&date='.date("Ymd",$today[0]).'" class="selected">Nouvel événement</a>';
+								else
+									echo '<a href="?menu=newevenement&date='.date("Ymd",$today[0]).'">Nouvel événement</a>';
+				?>
+			</div>
+			<div class="headSelections" <?php if($menu != 'Espaces' && $menu != 'Evenement') echo 'style="display:none;"'; ?>>
+				<?php
+					switch($menu)
+					{
 						case 'Espaces':
 							echo
 								'<a href="?menu=espaces"'.(($section == 'BPI')? ' class="selected"' : '').'>Espaces BPI</a>
@@ -413,31 +412,8 @@
 							echo('<a href="?menu=evenement&eventID='.$_GET[eventID].'"'.(($section == 'Details')? ' class="selected"' : '').'>Détails</a>');
 							echo('<a href="?menu=evenement&section=edition&eventID='.$_GET[eventID].'"'.(($section == 'Edition')? ' class="selected"' : '').'>Édition</a>');
 						break;
-						case 'Menu 3':
-						break;
 					}
 				?>
-			</div>
-			<div class="headSelections" style="display:none;">
-				<div class="headSelection">
-					<form name="searchForm" method="post">
-						<input type="text" size="30" name="search" placeholder="Rechercher..." />
-						<input type="submit" value="Ok" />
-						<input type="checkbox" id="check3" name="checkThree" />
-						<label for="check3"></label>
-						<input type="checkbox" id="check4" name="checkFour" />
-						<label for="check4">Vert</label>
-					</form>
-				</div>
-			</div>
-			<div class="headSelections" style="display:none;">
-				<div class="headSelection">
-					<form name="loginForm" action="index.php"><!-- method="post"><!---->
-						<input type="text" size="20" maxlength="20" name="login" placeholder="Login" disabled />
-						<input type="password" size="20" maxlength="20" name="password" placeholder="Password" disabled />
-						<input type="submit" value="Connexion" disabled="disabled" />
-					</form>
-				</div>
 			</div>
 		</div>
 		<div class="pageMid">

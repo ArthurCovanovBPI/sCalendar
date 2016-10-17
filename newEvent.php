@@ -120,8 +120,19 @@
 
 
 
+		$allHeaders = getallheaders();
+		if(array_key_exists("AuthUser", $allHeaders))
+		{
+			echo			'<label for="intituleEntry">Email: </label>'.
+						'<input id="responsaBlesSelection" type="text" name="email" value="'.$allHeaders[AuthUser].'" disabled /><br />'
+			;
+		}
+		else
+		{
+			echo("Inconnue");
+		}
 
-		$sql ='SELECT * FROM responsable';
+		/*$sql ='SELECT * FROM responsable';
 
 		$req = mysql_query($sql);
 		if(!$req)
@@ -142,7 +153,7 @@
 						'<label for="responsablesSelection">Responsable: </label>'.
 						'<input id="inputResponsablesSelection" onchange="getResponsableValue();" list="responsablesSelection" />'
 			;
-		}
+		}*/
 
 		echo
 					'</fieldset>

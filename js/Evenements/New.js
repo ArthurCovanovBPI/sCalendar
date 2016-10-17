@@ -115,6 +115,7 @@ function getLieuValue()
 
 function addManif()
 {
+	alert("LOCKED");
 	document.getElementById("manifEditMessg").innerHTML = "";
 	var respoID=getResponsableValue();
 	if(respoID==null)
