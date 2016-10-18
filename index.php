@@ -267,11 +267,7 @@
 					$allHeaders = getallheaders();
 					if(array_key_exists("AuthUser", $allHeaders))
 					{
-						echo
-							'<div class="headTitle headButton ' . (($menu == 'Lieux' || $menu == 'Responsables') ? ' toogled' : '') .'" onclick="displayHeadSelection(0);">
-								<p>Admin</p>
-							</div>'
-						;
+						echo '<a class="headTitle headButton '.(($menu == 'Lieux' || $menu == 'Responsables')? ' toogled' : '') .'" href="/?menu=lieux">Admin</a>';
 					}
 				?>
 				<!--<div class="headTitle headButton <?php if($menu == 'Calendrier' || $menu == 'NewEvenement') echo ' toogled'; ?>" onclick="displayHeadSelection(1);">
@@ -311,7 +307,7 @@
 					$allHeaders = getallheaders();
 					if(array_key_exists("AuthUser", $allHeaders))
 					{
-						echo('<div class="headTitle headButton">');
+						echo('<div class="headTitle" style="border-left: 1px solid #4D4D4D; cursor: default;">');
 								echo($allHeaders[AuthUser]);
 						echo("</div>");
 					}
