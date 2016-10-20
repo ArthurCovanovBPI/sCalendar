@@ -150,28 +150,26 @@
 				if(isset($_GET['month']) && $_GET['month']=="true")
 					$sql =
 						'SELECT	intitule,
-								status,
-								type,
-								nom,
-								observations,
-								evenement
+							status,
+							type,
+							responsable_ID,
+							observations,
+							evenement
 						FROM manifestation
 						INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
-				INNER JOIN responsable AS respo ON manifestation.responsable_id = respo.id
 				INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_id = tm.id
 				INNER JOIN status_manifestation AS stat ON manifestation.status_manifestation_id = stat.id
 						WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . '312359  AND fin_manif >= ' . $curdate['year'] . sprintf("%02d", $curdate['mon']) . '000000)';
 				else
 					$sql =
 						'SELECT	intitule,
-								status,
-								type,
-								nom,
-								observations,
-								evenement
+							status,
+							type,
+							responsable_ID,
+							observations,
+							evenement
 						FROM manifestation
 						INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
-				INNER JOIN responsable AS respo ON manifestation.responsable_id = respo.id
 				INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_id = tm.id
 				INNER JOIN status_manifestation AS stat ON manifestation.status_manifestation_id = stat.id
 						WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . sprintf("%02d", $curdate['mday']) . '2359  AND fin_manif >= ' . $endYear . sprintf("%02d", $endMonth) . sprintf("%02d", $endDay) . '0000)';
@@ -190,7 +188,7 @@
 					while ($i < mysql_num_fields($req))
 					{
 						$meta = mysql_fetch_field($req, $i);
-						if($meta->name=="nom")
+						if($meta->name=="responsable_ID")
 							echo '<th>reponsable</th>';
 						else
 							echo '<th>' . $meta->name . '</th>';
@@ -207,7 +205,7 @@
 							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['intitule'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['status'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['type'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['nom'].'</td>';
+							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['responsable_ID'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['observations'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['evenement'].'</td>';
 							echo '</tr>';
@@ -226,7 +224,7 @@
 							echo '<td style="white-space: nowrap;text-align: right;">'.$data['intitule'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right;">'.$data['status'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right;">'.$data['type'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right;">'.$data['nom'].'</td>';
+							echo '<td style="white-space: nowrap;text-align: right;">'.$data['responsable_ID'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right;">'.$data['observations'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right;">'.$data['evenement'].'</td>';
 							echo '</tr>';

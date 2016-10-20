@@ -29,14 +29,13 @@
 					intitule,
 					observations,
 					evenement,
-					respo.nom,
+					responsable_ID,
 					l.lieu,
 					manifestation.ID
 					FROM manifestation
 					INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
 					LEFT JOIN reservation AS r ON r.dates_manifestation_ID = dm.ID
 					LEFT JOIN lieu AS l ON r.lieu_ID = l.ID
-					INNER JOIN responsable AS respo ON manifestation.responsable_ID = respo.ID
 					INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_ID = tm.ID
 					WHERE manifestation.ID = ' . $_GET['eventID']
 				;
@@ -67,7 +66,7 @@
 								)
 							).
 							(($data['lieu'] != null)?'Lieu: '.$data['lieu'].'<br />' : '').
-							'Responsable: '.$data['nom'].'<br />'.
+							'Responsable: '.$data['responsable_ID'].'<br />'.
 							'Observations: '.$data['observations'].'<br />'.
 							'Description: '.$data['evenement']
 						.'</fieldset>'

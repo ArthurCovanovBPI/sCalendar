@@ -34,14 +34,13 @@
 					intitule,
 					tm.type,
 					sm.status,
-					respo.*,
+					responsable_ID,
 					observations,
 					evenement
 				FROM manifestation
 				INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
 				INNER JOIN status_manifestation AS sm ON manifestation.status_manifestation_ID = sm.ID
 				INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_ID = tm.ID
-				INNER JOIN responsable AS respo ON manifestation.responsable_ID = respo.ID
 				WHERE manifestation.ID = ' . $_GET['eventID']
 			;
 			$req = mysql_query($sql);
@@ -90,7 +89,7 @@
 							<div class="middlePart">
 								<fieldset class="middlePart">
 									<legend>Reponsable</legend>'.
-									$data['nom']
+									$data['responsable_ID']
 								.'</fieldset>
 							</div>
 						</div>'

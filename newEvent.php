@@ -132,7 +132,7 @@
 			echo("Inconnue");
 		}
 
-		/*$sql ='SELECT * FROM responsable';
+		/*$sql ='SELECT * FROM responsable ORDER BY nom';
 
 		$req = mysql_query($sql);
 		if(!$req)

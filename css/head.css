@@ -33,6 +33,7 @@
 	color: #FFFFFF;
 	font-size: 18px;
 	font-weight: bold;
+	cursor: default;
 }
 
 .headTitle#title:hover

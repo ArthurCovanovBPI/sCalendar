@@ -50,14 +50,13 @@
 					intitule,
 					tm.type,
 					sm.status,
-					respo.*,
+					responsable_ID,
 					observations,
 					evenement
 				FROM manifestation
 				INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
 				INNER JOIN status_manifestation AS sm ON manifestation.status_manifestation_ID = sm.ID
 				INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_ID = tm.ID
-				INNER JOIN responsable AS respo ON manifestation.responsable_ID = respo.ID
 				WHERE manifestation.ID = ' . $_GET['eventID']
 			;
 			$req = mysql_query($sql);
@@ -177,10 +176,11 @@
 									<legend>Reponsable</legend>'
 					;
 
+						echo			'<label for="intituleEntry">Email: </label>'.
+									'<input id="responsaBlesSelection" type="text" name="email" value="'.$data['responsable_ID'].'" disabled /><br />'
+						;
 
-
-
-					$sql ='SELECT * FROM responsable ORDER BY nom';
+					/*$sql ='SELECT * FROM responsable ORDER BY nom';
 
 					$req = mysql_query($sql);
 					if(!$req)
@@ -205,7 +205,7 @@
 									'<label for="responsablesSelection">Responsable: </label>'.
 									'<input id="inputResponsablesSelection" onchange="getResponsableValue();" list="responsablesSelection" value="'.$data['nom'].'" />'
 						;
-					}
+					}*/
 
 					echo
 								'</fieldset>
