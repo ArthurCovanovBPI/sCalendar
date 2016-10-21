@@ -1,7 +1,13 @@
 <?php
+	$allHeaders = getallheaders();
 	if(!isset($_GET['eventID']) || !is_numeric($_GET['eventID']))
 	{
 		$txtError='Undefined Event ID';
+		include('errorFieldSet.php');
+	}
+	else if(!array_key_exists("AuthUser", $allHeaders))
+	{
+		$txtError='Authentification Error';
 		include('errorFieldSet.php');
 	}
 	else
@@ -90,6 +96,11 @@
 						</div>'
 					;
 				}
+				else if($data['responsable_ID'] != $allHeaders[AuthUser])
+				{
+					$txtError='Access denied!';
+					include('errorFieldSet.php');
+				}
 				else
 				{
 					$intitule = str_replace('"', '&#34', $data['intitule']);
@@ -173,44 +184,14 @@
 					echo
 							'<div class="middlePart">
 								<fieldset class="middlePart">
-									<legend>Reponsable</legend>'
+									<legend>Reponsable</legend>
+									<label for="intituleEntry">Email: </label>
+									<input id="responsaBlesSelection" type="text" name="email" value="'.$data['responsable_ID'].'" disabled /><br />
+								</fieldset>
+							</div>'
 					;
-
-						echo			'<label for="intituleEntry">Email: </label>'.
-									'<input id="responsaBlesSelection" type="text" name="email" value="'.$data['responsable_ID'].'" disabled /><br />'
-						;
-
-					/*$sql ='SELECT * FROM responsable ORDER BY nom';
-
-					$req = mysql_query($sql);
-					if(!$req)
-					{
-						echo 'No responsable found :' . (mysql_errno($conn) . ' : ' . mysql_error($conn));
-					}
-					else
-					{
-						echo
-									'<datalist id="responsablesSelection">'
-						;
-
-						while($respo = mysql_fetch_assoc($req))
-						{
-							echo
-										'<option data-value="'.$respo['ID'].'" value="'.$respo['nom'].'" label="'.$respo['nom'].'">' . $respo['nom'] . '</option>'
-							;
-						}
-
-						echo
-									'</datalist>'.
-									'<label for="responsablesSelection">Responsable: </label>'.
-									'<input id="inputResponsablesSelection" onchange="getResponsableValue();" list="responsablesSelection" value="'.$data['nom'].'" />'
-						;
-					}*/
-
 					echo
-								'</fieldset>
-							</div>
-						</div>'
+						'</div>'
 					;
 
 
@@ -221,14 +202,7 @@
 						'<div class="middleParts">
 							<div class="middlePart">
 								<fieldset>
-									<legend>Horaires</legend>'/*.
-									(
-										($data['recurrence']==null)
-										?
-										('')
-										:
-										('Récurrence: ' . $data['recurrence'] . ' jusqu\'au ' . $data['fin_recurence_day'].'/'.$data['fin_recurence_month'].'/'.$data['fin_recurence_year'] )
-									).'<br />'*/
+									<legend>Horaires</legend>'
 					;
 					$sql = 
 						'SELECT
@@ -287,7 +261,7 @@
 						WHERE manif.ID = ' . $_GET['eventID']
 					;
 					$req = mysql_query($sql);
-					//echo $sql;
+
 					if(!$req)
 					{
 						echo
@@ -386,70 +360,6 @@
 											'</select>'
 					;
 
-
-
-
-					/*echo
-											'<label for="manifHourStartSelection"> De: </label>'.
-											'<select name="manifHourStartSelection" id="manifHourStartSelection">'
-					;
-
-					for($i=1; $i<=23; $i++)
-					{
-						echo
-												'<option value="'.$i.'"'. (($i==8)? ' selected' : '') .'>' . $i . '</option>'
-						;
-					}
-
-					echo
-											'</select>'
-					;
-					echo
-											'<label for="manifMinutStartSelection">h </label>'.
-											'<select name="manifMinutStartSelection" id="manifMinutStartSelection">'
-					;
-
-					for($i=0; $i<60; $i+=15)
-					{
-						echo
-												'<option value="'.$i.'">' . $i . '</option>'
-						;
-					}
-
-					echo
-											'</select>'
-					;*/
-					/*echo
-											'<label for="manifHourEndSelection"> à </label>'.
-											'<select name="manifHourEndSelection" id="manifHourEndSelection">'
-					;
-
-					for($i=1; $i<=23; $i++)
-					{
-						echo
-												'<option value="'.$i.'"'. (($i==8)? ' selected' : '') .'>' . $i . '</option>'
-						;
-					}
-
-					echo
-											'</select>'
-					;
-					echo
-											'<label for="manifMinutEndSelection">h </label>'.
-											'<select name="manifMinutEndSelection" id="manifMinutEndSelection">'
-					;
-
-					for($i=0; $i<60; $i+=15)
-					{
-						echo
-												'<option value="'.$i.'">' . $i . '</option>'
-						;
-					}
-
-					echo
-											'</select>'
-					;*/
-
 					echo
 											'<label for="manifTimeStartSelection"> De: </label>'.
 											'<select name="manifTimeStartSelection" id="manifTimeStartSelection">'
@@ -538,68 +448,6 @@
 												'<label for="lieuSelection"> Dans le lieu: </label>'.
 												'<input id="inputLieuSelection" onchange="getLieuValue();" list="lieuSelection" />'
 						;
-
-						/*echo
-												'<label for="reservHourStartSelection"> De: </label>'.
-												'<select name="reservHourStartSelection" id="reservHourStartSelection">'
-						;
-
-						for($i=1; $i<=23; $i++)
-						{
-							echo
-													'<option value="'.$i.'"'. (($i==8)? ' selected' : '') .'>' . $i . '</option>'
-							;
-						}
-
-						echo
-												'</select>'
-						;
-						echo
-												'<label for="reservMinutStartSelection">h </label>'.
-												'<select name="reservMinutStartSelection" id="reservMinutStartSelection">'
-						;
-
-						for($i=0; $i<60; $i+=15)
-						{
-							echo
-													'<option value="'.$i.'">' . $i . '</option>'
-							;
-						}
-
-						echo
-												'</select>'
-						;
-
-						echo
-												'<label for="reservHourEndSelection"> à </label>'.
-												'<select name="reservHourEndSelection" id="reservHourEndSelection">'
-						;
-
-						for($i=1; $i<=23; $i++)
-						{
-							echo
-													'<option value="'.$i.'"'. (($i==8)? ' selected' : '') .'>' . $i . '</option>'
-							;
-						}
-
-						echo
-												'</select>'
-						;
-						echo
-												'<label for="reservMinutEndSelection">h </label>'.
-												'<select name="reservMinutEndSelection" id="reservMinutEndSelection">'
-						;
-
-						for($i=0; $i<60; $i+=15)
-						{
-							echo
-													'<option value="'.$i.'">' . $i . '</option>'
-							;
-						}
-
-						echo
-												'</select>'
-						;*/
 
 						echo
 												'<label for="reservTimeStartSelection"> De: </label>'.
