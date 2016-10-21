@@ -1,4 +1,20 @@
 <?php
+	$allHeaders = getallheaders();
+	if(!array_key_exists("AuthUser", $allHeaders))
+	{
+		echo
+			'<div class="middleParts">
+				<div class="middlePart">
+					<fieldset class="middlePart middleErrorMessage">
+						<legend>Authentification Error</legend>'.
+						'Access Forbidden'
+					.'</fieldset>
+				</div>
+			</div>'
+		;
+	}
+	else
+	{
 	$defaultDate = null;
 	$defaultDate = getdate();
 	if(empty($_GET['date']) || !is_numeric($_GET['date']) || $_GET['date']<=19700000 || $_GET['date']>=20360000)
@@ -118,19 +134,9 @@
 						<legend>Reponsable</legend>'
 		;
 
-
-
-		$allHeaders = getallheaders();
-		if(array_key_exists("AuthUser", $allHeaders))
-		{
-			echo			'<label for="intituleEntry">Email: </label>'.
-						'<input id="responsaBlesSelection" type="text" name="email" value="'.$allHeaders[AuthUser].'" disabled /><br />'
-			;
-		}
-		else
-		{
-			echo("Inconnue");
-		}
+		echo			'<label for="intituleEntry">Email: </label>'.
+					'<input id="responsaBlesSelection" type="text" name="email" value="'.$allHeaders[AuthUser].'" disabled /><br />'
+		;
 
 		/*$sql ='SELECT * FROM responsable ORDER BY nom';
 
@@ -466,5 +472,6 @@
 		echo
 			'</div>'
 		;
+	}
 	}
 ?>

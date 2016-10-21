@@ -157,8 +157,8 @@
 							evenement
 						FROM manifestation
 						INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
-				INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_id = tm.id
-				INNER JOIN status_manifestation AS stat ON manifestation.status_manifestation_id = stat.id
+						INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_id = tm.id
+						INNER JOIN status_manifestation AS stat ON manifestation.status_manifestation_id = stat.id
 						WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . '312359  AND fin_manif >= ' . $curdate['year'] . sprintf("%02d", $curdate['mon']) . '000000)';
 				else
 					$sql =
@@ -170,8 +170,8 @@
 							evenement
 						FROM manifestation
 						INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
-				INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_id = tm.id
-				INNER JOIN status_manifestation AS stat ON manifestation.status_manifestation_id = stat.id
+						INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_id = tm.id
+						INNER JOIN status_manifestation AS stat ON manifestation.status_manifestation_id = stat.id
 						WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . sprintf("%02d", $curdate['mday']) . '2359  AND fin_manif >= ' . $endYear . sprintf("%02d", $endMonth) . sprintf("%02d", $endDay) . '0000)';
 				//echo($sql);
 				$req = mysql_query($sql);

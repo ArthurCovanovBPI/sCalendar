@@ -14,9 +14,9 @@
 		{
 			$errorText.=('&#x26a0 Wrong status: ' . $_POST['status']. ' &#x26a0<br />');
 		}
-		if(!isset($_POST['responsable']) || !is_numeric($_POST['responsable']))
+		if(!isset($_POST['responsable']))
 		{
-			$errorText.=('&#x26a0 Wrong responsable: ' . $_POST['responsable']. ' &#x26a0<br />');
+			$errorText.=('&#x26a0 Missing responsable. &#x26a0<br />');
 		}
 		if(!isset($_POST['description']))
 		{
@@ -90,7 +90,7 @@
 					SET
 						status_manifestation_ID = ' . $_POST['status'] . ',
 						type_manifestation_ID = ' . $_POST['type'] . ',
-						responsable_ID = ' . $_POST['responsable'] . ',
+						responsable_ID = "' . $_POST['responsable'] . '",
 						intitule = "' . $intitule . '"
 					WHERE ID = ' . $_POST['mID']
 			;
@@ -191,20 +191,19 @@
 				$numConflits=0;
 				foreach($reservs as $reserv)
 				{
-					$sql =	'SELECT m.ID, intitule, nom, lieu, debut_reservation, fin_reservation
-							FROM reservation
-							INNER JOIN lieu AS l ON l.ID = reservation.lieu_ID
-							INNER JOIN datesManif AS dm ON dm.ID = reservation.dates_manifestation_ID
-							INNER JOIN manifestation AS m ON m.ID = dm.manifestation_ID
-							INNER JOIN responsable AS r ON r.ID = m.responsable_ID
-							WHERE m.ID != ' . $mID . ' AND l.ID = ' . $lieuID . ' AND
-							(
-								(debut_reservation < ' . $reserv.$reservStart . ' AND fin_reservation > ' . $reserv.$reservStart . ')
-								OR
-								(debut_reservation < ' . $reserv.$reservEnd . ' AND fin_reservation > ' . $reserv.$reservEnd . ')
-								OR
-								(debut_reservation >= ' . $reserv.$reservStart . ' AND fin_reservation <= ' . $reserv.$reservEnd . ')
-							)'
+					$sql =	'SELECT m.ID, intitule, m.responsable_ID, lieu, debut_reservation, fin_reservation
+						FROM reservation
+						INNER JOIN lieu AS l ON l.ID = reservation.lieu_ID
+						INNER JOIN datesManif AS dm ON dm.ID = reservation.dates_manifestation_ID
+						INNER JOIN manifestation AS m ON m.ID = dm.manifestation_ID
+						WHERE m.ID != ' . $mID . ' AND l.ID = ' . $lieuID . ' AND
+						(
+							(debut_reservation < ' . $reserv.$reservStart . ' AND fin_reservation > ' . $reserv.$reservStart . ')
+							OR
+							(debut_reservation < ' . $reserv.$reservEnd . ' AND fin_reservation > ' . $reserv.$reservEnd . ')
+							OR
+							(debut_reservation >= ' . $reserv.$reservStart . ' AND fin_reservation <= ' . $reserv.$reservEnd . ')
+						)'
 					;
 					$req = mysql_query($sql);
 					if(!$req)
@@ -220,7 +219,7 @@
 						header('HTTP/1.1 500 Internal Server Error');
 						while($reserv = mysql_fetch_assoc($req))
 						{
-							print('L\'évènement ' . $reserv[intitule]. ' organisé par ' . $reserv[nom] . ', a déjà réservé le lieu ' . $reserv[lieu] . ', le ' . substr($reserv['debut_reservation'], 6, 2).'/'.substr($reserv['debut_reservation'], 4, 2).'/'.substr($reserv['debut_reservation'], 0, 4) . ' entre ' . substr($reserv['debut_reservation'], 8, 2) . 'h' . substr($reserv['debut_reservation'], -2) . ' et ' . substr($reserv['fin_reservation'], 8, 2) . 'h' . substr($reserv['fin_reservation'], -2) . '<br />');
+							print('L\'évènement ' . $reserv[intitule]. ' organisé par ' . $reserv[responsable_ID] . ', a déjà réservé le lieu ' . $reserv[lieu] . ', le ' . substr($reserv['debut_reservation'], 6, 2).'/'.substr($reserv['debut_reservation'], 4, 2).'/'.substr($reserv['debut_reservation'], 0, 4) . ' entre ' . substr($reserv['debut_reservation'], 8, 2) . 'h' . substr($reserv['debut_reservation'], -2) . ' et ' . substr($reserv['fin_reservation'], 8, 2) . 'h' . substr($reserv['fin_reservation'], -2) . '<br />');
 						}
 					}
 				}

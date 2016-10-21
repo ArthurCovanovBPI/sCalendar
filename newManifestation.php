@@ -12,9 +12,9 @@
 	{
 		$errorText.=('&#x26a0 Wrong status: ' . $_POST['status']. ' &#x26a0<br />');
 	}
-	if(!isset($_POST['responsable']) || !is_numeric($_POST['responsable']))
+	if(!isset($_POST['responsable']))
 	{
-		$errorText.=('&#x26a0 Wrong responsable: ' . $_POST['responsable']. ' &#x26a0<br />');
+		$errorText.=('&#x26a0 Missing responsable. &#x26a0<br />');
 	}
 	if(!isset($_POST['description']))
 	{
@@ -87,25 +87,25 @@
 		$observations = str_replace('\\', '\\\\', (str_replace('"', '""', $_POST['observations'])));
 		$description = str_replace('\\', '\\\\', (str_replace('"', '""', $_POST['description'])));
 		$sql =	'INSERT INTO manifestation
-				(
-					status_manifestation_ID,
-					type_manifestation_ID,
-					recurrence_manifestation_ID,
-					intitule,
-					responsable_ID,
-					observations,
-					evenement
-				)
-				VALUES
-				(
-					' . $_POST['status'] . ',
-					' . $_POST['type'] . ',
-					1,
-					"' . $intitule . '",
-					' . $_POST['responsable'] . ',
-					' . (($observations!="")? ('"'.$observations.'"') : 'NULL') . ',
-					' . (($description!="")? ('"'.$description.'"') : 'NULL') . '
-				);'
+			(
+				status_manifestation_ID,
+				type_manifestation_ID,
+				recurrence_manifestation_ID,
+				intitule,
+				responsable_ID,
+				observations,
+				evenement
+			)
+			VALUES
+			(
+				' . $_POST['status'] . ',
+				' . $_POST['type'] . ',
+				1,
+				"' . $intitule . '",
+				"' . $_POST['responsable'] . '",
+				' . (($observations!="")? ('"'.$observations.'"') : 'NULL') . ',
+				' . (($description!="")? ('"'.$description.'"') : 'NULL') . '
+			);'
 		;
 		$req = mysql_query($sql);
 		if(!$req)
@@ -177,20 +177,19 @@
 			$numConflits=0;
 			foreach($reservs as $reserv)
 			{
-				$sql =	'SELECT m.ID, intitule, nom, lieu, debut_reservation, fin_reservation
-						FROM reservation
-						INNER JOIN lieu AS l ON l.ID = reservation.lieu_ID
-						INNER JOIN datesManif AS dm ON dm.ID = reservation.dates_manifestation_ID
-						INNER JOIN manifestation AS m ON m.ID = dm.manifestation_ID
-						INNER JOIN responsable AS r ON r.ID = m.responsable_ID
-						WHERE l.ID = ' . $lieuID . ' AND
-						(
-							(debut_reservation < ' . $reserv.$reservStart . ' AND fin_reservation > ' . $reserv.$reservStart . ')
-							OR
-							(debut_reservation < ' . $reserv.$reservEnd . ' AND fin_reservation > ' . $reserv.$reservEnd . ')
-							OR
-							(debut_reservation >= ' . $reserv.$reservStart . ' AND fin_reservation <= ' . $reserv.$reservEnd . ')
-						)'
+				$sql =	'SELECT m.ID, intitule, m.responsable_ID, lieu, debut_reservation, fin_reservation
+					FROM reservation
+					INNER JOIN lieu AS l ON l.ID = reservation.lieu_ID
+					INNER JOIN datesManif AS dm ON dm.ID = reservation.dates_manifestation_ID
+					INNER JOIN manifestation AS m ON m.ID = dm.manifestation_ID
+					WHERE l.ID = ' . $lieuID . ' AND
+					(
+						(debut_reservation < ' . $reserv.$reservStart . ' AND fin_reservation > ' . $reserv.$reservStart . ')
+						OR
+						(debut_reservation < ' . $reserv.$reservEnd . ' AND fin_reservation > ' . $reserv.$reservEnd . ')
+						OR
+						(debut_reservation >= ' . $reserv.$reservStart . ' AND fin_reservation <= ' . $reserv.$reservEnd . ')
+					)'
 				;
 				$req = mysql_query($sql);
 				if(!$req)
@@ -206,7 +205,7 @@
 					header('HTTP/1.1 500 Internal Server Error');
 					while($reserv = mysql_fetch_assoc($req))
 					{
-						print('L\'évènement ' . $reserv[intitule]. ' organisé par ' . $reserv[nom] . ', a déjà réservé le lieu ' . $reserv[lieu] . ', le ' . substr($reserv['debut_reservation'], 6, 2).'/'.substr($reserv['debut_reservation'], 4, 2).'/'.substr($reserv['debut_reservation'], 0, 4) . ' entre ' . substr($reserv['debut_reservation'], 8, 2) . 'h' . substr($reserv['debut_reservation'], -2) . ' et ' . substr($reserv['fin_reservation'], 8, 2) . 'h' . substr($reserv['fin_reservation'], -2) . '<br />');
+						print('L\'évènement ' . $reserv[intitule]. ' organisé par ' . $reserv[responsable_ID] . ', a déjà réservé le lieu ' . $reserv[lieu] . ', le ' . substr($reserv['debut_reservation'], 6, 2).'/'.substr($reserv['debut_reservation'], 4, 2).'/'.substr($reserv['debut_reservation'], 0, 4) . ' entre ' . substr($reserv['debut_reservation'], 8, 2) . 'h' . substr($reserv['debut_reservation'], -2) . ' et ' . substr($reserv['fin_reservation'], 8, 2) . 'h' . substr($reserv['fin_reservation'], -2) . '<br />');
 					}
 				}
 			}
@@ -254,17 +253,17 @@
 			foreach($reservs as $reserv)
 			{
 				$sql =	'INSERT INTO datesManif
-						(
-							manifestation_ID,
-							debut_manif,
-							fin_manif
-						)
-						VALUES
-						(
-							'.$mID.',
-							'.$reserv.$manifStart.',
-							'.$reserv.$manifEnd.'
-						)'
+					(
+						manifestation_ID,
+						debut_manif,
+						fin_manif
+					)
+					VALUES
+					(
+						'.$mID.',
+						'.$reserv.$manifStart.',
+						'.$reserv.$manifEnd.'
+					)'
 				;
 				$req = mysql_query($sql);
 				if(!$req)
@@ -276,19 +275,19 @@
 				else if($lieuID!=-1)
 				{
 					$sql =	'INSERT INTO reservation
-							(
-								lieu_ID,
-								dates_manifestation_ID,
-								debut_reservation,
-								fin_reservation
-							)
-							VALUES
-							(
-								'.$lieuID.',
-								'.mysql_insert_id().',
-								'.$manifDate.$reservStart.',
-								'.$manifDate.$reservEnd.'
-							)'
+						(
+							lieu_ID,
+							dates_manifestation_ID,
+							debut_reservation,
+							fin_reservation
+						)
+						VALUES
+						(
+							'.$lieuID.',
+							'.mysql_insert_id().',
+							'.$manifDate.$reservStart.',
+							'.$manifDate.$reservEnd.'
+						)'
 					;
 					$req = mysql_query($sql);
 					if(!$req)

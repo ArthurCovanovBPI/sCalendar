@@ -108,10 +108,9 @@
 				'SELECT	debut_manif,
 						fin_manif,
 						intitule,
-						respo.nom,
+						manifestation.responsable_ID,
 						manifestation.ID
 				FROM manifestation
-				INNER JOIN responsable AS respo ON manifestation.responsable_id = respo.id
 				INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_id = tm.id
 				INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
 				WHERE (debut_manif <= '. $today['year'] . sprintf("%02d", $today['mon']) . sprintf("%02d", $today['mday']) . '2359  AND fin_manif >= ' . $today['year'] . sprintf("%02d", $today['mon']) . sprintf("%02d", $today['mday']) . '0000)';

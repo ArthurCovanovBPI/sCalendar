@@ -117,7 +117,7 @@ CREATE TABLE datesManif
 	FOREIGN KEY (manifestation_ID) REFERENCES manifestation(ID)
 );
 
-CREATE TABLE reservation/*_tst*/
+CREATE TABLE reservation_2
 (
 	ID BIGINT NOT NULL AUTO_INCREMENT,
 	lieu_ID BIGINT NOT NULL,

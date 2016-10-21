@@ -89,18 +89,6 @@ function deleteManif(manifID)
 	}
 }
 
-function getResponsableValue()
-{
-	for (var i=0; i<document.getElementById("responsablesSelection").options.length; i++)
-	{ 
-		if (document.getElementById("responsablesSelection").options[i].value == document.getElementById("inputResponsablesSelection").value)
-		{
-			return document.getElementById("responsablesSelection").options[i].getAttribute("data-value");
-		}
-	}
-	return null;
-}
-
 function getLieuValue()
 {
 	for (var i=0; i<document.getElementById("lieuSelection").options.length; i++)
@@ -115,12 +103,11 @@ function getLieuValue()
 
 function addManif()
 {
-	alert("LOCKED");
 	document.getElementById("manifEditMessg").innerHTML = "";
-	var respoID=getResponsableValue();
-	if(respoID==null)
+	var respo=document.getElementById("responsaBlesSelection").value;
+	if(respo==null)
 	{
-		document.getElementById("manifEditMessg").innerHTML = "Veuillez choisir un reponsable dans la liste.";
+		document.getElementById("manifEditMessg").innerHTML = "Reponsable Manquant.";
 		document.getElementById("manifEditMessg").style.color = "#FF0000";
 		return;
 	}
@@ -182,7 +169,7 @@ function addManif()
 				intitule:document.getElementById("intituleEntry").value,
 				type:document.getElementById("typeSelection").value,
 				status:document.getElementById("statusSelection").value,
-				responsable: respoID,
+				responsable: respo,
 				description:document.getElementById("descriptionText").value,
 				observations:document.getElementById("observationsText").value,
 
