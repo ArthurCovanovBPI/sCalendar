@@ -270,9 +270,6 @@
 						echo '<a class="headTitle headButton '.(($menu == 'Lieux' || $menu == 'Responsables')? ' toogled' : '') .'" href="/?menu=lieux">Admin</a>';
 					}
 				?>
-				<!--<div class="headTitle headButton <?php if($menu == 'Calendrier' || $menu == 'NewEvenement') echo ' toogled'; ?>" onclick="displayHeadSelection(1);">
-					<p>Calendrier</p>
-				</div>-->
 				<a class="headTitle headButton <?php if($menu == 'Calendrier' || $menu == 'NewEvenement') echo ' toogled'; ?>" href='/'>Calendrier</a>
 				<?php
 					switch($menu)
@@ -318,24 +315,14 @@
 						echo("</a>");
 					}
 				?>
-				<!--<p>Connexion</p>-->
 			</div>
 			<div class="headSelections" <?php if($menu != 'Lieux' && $menu != 'Responsables') echo 'style="display:none;"'; ?>>
-				<!--<a href="?menu=calendrier" <?php if($menu == 'Calendrier') echo ' class="selected"'; ?>>Calendrier</a>-->
-				<!--<a href="?menu=espaces" <?php if($menu == 'Espaces') echo ' class="selected"'; ?>>Espaces</a>-->
-				<!--<a href="?menu=newevenement" <?php if($menu == 'NewEvenement') echo ' class="selected"'; ?>>Nouvel événement</a>-->
-				<!--<a href="?menu=evenements" <?php if($menu == 'Evenements') echo ' class="selected"'; ?>>Événements</a>-->
 				<a href="?menu=lieux" <?php if($menu == 'Lieux') echo ' class="selected"'; ?>>Lieux</a>
 				<a href="?menu=responsables" <?php if($menu == 'Responsables') echo ' class="selected"'; ?>>Utilisateurs</a>
 			</div>
 			<div class="headSelections" <?php if($menu != 'Calendrier' && $menu != 'NewEvenement') echo 'style="display:none;"'; ?>>
 				<?php
 					echo('<div class="headSelection">');
-					/*echo
-						'<a href="?menu=calendrier&timeAdvance=day"  class="radio'.(($timeAdvance == 'day') ? ' selected' : '').'">Jour</a>
-						<a href="?menu=calendrier&timeAdvance=month" class="radio'.(($timeAdvance == 'month') ? ' selected' : '').'">Mois</a>
-						<a href="?menu=calendrier&timeAdvance=year" class="radio'.(($timeAdvance == 'year') ? ' selected' : '').'">Année</a>'
-					;*/
 					echo("<input type=\"hidden\" name=\"timeStamp\" value=\"" . $today[0] . "\">");
 					echo('<form name="calForm" method="get">');
 					echo("<input onChange=\"this.form.submit();\" id=\"dayRadioButton\" type=\"radio\" name=\"timeAdvance\" value=\"day\"" . (($timeAdvance == "day") ? "checked" : "") . " />
@@ -387,10 +374,14 @@
 							'</form>
 						</div>'
 					;
-					if($menu == 'NewEvenement')
-						echo '<a href="?menu=newevenement&date='.date("Ymd",$today[0]).'" class="selected">Nouvel événement</a>';
-					else
-						echo '<a href="?menu=newevenement&date='.date("Ymd",$today[0]).'">Nouvel événement</a>';
+					$allHeaders = getallheaders();
+					if(array_key_exists("AuthUser", $allHeaders))
+					{
+						if($menu == 'NewEvenement')
+							echo '<a href="?menu=newevenement&date='.date("Ymd",$today[0]).'" class="selected">Nouvel événement</a>';
+						else
+							echo '<a href="?menu=newevenement&date='.date("Ymd",$today[0]).'">Nouvel événement</a>';
+					}
 				?>
 			</div>
 			<div class="headSelections" <?php if($menu != 'Espaces' && $menu != 'Evenement') echo 'style="display:none;"'; ?>>
@@ -513,12 +504,6 @@
 		<div class="pageFoot">
 			<div class="footParts">
 				£
-				<!--<a class="footPart" class="footOption" id="facebookOption" href="https://fr-fr.facebook.com/bpi.pompidou"></a>
-				<a class="footPart" class="footOption" id="twitterOption" href="https://twitter.com/bpi_pompidou"></a>-->
-				<!--<a class="footPart" class="footOption" id="googlePlusOption" href=""></footPart>-->
-				<!--<footPart class="footOption">
-					<p>Opt3</p>
-				</footPart>-->
 			</div>
 		</div>
 	</body>

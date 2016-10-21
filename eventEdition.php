@@ -587,9 +587,6 @@
 						'</div>'
 					;
 
-
-
-
 					echo
 						'<div class="middleParts">'
 					;
