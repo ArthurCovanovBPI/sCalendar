@@ -35,22 +35,7 @@
 		{
 			mysql_select_db($dbname, $conn);
 			mysql_query('SET character_set_results = "UTF8", character_set_client = "UTF8", character_set_connection = "UTF8", character_set_database = "UTF8", character_set_server = "UTF8"');
-			echo
-				'<div class="middleParts">
-					<div class="middlePart" style="text-align: right;">
-						<fieldset>
-							<legend>Commandes</legend>
-							<table style="width: 100%; border: none; background-color: inherit; border-collapse: collapse;">
-								<tr style="border: none; background-color: inherit;">
-									<td style="width: 100%; border: none; background-color: inherit;"><span id="manifEditMessg" style="width: 100%; text-align: left; display: inline-block;"></span></td>
-									<td style="border: none; background-color: inherit;""><button id="savebutton" type="button" style="margin-left: 2px; margin-right: 2px;" onclick="updateManif(' . $_GET['eventID'] . ')">Enregistrer</button></td>
-									<td style="border: none; background-color: inherit;""><button id="resetbutton" class="danger" style="white-space: nowrap;" type="button" onclick="deleteManif(' . $_GET['eventID'] . ')">&#x26a0 Supprimer la manifestation &#x26A0</button></td>
-								</tr>
-							</table>
-						</fieldset>
-					</div>
-				</div>'
-			;
+
 			$sql =
 				'SELECT
 					intitule,
@@ -103,6 +88,22 @@
 				}
 				else
 				{
+					echo
+						'<div class="middleParts">
+							<div class="middlePart" style="text-align: right;">
+								<fieldset>
+									<legend>Commandes</legend>
+									<table style="width: 100%; border: none; background-color: inherit; border-collapse: collapse;">
+										<tr style="border: none; background-color: inherit;">
+											<td style="width: 100%; border: none; background-color: inherit;"><span id="manifEditMessg" style="width: 100%; text-align: left; display: inline-block;"></span></td>
+											<td style="border: none; background-color: inherit;""><button id="savebutton" type="button" style="margin-left: 2px; margin-right: 2px;" onclick="updateManif(' . $_GET['eventID'] . ')">Enregistrer</button></td>
+											<td style="border: none; background-color: inherit;""><button id="resetbutton" class="danger" style="white-space: nowrap;" type="button" onclick="deleteManif(' . $_GET['eventID'] . ')">&#x26a0 Supprimer la manifestation &#x26A0</button></td>
+										</tr>
+									</table>
+								</fieldset>
+							</div>
+						</div>'
+					;
 					$intitule = str_replace('"', '&#34', $data['intitule']);
 					echo
 						'<div class="middleParts">
