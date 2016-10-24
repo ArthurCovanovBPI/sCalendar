@@ -1,7 +1,6 @@
 <?php
 	if(array_key_exists("AuthUser", $allHeaders) && isset($_GET['eventID']) && is_numeric($_GET['eventID']))
 	{
-		echo"aa";
 		$servername = "127.0.0.1";
 		$username = "root";
 		$password = "password";
