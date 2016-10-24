@@ -77,7 +77,7 @@
 	<?php
 		$sql =	'SELECT
 					ID,
-					nom
+					email
 				FROM responsable
 				ORDER BY nom
 				LIMIT ' . $resultPerPages .
@@ -98,8 +98,8 @@
 			{
 				echo '<tr>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.$data['ID'].'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right; width: 100%;">'.$data['nom'].'</td>';
-					echo '<td onclick="deleteRespo(\'' . $data['ID'] . '\', \'' . $data['nom'] . '\', \'' . $page . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">×</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right; width: 100%;">'.$data['email'].'</td>';
+					echo '<td onclick="deleteRespo(\'' . $data['ID'] . '\', \'' . $data['email'] . '\', \'' . $page . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">×</td>';
 				echo '</tr>';
 			}
 			echo '<tr>';

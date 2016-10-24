@@ -1,9 +1,6 @@
-/*mysql -uroot -ppassword*/
-/*USE bpi_calendar;*/
 DROP TABLE IF EXISTS reservation;
 DROP TABLE IF EXISTS datesManif;
 DROP TABLE IF EXISTS manifestation;
-/*DROP TABLE IF EXISTS reservation;*/
 DROP TABLE IF EXISTS lieu;
 DROP TABLE IF EXISTS espace;
 DROP TABLE IF EXISTS responsable;
@@ -35,7 +32,7 @@ CREATE TABLE recurrence_manifestation
 CREATE TABLE responsable
 (
 	ID BIGINT NOT NULL AUTO_INCREMENT,
-	nom VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL,
 	rightsFlags TINYINT NOT NULL DEFAULT 0,
 	PRIMARY KEY (ID, nom)
 );
@@ -54,38 +51,6 @@ CREATE TABLE lieu
 	espace_ID BIGINT NOT NULL,
 	PRIMARY KEY (ID),
 	FOREIGN KEY (espace_ID) REFERENCES espace(ID)
-);
-
-/*CREATE TABLE reservation
-(
-	ID BIGINT NOT NULL AUTO_INCREMENT,
-	lieu_ID BIGINT NOT NULL,
-	debut_reservation_year INT NOT NULL, debut_reservation_month TINYINT NOT NULL, debut_reservation_day TINYINT NOT NULL, debut_reservation_hour TINYINT NOT NULL, debut_reservation_minute TINYINT NOT NULL,
-	fin_reservation_year INT NOT NULL, fin_reservation_month TINYINT NOT NULL, fin_reservation_day TINYINT NOT NULL, fin_reservation_hour TINYINT NOT NULL, fin_reservation_minute TINYINT NOT NULL,
-	PRIMARY KEY (ID),
-	FOREIGN KEY (lieu_ID) REFERENCES lieu(ID)
-);*/
-
-CREATE TABLE manifestation_save
-(
-	ID BIGINT NOT NULL AUTO_INCREMENT,/*
-	debut_manif_year INT NOT NULL, debut_manif_month TINYINT NOT NULL, debut_manif_day TINYINT NOT NULL, debut_manif_hour TINYINT NOT NULL, debut_manif_minute TINYINT NOT NULL,
-	fin_manif_year INT NOT NULL, fin_manif_month TINYINT NOT NULL, fin_manif_day TINYINT NOT NULL, fin_manif_hour TINYINT NOT NULL, fin_manif_minute TINYINT NOT NULL,*/
-	recurrence_manifestation_ID TINYINT NOT NULL,
-	fin_recurence_year INT NOT NULL DEFAULT -1, fin_recurence_month TINYINT NOT NULL DEFAULT -1, fin_recurence_day TINYINT NOT NULL DEFAULT -1,
-	status_manifestation_ID TINYINT NOT NULL,
-	type_manifestation_ID TINYINT NOT NULL,
-	intitule VARCHAR(255) NOT NULL,
-	responsable_ID BIGINT NOT NULL,/*
-	reservation_ID BIGINT,*/
-	observations TEXT,
-	evenement TEXT,
-	PRIMARY KEY (ID),
-	FOREIGN KEY (status_manifestation_ID) REFERENCES status_manifestation(ID),
-	FOREIGN KEY (type_manifestation_ID) REFERENCES type_manifestation(ID),
-	FOREIGN KEY (recurrence_manifestation_ID) REFERENCES recurrence_manifestation(ID),
-	FOREIGN KEY (responsable_ID) REFERENCES responsable(ID)/*,
-	FOREIGN KEY (reservation_ID) REFERENCES reservation(ID)*/
 );
 
 CREATE TABLE manifestation
@@ -108,16 +73,14 @@ CREATE TABLE manifestation
 CREATE TABLE datesManif
 (
 	ID BIGINT NOT NULL AUTO_INCREMENT,
-	manifestation_ID BIGINT NOT NULL,/*
-	debut_manif_year INT NOT NULL, debut_manif_month TINYINT NOT NULL, debut_manif_day TINYINT NOT NULL, debut_manif_hour TINYINT NOT NULL, debut_manif_minute TINYINT NOT NULL,
-	fin_manif_year INT NOT NULL, fin_manif_month TINYINT NOT NULL, fin_manif_day TINYINT NOT NULL, fin_manif_hour TINYINT NOT NULL, fin_manif_minute TINYINT NOT NULL,*/
+	manifestation_ID BIGINT NOT NULL,
 	debut_manif BIGINT NOT NULL,
 	fin_manif BIGINT NOT NULL,
 	PRIMARY KEY (ID),
 	FOREIGN KEY (manifestation_ID) REFERENCES manifestation(ID)
 );
 
-CREATE TABLE reservation_2
+CREATE TABLE reservation
 (
 	ID BIGINT NOT NULL AUTO_INCREMENT,
 	lieu_ID BIGINT NOT NULL,
