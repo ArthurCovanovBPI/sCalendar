@@ -398,10 +398,7 @@
 						break;
 						case 'Evenement':
 							echo('<a href="?menu=evenement&eventID='.$_GET[eventID].'"'.(($section == 'Details')? ' class="selected"' : '').'>Détails</a>');
-							if(array_key_exists("AuthUser", $allHeaders))
-							{
-								echo('<a href="?menu=evenement&section=edition&eventID='.$_GET[eventID].'"'.(($section == 'Edition')? ' class="selected"' : '').'>Édition</a>');
-							}
+							include('evenementButton.php');
 						break;
 					}
 				?>
