@@ -108,8 +108,9 @@
 				echo '<td colspan=3 style="padding-left: 2px; padding-right: 2px; border: 1px solid #A0A0A0; white-space: nowrap; text-align: center;">Ajouter un Responsable:</td>';
 			echo '</tr>';
 			echo '<tr>';
-				echo '<td colspan=2 style="white-space: nowrap; text-align: center;"><input id="inputRespo" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
-				echo '<td onclick="addRespo(\'inputRespo\', \'' . $resultPerPages . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">+</td>';
+				echo '<td colspan=2 style="white-space: nowrap; text-align: center;"><input id="inputRespoMail" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoName" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
+				echo '<td onclick="addRespo(\'inputRespoMail\', \'' . $resultPerPages . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">+</td>';
 			echo '</tr>';
 			echo '</table>';
 		}
