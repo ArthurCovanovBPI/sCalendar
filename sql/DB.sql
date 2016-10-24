@@ -43,7 +43,7 @@ CREATE TABLE responsable
 	contributeur_manif_interne BOOLEAN NOT NULL DEFAULT false,
 	contributeur_manif_admin BOOLEAN NOT NULL DEFAULT false,
 	contributeur_manif_rh BOOLEAN NOT NULL DEFAULT false,
-	contributeur_manif_financer BOOLEAN NOT NULL DEFAULT false,
+	contributeur_manif_financier BOOLEAN NOT NULL DEFAULT false,
 	contributeur_manif_calendar BOOLEAN NOT NULL DEFAULT false,
 	PRIMARY KEY (ID, nom)
 );

@@ -100,16 +100,16 @@
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right; width: 100%;">'.$data['email'].'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right;">'.$data['nom'].'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_centre']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_bpi']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_externe']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_atelier']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_publique']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_interne']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_admin']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_rh']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_financier']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_calendar']==true)? 'x' : '').'</td>';
 					echo '<td onclick="deleteRespo(\'' . $data['ID'] . '\', \'' . $data['email'] . '\', \'' . $page . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">×</td>';
 				echo '</tr>';
 			}
@@ -117,7 +117,7 @@
 				echo '<td colspan=15 style="padding-left: 2px; padding-right: 2px; border: 1px solid #A0A0A0; white-space: nowrap; text-align: center;">Ajouter un Responsable:</td>';
 			echo '</tr>';
 			echo '<tr>';
-				echo '<td colspan=13 style="white-space: nowrap; text-align: center;"><input id="inputRespoMail" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
+				echo '<td colspan=2 style="white-space: nowrap; text-align: center;"><input id="inputRespoMail" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoName" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
 				echo '<td onclick="addRespo(\'inputRespoMail\', \'' . $resultPerPages . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">+</td>';
 			echo '</tr>';
