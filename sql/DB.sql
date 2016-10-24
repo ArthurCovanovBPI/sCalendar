@@ -61,7 +61,7 @@ INSERT INTO responsable
 	contributeur_manif_interne,
 	contributeur_manif_admin,
 	contributeur_manif_rh,
-	contributeur_manif_financer,
+	contributeur_manif_financier,
 	contributeur_manif_calendar
 )
 VALUES
@@ -94,7 +94,7 @@ INSERT INTO responsable
 	contributeur_manif_interne,
 	contributeur_manif_admin,
 	contributeur_manif_rh,
-	contributeur_manif_financer,
+	contributeur_manif_financier,
 	contributeur_manif_calendar
 )
 VALUES

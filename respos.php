@@ -99,17 +99,17 @@
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.$data['ID'].'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right; width: 100%;">'.$data['email'].'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right;">'.$data['nom'].'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_centre']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_bpi']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_externe']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_atelier']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_publique']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_interne']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_admin']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_rh']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_financier']==true)? 'x' : '').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_calendar']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_centre']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_bpi']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_externe']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_atelier']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_publique']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_interne']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_admin']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_rh']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_financier']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_calendar']==true)? '✓' : '✕').'</td>';
 					echo '<td onclick="deleteRespo(\'' . $data['ID'] . '\', \'' . $data['email'] . '\', \'' . $page . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">×</td>';
 				echo '</tr>';
 			}
