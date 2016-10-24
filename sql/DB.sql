@@ -33,8 +33,98 @@ CREATE TABLE responsable
 (
 	ID BIGINT NOT NULL AUTO_INCREMENT,
 	email VARCHAR(255) NOT NULL,
-	rightsFlags TINYINT NOT NULL DEFAULT 0,
+	nom VARCHAR(255),
+	admin BOOL NOT NULL DEFAULT false,
+	contributeur_centre BOOL NOT NULL DEFAULT false,
+	contributeur_bpi BOOL NOT NULL DEFAULT false,
+	contributeur_externe BOOLEAN NOT NULL DEFAULT false,
+	contributeur_atelier BOOLEAN NOT NULL DEFAULT false,
+	contributeur_manif_publique BOOLEAN NOT NULL DEFAULT false,
+	contributeur_manif_interne BOOLEAN NOT NULL DEFAULT false,
+	contributeur_manif_admin BOOLEAN NOT NULL DEFAULT false,
+	contributeur_manif_rh BOOLEAN NOT NULL DEFAULT false,
+	contributeur_manif_financer BOOLEAN NOT NULL DEFAULT false,
+	contributeur_manif_calendar BOOLEAN NOT NULL DEFAULT false,
 	PRIMARY KEY (ID, nom)
+);
+
+INSERT INTO responsable
+(
+	email,
+	nom,
+	admin,
+	contributeur_centre,
+	contributeur_bpi,
+	contributeur_externe,
+	contributeur_atelier,
+	contributeur_manif_publique,
+	contributeur_manif_interne,
+	contributeur_manif_admin,
+	contributeur_manif_rh,
+	contributeur_manif_financer,
+	contributeur_manif_calendar
+)
+VALUES
+(
+	'arthur.covanov@bpi.fr',
+	'Arthur Covanov',
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true
+);
+
+INSERT INTO responsable
+(
+	email,
+	nom,
+	admin,
+	contributeur_centre,
+	contributeur_bpi,
+	contributeur_externe,
+	contributeur_atelier,
+	contributeur_manif_publique,
+	contributeur_manif_interne,
+	contributeur_manif_admin,
+	contributeur_manif_rh,
+	contributeur_manif_financer,
+	contributeur_manif_calendar
+)
+VALUES
+(
+	'marc.boilloux@bpi.fr',
+	'Marc Boilloux',
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true
+);
+
+INSERT INTO responsable
+(
+	email,
+	nom,
+	admin
+)
+VALUES
+(
+	'jerôme.bessière@bpi.fr',
+	'Jérôme Bessière	',
+	false
 );
 
 CREATE TABLE espace
