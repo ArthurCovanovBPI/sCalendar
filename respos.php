@@ -92,7 +92,7 @@
 		{
 			echo '<table style="width: 100%; cursor: default; border-collapse: collapse;">';
 			$i = 0;
-			echo '<tr><th>ID</th><th style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th>Nom</th><th title="Admin?">a</th><th>c</th><th>b</th><th>e</th><th>a</th><th>mp</th><th>mi</th><th>ma</th><th>rh</th><th>mf</th><th>mc</th><th>-</th></tr>';
+			echo '<tr><th>ID</th><th style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th>Nom</th><th title="Admin?">a</th><th title="Contributeur centre?">c</th><th title="Contributeur BPI?">b</th><th title="Contributeur espace externe?">e</th><th title="Contributeur atelier?">a</th><th title="Contributeur manifestations publiques?">mp</th><th title="Contributeur manifestations/reunions internes?">mi</th><th title="Contributeur administratif?">ma</th><th title="Contributeur ressources humaines?">rh</th><th title="Contributeur financier?">f</th><th title="Contributeur événements de type calendaire?">ec</th><th>-</th></tr>';
 			while($data = mysql_fetch_assoc($req))
 			{
 				echo '<tr>';
