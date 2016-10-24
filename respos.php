@@ -79,7 +79,7 @@
 					ID,
 					email
 				FROM responsable
-				ORDER BY nom
+				ORDER BY email
 				LIMIT ' . $resultPerPages .
 				' OFFSET ' . (($page-1)*$resultPerPages)
 		;
