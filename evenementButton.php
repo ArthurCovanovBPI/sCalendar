@@ -1,7 +1,7 @@
 <?php
 	if(array_key_exists("AuthUser", $allHeaders) && isset($_GET['eventID']) && is_numeric($_GET['eventID']))
 	{
-
+		echo"aa";
 		$servername = "127.0.0.1";
 		$username = "root";
 		$password = "password";
@@ -15,7 +15,7 @@
 			mysql_query('SET character_set_results = "UTF8", character_set_client = "UTF8", character_set_connection = "UTF8", character_set_database = "UTF8", character_set_server = "UTF8"');
 			$sql =
 				'SELECT
-					responsable_ID,
+					responsable_ID
 				FROM manifestation
 				WHERE manifestation.ID = ' . $_GET['eventID']
 			;
