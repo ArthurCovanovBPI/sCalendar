@@ -76,9 +76,7 @@
 	?>
 	<?php
 		$sql =	'SELECT
-					ID,
-					email,
-					nom
+					*
 				FROM responsable
 				ORDER BY email
 				LIMIT ' . $resultPerPages .
@@ -94,21 +92,32 @@
 		{
 			echo '<table style="width: 100%; cursor: default; border-collapse: collapse;">';
 			$i = 0;
-			echo '<tr><th>ID</th><th style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th>Nom</th><th>-</th></tr>';
+			echo '<tr><th>ID</th><th style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th>Nom</th><th>a</th><th>c</th><th>c</th><th>c</th><th>c</th><th>c</th><th>c</th><th>c</th><th>c</th><th>c</th><th>c</th><th>-</th></tr>';
 			while($data = mysql_fetch_assoc($req))
 			{
 				echo '<tr>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.$data['ID'].'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right; width: 100%;">'.$data['email'].'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right; width: 100%;">'.$data['nom'].'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right;">'.$data['nom'].'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? 'x' : '').'</td>';
 					echo '<td onclick="deleteRespo(\'' . $data['ID'] . '\', \'' . $data['email'] . '\', \'' . $page . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">×</td>';
 				echo '</tr>';
 			}
 			echo '<tr>';
-				echo '<td colspan=4 style="padding-left: 2px; padding-right: 2px; border: 1px solid #A0A0A0; white-space: nowrap; text-align: center;">Ajouter un Responsable:</td>';
+				echo '<td colspan=15 style="padding-left: 2px; padding-right: 2px; border: 1px solid #A0A0A0; white-space: nowrap; text-align: center;">Ajouter un Responsable:</td>';
 			echo '</tr>';
 			echo '<tr>';
-				echo '<td colspan=2 style="white-space: nowrap; text-align: center;"><input id="inputRespoMail" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
+				echo '<td colspan=13 style="white-space: nowrap; text-align: center;"><input id="inputRespoMail" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoName" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
 				echo '<td onclick="addRespo(\'inputRespoMail\', \'' . $resultPerPages . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">+</td>';
 			echo '</tr>';
