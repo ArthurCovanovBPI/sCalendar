@@ -118,7 +118,7 @@
 			echo '<tr>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoMail" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoName" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input id="adminCheck" name="adminCheck" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="adminCheck" name="adminCheck" /></td>';
 				echo '<td onclick="addRespo(\'inputRespoMail\', \'' . $resultPerPages . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">+</td>';
 			echo '</tr>';
 			echo '</table>';
