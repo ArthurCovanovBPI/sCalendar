@@ -38,7 +38,7 @@
 		else
 		{
 			mysql_select_db($dbname, $conn);
-			mysql_query('SET character_set_results = "UTF8", character_set_client = "UTF8", character_set_connection = "UTF8", character_set_database = "UTF8", character_set_server = "UTF8"')
+			mysql_query('SET character_set_results = "UTF8", character_set_client = "UTF8", character_set_connection = "UTF8", character_set_database = "UTF8", character_set_server = "UTF8"');
 
 			$sql ='SELECT * FROM responsable WHERE email = "' . $allHeaders[AuthUser] . '"';
 			$req = mysql_query($sql);
