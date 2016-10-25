@@ -186,7 +186,7 @@
 		<link rel="stylesheet" type="text/css" href="css/table.css" />
 		<link rel="stylesheet" type="text/css" href="css/middle.css" />
 		<link rel="stylesheet" type="text/css" href="css/foot.css" />
-		<link rel="stylesheet" type="text/css" href="css/accessories.css" /><!---->
+		<link rel="stylesheet" type="text/css" href="css/accessories.css" />
 		<style type="text/css" media="screen">
 		</style>
 
@@ -238,6 +238,7 @@
 				break;
 				case 'Responsables':
 					echo('<script src="js/Responsables.js" type="text/javascript"></script>');
+					echo('<link rel="stylesheet" type="text/css" href="css/respos.css" />');
 				break;
 				case 'NewEvenement':
 					echo('<script src="js/Evenements/New.js" type="text/javascript"></script>');
