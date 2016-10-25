@@ -14,6 +14,11 @@ input[type="checkbox"] + label:after
 	height: 15px;
 	border: none;
 	color: #000000;
+	-webkit-box-shadow: none;
+	   -moz-box-shadow: none;
+	     -o-box-shadow: none;
+	        box-shadow: none;
+	filter:progid:DXImageTransform.Microsoft.Shadow(enabled = false);
 	content: '✔';
 }
 
