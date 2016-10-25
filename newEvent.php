@@ -40,7 +40,7 @@
 			mysql_select_db($dbname, $conn);
 			mysql_query('SET character_set_results = "UTF8", character_set_client = "UTF8", character_set_connection = "UTF8", character_set_database = "UTF8", character_set_server = "UTF8"')
 
-			$sql ='SELECT * FROM responsable WHERE email = "' . $allHeaders[AuthUser] . '"'
+			$sql ='SELECT * FROM responsable WHERE email = "' . $allHeaders[AuthUser] . '"';
 			$req = mysql_query($sql);
 			if($req)
 			{
@@ -87,32 +87,32 @@
 				
 					//Manifestation publique	
 					$type = mysql_fetch_assoc($req);
-					if(respo['contributeur_manif_publique']==true)
+					if($respo['contributeur_manif_publique']==true)
 						echo			'<option value="' . $type['ID'] . '">' . $type['type'] . '</option>';
 
 					//Manfestation / réunion interne
 					$type = mysql_fetch_assoc($req);
-					if(respo['contributeur_manif_interne']==true)
+					if($respo['contributeur_manif_interne']==true)
 						echo			'<option value="' . $type['ID'] . '">' . $type['type'] . '</option>';
 
 					//'Administratif (pas d''envoi à la presse)
 					$type = mysql_fetch_assoc($req);
-					if(respo['contributeur_manif_admin']==true)
+					if($respo['contributeur_manif_admin']==true)
 						echo			'<option value="' . $type['ID'] . '">' . $type['type'] . '</option>';
 
 					//RH (pas d''envoi à la presse)
 					$type = mysql_fetch_assoc($req);
-					if(respo['contributeur_manif_rh']==true)
+					if($respo['contributeur_manif_rh']==true)
 						echo			'<option value="' . $type['ID'] . '">' . $type['type'] . '</option>';
 
 					//Financier (pas d''envoi à la presse)
 					$type = mysql_fetch_assoc($req);
-					if(respo['contributeur_manif_financier']==true)
+					if($respo['contributeur_manif_financier']==true)
 						echo			'<option value="' . $type['ID'] . '">' . $type['type'] . '</option>';
 
 					//Évènement de type calendaire (vacances, jours fériés)
 					$type = mysql_fetch_assoc($req);
-					if(respo['contributeur_manif_calendar']==true)
+					if($respo['contributeur_manif_calendar']==true)
 						echo			'<option value="' . $type['ID'] . '">' . $type['type'] . '</option>';
 
 
