@@ -113,7 +113,7 @@
 				echo '</tr>';
 			}
 			echo '<tr>';
-				echo '<td colspan=15 style="padding-left: 2px; padding-right: 2px; border: 1px solid #A0A0A0; white-space: nowrap; text-align: center;">Ajouter un Responsable:</td>';
+				echo '<td colspan=14 style="padding-left: 2px; padding-right: 2px; border: 1px solid #A0A0A0; white-space: nowrap; text-align: center;">Ajouter un Responsable:</td>';
 			echo '</tr>';
 			echo '<tr>';
 				echo '<td colspan=2 style="white-space: nowrap; text-align: center;"><input id="inputRespoMail" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
