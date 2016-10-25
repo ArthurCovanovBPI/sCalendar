@@ -95,7 +95,7 @@
 					if($respo['contributeur_manif_interne']==true)
 						echo			'<option value="' . $type['ID'] . '">' . $type['type'] . '</option>';
 
-					//'Administratif (pas d''envoi à la presse)
+					//Administratif (pas d''envoi à la presse)
 					$type = mysql_fetch_assoc($req);
 					if($respo['contributeur_manif_admin']==true)
 						echo			'<option value="' . $type['ID'] . '">' . $type['type'] . '</option>';
@@ -258,98 +258,114 @@
 
 				echo			'<br />';
 
-				echo
-								'<input onclick="newReservation(this);" type="checkbox" id="reserverLieu" name="reserverLieu" />
-								<label for="reserverLieu">Ajouter une reservation.</label>'
-				;
-				echo
-								'<div id="reservationLieu" style="display: none;">'
-				;
-				$sql ='SELECT * FROM espace';
-
-				$req = mysql_query($sql);
-				if(!$req)
-				{
-					echo 'No espace found :' . (mysql_errno($conn) . ' : ' . mysql_error($conn));
-				}
-				else
+				if($respo[contributeur_centre]==true || $respo[contributeur_bpi]==true || $respo[contributeur_externe]==true || $respo[contributeur_atelier]==true)
 				{
 					echo
-									'<label for="espaceSelection"> Dans l\'espace: </label>'.
-									'<select onchange="updateLieux()" name="espaceSelection" id="espaceSelection">'
+									'<input onclick="newReservation(this);" type="checkbox" id="reserverLieu" name="reserverLieu" />
+									<label for="reserverLieu">Ajouter une reservation.</label>'
 					;
+					echo
+									'<div id="reservationLieu" style="display: none;">'
+					;
+					$sql ='SELECT * FROM espace';
 
-					while($espace = mysql_fetch_assoc($req))
+					$req = mysql_query($sql);
+					if(!$req)
+					{
+						echo 'No espace found :' . (mysql_errno($conn) . ' : ' . mysql_error($conn));
+					}
+					else
 					{
 						echo
-										'<option value="'.$espace['ID'].'">' . $espace['espace'] . '</option>'
+										'<label for="espaceSelection"> Dans l\'espace: </label>'.
+										'<select onchange="updateLieux()" name="espaceSelection" id="espaceSelection">'
 						;
-					}
 
-					echo
-									'</select>'
-					;
+						//Espaces Centre	
+						$type = mysql_fetch_assoc($req);
+						if($respo['contributeur_centre']==true)
+							echo			'<option value="'.$espace['ID'].'">' . $espace['espace'] . '</option>';
+
+						//Espaces BPI
+						$type = mysql_fetch_assoc($req);
+						if($respo['contributeur_bpi']==true)
+							echo			'<option value="'.$espace['ID'].'">' . $espace['espace'] . '</option>';
+
+						//Hors les murs
+						$type = mysql_fetch_assoc($req);
+						if($respo['contributeur_externe']==true)
+							echo			'<option value="'.$espace['ID'].'">' . $espace['espace'] . '</option>';
+
+						//Atelier
+						$type = mysql_fetch_assoc($req);
+						if($respo['contributeur_atelier']==true)
+							echo			'<option value="'.$espace['ID'].'">' . $espace['espace'] . '</option>';
+
+						echo
+										'</select>'
+						;
 
 
-					echo
-									'<datalist id="lieuSelection">'
-					;
-					echo 			'<span id="lieuxSpan">';
-					$eID=1;
-					include('lieuDataList.php');
-					echo 			'</span>';
-					echo
-									'</datalist>'.
-									'<label for="lieuSelection"> Dans le lieu: </label>'.
-									'<input id="inputLieuSelection" onchange="getLieuValue();" list="lieuSelection" />'
-					;
+						echo
+										'<datalist id="lieuSelection">'
+						;
+						echo 			'<span id="lieuxSpan">';
+						$eID=1;
+						include('lieuDataList.php');
+						echo 			'</span>';
+						echo
+										'</datalist>'.
+										'<label for="lieuSelection"> Dans le lieu: </label>'.
+										'<input id="inputLieuSelection" onchange="getLieuValue();" list="lieuSelection" />'
+						;
 
-					echo
-									'<label for="reservTimeStartSelection"> De: </label>'.
-									'<select name="reservTimeStartSelection" id="reservTimeStartSelection">'
-					;
+						echo
+										'<label for="reservTimeStartSelection"> De: </label>'.
+										'<select name="reservTimeStartSelection" id="reservTimeStartSelection">'
+						;
 
-					for($h=0; $h<=23; $h++)
-					{
-						for($m=0; $m<60; $m+=30)
+						for($h=0; $h<=23; $h++)
 						{
-							echo
-										'<option value="'.sprintf('%02d%02d', $h, $m).'"'. (($h==8&&$m==0)? ' selected' : '') .'>' . sprintf('%2d', $h) . 'h' . sprintf('%02d', $m) . '</option>'
-							;
+							for($m=0; $m<60; $m+=30)
+							{
+								echo
+											'<option value="'.sprintf('%02d%02d', $h, $m).'"'. (($h==8&&$m==0)? ' selected' : '') .'>' . sprintf('%2d', $h) . 'h' . sprintf('%02d', $m) . '</option>'
+								;
+							}
 						}
-					}
 
-					echo
-									'</select>'
-					;
+						echo
+										'</select>'
+						;
 
-					echo
-									'<label for="reservTimeEndSelection"> à </label>'.
-									'<select name="reservTimeEndSelection" id="reservTimeEndSelection">'
-					;
+						echo
+										'<label for="reservTimeEndSelection"> à </label>'.
+										'<select name="reservTimeEndSelection" id="reservTimeEndSelection">'
+						;
 
-					for($h=0; $h<=23; $h++)
-					{
-						for($m=0; $m<60; $m+=30)
+						for($h=0; $h<=23; $h++)
 						{
-							echo
-										'<option value="'.sprintf('%02d%02d', $h, $m).'"'. (($h==8&&$m==0)? ' selected' : '') .'>' . sprintf('%2d', $h) . 'h' . sprintf('%02d', $m) . '</option>'
-							;
+							for($m=0; $m<60; $m+=30)
+							{
+								echo
+											'<option value="'.sprintf('%02d%02d', $h, $m).'"'. (($h==8&&$m==0)? ' selected' : '') .'>' . sprintf('%2d', $h) . 'h' . sprintf('%02d', $m) . '</option>'
+								;
+							}
 						}
-					}
-					echo
-										'<option value="2400"'. (($h==8&&$m==0)? ' selected' : '') .'>' . '24h00' . '</option>'
-					;
+						echo
+											'<option value="2400"'. (($h==8&&$m==0)? ' selected' : '') .'>' . '24h00' . '</option>'
+						;
 
-					echo
-									'</select>'
-					;
+						echo
+										'</select>'
+						;
 
 		
+					}
+					echo
+									'</div>'
+					;
 				}
-				echo
-								'</div>'
-				;
 
 				echo			'<div>';
 
