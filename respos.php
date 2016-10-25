@@ -92,13 +92,13 @@
 		{
 			echo '<table style="width: 100%; cursor: default; border-collapse: collapse;">';
 			$i = 0;
-			echo '<tr><th style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th>Nom</th><th title="Admin?">a</th><th title="Contributeur centre?">c</th><th title="Contributeur BPI?">b</th><th title="Contributeur espace externe?">e</th><th title="Contributeur atelier?">a</th><th title="Contributeur manifestations publiques?">mp</th><th title="Contributeur manifestations/reunions internes?">mi</th><th title="Contributeur administratif?">ma</th><th title="Contributeur ressources humaines?">rh</th><th title="Contributeur financier?">f</th><th title="Contributeur événements de type calendaire?">ec</th><th>-</th></tr>';
+			echo '<tr><th style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th>Nom</th><th style="border-left: double; border-right: double;" title="Admin?">a</th><th title="Contributeur centre?">c</th><th title="Contributeur BPI?">b</th><th title="Contributeur espace externe?">e</th><th title="Contributeur atelier?">a</th><th title="Contributeur manifestations publiques?">mp</th><th title="Contributeur manifestations/reunions internes?">mi</th><th title="Contributeur administratif?">ma</th><th title="Contributeur ressources humaines?">rh</th><th title="Contributeur financier?">f</th><th title="Contributeur événements de type calendaire?">ec</th><th>-</th></tr>';
 			while($data = mysql_fetch_assoc($req))
 			{
 				echo '<tr>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right; width: 100%;">'.$data['email'].'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right;">'.$data['nom'].'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['admin']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double; border-right: double;">'.(($data['admin']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_centre']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_bpi']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_externe']==true)? '✓' : '✕').'</td>';
@@ -118,7 +118,7 @@
 			echo '<tr>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoMail" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoName" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="adminCheck" name="adminCheck" /><label for="adminCheck" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center; border-left: double; border-right: double;"><input type="checkbox" id="adminCheck" name="adminCheck" /><label for="adminCheck" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribCentreCheck" name="contribCentreCheck" /><label for="contribCentreCheck" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="ontribBPICheck" name="contribBPICheck" /><label for="ontribBPICheck" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribExterneCheck" name="contribExterneCheck" /><label for="contribExterneCheck" /></td>';
