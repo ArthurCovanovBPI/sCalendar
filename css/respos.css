@@ -3,12 +3,17 @@ input[type="checkbox"] + label:before
 	width: 20px;
 	height: 19px;
 	border: none;
+	content: '';
 }
 
 input[type="checkbox"] + label:after
 {
+	top: 2px;
+	left: 2px;
 	width: 16px;
 	height: 15px;
 	border: none;
+	color: #000000;
+	content: '✔';
 }
 
