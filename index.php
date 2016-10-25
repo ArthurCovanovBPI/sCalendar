@@ -265,11 +265,7 @@
 					<p>S-Calendar</p>
 				</div>
 				<?php
-					$allHeaders = getallheaders();
-					if(array_key_exists("AuthUser", $allHeaders))
-					{
-						echo '<a class="headTitle headButton '.(($menu == 'Lieux' || $menu == 'Responsables')? ' toogled' : '') .'" href="/?menu=lieux">Admin</a>';
-					}
+					include('adminButton.php');
 				?>
 				<a class="headTitle headButton <?php if($menu == 'Calendrier' || $menu == 'NewEvenement') echo ' toogled'; ?>" href='/'>Calendrier</a>
 				<?php
