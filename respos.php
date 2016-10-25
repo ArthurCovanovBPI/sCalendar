@@ -98,7 +98,7 @@
 				echo '<tr>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right; width: 100%;">'.$data['email'].'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right;">'.$data['nom'].'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['admin']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['admin']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_centre']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_bpi']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_externe']==true)? '✓' : '✕').'</td>';
