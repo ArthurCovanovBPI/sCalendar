@@ -392,7 +392,7 @@
 												'<select name="manifTimeStartSelection" id="manifTimeStartSelection">'
 						;
 
-						for($h=0; $h<=23; $h++)
+						for($h=8; $h<=22; $h++)
 						{
 							for($m=0; $m<60; $m+=30)
 							{
@@ -514,7 +514,7 @@
 														'<select name="reservTimeEndSelection" id="reservTimeEndSelection">'
 								;
 
-								for($h=0; $h<=23; $h++)
+								for($h=8; $h<=22; $h++)
 								{
 									for($m=0; $m<60; $m+=30)
 									{
