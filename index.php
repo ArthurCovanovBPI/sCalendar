@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<?php
+		$allHeaders = getallheaders();
 
 		function wday2letter($wday)
 		{
@@ -298,7 +299,6 @@
 					<p>Recherche</p>
 				</div>
 				<?php
-					$allHeaders = getallheaders();
 					if(array_key_exists("AuthUser", $allHeaders))
 					{
 						echo('<div class="headTitle" style="border-left: 1px solid #4D4D4D; cursor: default;">');
