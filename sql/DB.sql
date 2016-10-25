@@ -118,13 +118,33 @@ INSERT INTO responsable
 (
 	email,
 	nom,
-	admin
+	admin,
+	contributeur_centre,
+	contributeur_bpi,
+	contributeur_externe,
+	contributeur_atelier,
+	contributeur_manif_publique,
+	contributeur_manif_interne,
+	contributeur_manif_admin,
+	contributeur_manif_rh,
+	contributeur_manif_financier,
+	contributeur_manif_calendar
 )
 VALUES
 (
 	'jerôme.bessière@bpi.fr',
 	'Jérôme Bessière	',
-	false
+	false,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true,
+	true
 );
 
 CREATE TABLE espace
