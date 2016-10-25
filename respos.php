@@ -92,7 +92,7 @@
 		{
 			echo '<table style="width: 100%; cursor: default; border-collapse: collapse;">';
 			$i = 0;
-			echo '<tr><th style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th>Nom</th><th style="border-left: double;" title="Admin?">a</th><th style="border-left: double;" title="Contributeur centre?">c</th><th title="Contributeur BPI?">b</th><th title="Contributeur espace externe?">e</th><th title="Contributeur atelier?">a</th><th style="border-left: double;" title="Contributeur manifestations publiques?">mp</th><th title="Contributeur manifestations/reunions internes?">mi</th><th title="Contributeur administratif?">ma</th><th title="Contributeur ressources humaines?">rh</th><th title="Contributeur financier?">f</th><th title="Contributeur événements de type calendaire?">ec</th><th>-</th></tr>';
+			echo '<tr><th style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th>Nom</th><th style="border-left: double;" title="Admin?">a</th><th style="border-left: double;" title="Contributeur centre?">c</th><th title="Contributeur BPI?">b</th><th title="Contributeur espace externe?">e</th><th title="Contributeur atelier?">a</th><th style="border-left: double;" title="Contributeur manifestations publiques?">mp</th><th title="Contributeur manifestations/reunions internes?">mi</th><th title="Contributeur administratif?">ma</th><th title="Contributeur ressources humaines?">rh</th><th title="Contributeur financier?">f</th><th title="Contributeur événements de type calendaire?">ec</th><th style="border-left: double;">-</th></tr>';
 			while($data = mysql_fetch_assoc($req))
 			{
 				echo '<tr>';
@@ -109,7 +109,7 @@
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_rh']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_financier']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_calendar']==true)? '✓' : '✕').'</td>';
-					echo '<td onclick="deleteRespo(\'' . $data['ID'] . '\', \'' . $data['email'] . '\', \'' . $page . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">×</td>';
+					echo '<td onclick="deleteRespo(\'' . $data['ID'] . '\', \'' . $data['email'] . '\', \'' . $page . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer; border-left: double;">×</td>';
 				echo '</tr>';
 			}
 			echo '<tr>';
@@ -129,7 +129,7 @@
 				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifRHCheck" name="contribManifRHCheck" /><label for="contribManifRHCheck" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifFinancierCheck" name="contribManifFinancierCheck" /><label for="contribManifFinancierCheck" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifCalendarCheck" name="contribManifCalendarCheck" /><label for="contribManifCalendarCheck" /></td>';
-				echo '<td onclick="addRespo(\'inputRespoMail\', \'' . $resultPerPages . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">+</td>';
+				echo '<td onclick="addRespo(\'inputRespoMail\', \'' . $resultPerPages . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer; border-left: double;">+</td>';
 			echo '</tr>';
 			echo '</table>';
 		}
