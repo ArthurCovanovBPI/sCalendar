@@ -83,7 +83,6 @@
 								'<label for="typeSelection">Type: </label>'.
 								'<select name="typeSelection" id="typeSelection">'
 					;
-
 				
 					//Manifestation publique	
 					$type = mysql_fetch_assoc($req);
@@ -114,7 +113,6 @@
 					$type = mysql_fetch_assoc($req);
 					if($respo['contributeur_manif_calendar']==true)
 						echo			'<option value="' . $type['ID'] . '">' . $type['type'] . '</option>';
-
 
 					echo		'</select><br />';
 				}
@@ -304,7 +302,6 @@
 						echo
 										'</select>'
 						;
-
 
 						echo
 										'<datalist id="lieuSelection">'
