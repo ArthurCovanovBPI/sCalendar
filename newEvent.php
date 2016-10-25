@@ -282,22 +282,22 @@
 						;
 
 						//Espaces Centre	
-						$type = mysql_fetch_assoc($req);
+						$espace = mysql_fetch_assoc($req);
 						if($respo['contributeur_centre']==true)
 							echo			'<option value="'.$espace['ID'].'">' . $espace['espace'] . '</option>';
 
 						//Espaces BPI
-						$type = mysql_fetch_assoc($req);
+						$espace = mysql_fetch_assoc($req);
 						if($respo['contributeur_bpi']==true)
 							echo			'<option value="'.$espace['ID'].'">' . $espace['espace'] . '</option>';
 
 						//Hors les murs
-						$type = mysql_fetch_assoc($req);
+						$espace = mysql_fetch_assoc($req);
 						if($respo['contributeur_externe']==true)
 							echo			'<option value="'.$espace['ID'].'">' . $espace['espace'] . '</option>';
 
 						//Atelier
-						$type = mysql_fetch_assoc($req);
+						$espace = mysql_fetch_assoc($req);
 						if($respo['contributeur_atelier']==true)
 							echo			'<option value="'.$espace['ID'].'">' . $espace['espace'] . '</option>';
 
