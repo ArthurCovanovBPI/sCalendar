@@ -237,7 +237,7 @@
 								'<select name="manifTimeEndSelection" id="manifTimeEndSelection">'
 				;
 
-				for($h=8; $h<=22; $h++)
+				for($h=8; $h<=21; $h++)
 				{
 					for($m=0; $m<60; $m+=30)
 					{
@@ -247,7 +247,7 @@
 					}
 				}
 				echo
-									'<option value="2400"'. (($h==8&&$m==0)? ' selected' : '') .'>' . '24h00' . '</option>'
+									'<option value="2400"'. (($h==8&&$m==0)? ' selected' : '') .'>' . '22h00' . '</option>'
 				;
 
 				echo
@@ -340,7 +340,7 @@
 										'<select name="reservTimeEndSelection" id="reservTimeEndSelection">'
 						;
 
-						for($h=8; $h<=22; $h++)
+						for($h=8; $h<=21; $h++)
 						{
 							for($m=0; $m<60; $m+=30)
 							{
@@ -350,7 +350,7 @@
 							}
 						}
 						echo
-											'<option value="2400"'. (($h==8&&$m==0)? ' selected' : '') .'>' . '24h00' . '</option>'
+											'<option value="2400"'. (($h==8&&$m==0)? ' selected' : '') .'>' . '22h00' . '</option>'
 						;
 
 						echo
