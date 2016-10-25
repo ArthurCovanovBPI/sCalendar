@@ -1,7 +1,7 @@
 input[type="checkbox"] + label:before
 {
-        width: 19px;
-        height: 21px;
+        width: 18px;
+        height: 19px;
         border: none;
         -webkit-box-shadow: none;
            -moz-box-shadow: none;
