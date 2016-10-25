@@ -29,7 +29,7 @@
 					intitule,
 					observations,
 					evenement,
-					responsable_ID,
+					responsable_mail,
 					l.lieu,
 					manifestation.ID
 					FROM manifestation
@@ -66,7 +66,7 @@
 								)
 							).
 							(($data['lieu'] != null)?'Lieu: '.$data['lieu'].'<br />' : '').
-							'Responsable: '.$data['responsable_ID'].'<br />'.
+							'Responsable: '.$data['responsable_mail'].'<br />'.
 							'Observations: '.$data['observations'].'<br />'.
 							'Description: '.$data['evenement']
 						.'</fieldset>'

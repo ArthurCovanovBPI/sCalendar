@@ -34,7 +34,7 @@
 					intitule,
 					tm.type,
 					sm.status,
-					responsable_ID,
+					responsable_mail,
 					observations,
 					evenement
 				FROM manifestation
@@ -89,7 +89,7 @@
 							<div class="middlePart">
 								<fieldset class="middlePart">
 									<legend>Reponsable</legend>'.
-									$data['responsable_ID']
+									$data['responsable_mail']
 								.'</fieldset>
 							</div>
 						</div>'

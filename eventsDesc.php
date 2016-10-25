@@ -152,7 +152,7 @@
 						'SELECT	intitule,
 							status,
 							type,
-							responsable_ID,
+							responsable_mail,
 							observations,
 							evenement
 						FROM manifestation
@@ -165,7 +165,7 @@
 						'SELECT	intitule,
 							status,
 							type,
-							responsable_ID,
+							responsable_mail,
 							observations,
 							evenement
 						FROM manifestation
@@ -188,7 +188,7 @@
 					while ($i < mysql_num_fields($req))
 					{
 						$meta = mysql_fetch_field($req, $i);
-						if($meta->name=="responsable_ID")
+						if($meta->name=="responsable_mail")
 							echo '<th>reponsable</th>';
 						else
 							echo '<th>' . $meta->name . '</th>';
@@ -205,7 +205,7 @@
 							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['intitule'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['status'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['type'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['responsable_ID'].'</td>';
+							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['responsable_mail'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['observations'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['evenement'].'</td>';
 							echo '</tr>';
@@ -224,7 +224,7 @@
 							echo '<td style="white-space: nowrap;text-align: right;">'.$data['intitule'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right;">'.$data['status'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right;">'.$data['type'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right;">'.$data['responsable_ID'].'</td>';
+							echo '<td style="white-space: nowrap;text-align: right;">'.$data['responsable_mail'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right;">'.$data['observations'].'</td>';
 							echo '<td style="white-space: nowrap;text-align: right;">'.$data['evenement'].'</td>';
 							echo '</tr>';

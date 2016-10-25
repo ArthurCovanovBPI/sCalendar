@@ -171,7 +171,7 @@ CREATE TABLE manifestation
 	status_manifestation_ID TINYINT NOT NULL,
 	type_manifestation_ID TINYINT NOT NULL,
 	intitule VARCHAR(255) NOT NULL,
-	responsable_ID BIGINT NOT NULL,
+	responsable_mail VARCHAR(255) NOT NULL,
 	observations TEXT,
 	evenement TEXT,
 	PRIMARY KEY (ID),
@@ -310,7 +310,7 @@ INSERT INTO manifestation
 	type_manifestation_ID,
 	recurrence_manifestation_ID,
 	intitule,
-	responsable_ID,
+	responsable_mail,
 	observations,
 	evenement
 )
@@ -387,7 +387,7 @@ INSERT INTO manifestation
 	type_manifestation_ID,
 	recurrence_manifestation_ID,
 	intitule,
-	responsable_ID,
+	responsable_mail,
 	observations,
 	evenement
 )
@@ -436,7 +436,7 @@ INSERT INTO manifestation
 	type_manifestation_ID,
 	recurrence_manifestation_ID,
 	intitule,
-	responsable_ID,
+	responsable_mail,
 	observations,
 	evenement
 )
@@ -470,7 +470,7 @@ INSERT INTO manifestation
 	type_manifestation_ID,
 	recurrence_manifestation_ID,
 	intitule,
-	responsable_ID,
+	responsable_mail,
 	observations,
 	evenement
 )
@@ -504,7 +504,7 @@ INSERT INTO manifestation
 	type_manifestation_ID,
 	recurrence_manifestation_ID,
 	intitule,
-	responsable_ID,
+	responsable_mail,
 	observations,
 	evenement
 )
@@ -538,7 +538,7 @@ INSERT INTO manifestation
 	type_manifestation_ID,
 	recurrence_manifestation_ID,
 	intitule,
-	responsable_ID,
+	responsable_mail,
 	observations,
 	evenement
 )
@@ -572,7 +572,7 @@ INSERT INTO manifestation
 	type_manifestation_ID,
 	recurrence_manifestation_ID,
 	intitule,
-	responsable_ID,
+	responsable_mail,
 	observations,
 	evenement
 )
@@ -606,7 +606,7 @@ INSERT INTO manifestation
 	type_manifestation_ID,
 	recurrence_manifestation_ID,
 	intitule,
-	responsable_ID,
+	responsable_mail,
 	observations,
 	evenement
 )
@@ -640,7 +640,7 @@ INSERT INTO manifestation
 	type_manifestation_ID,
 	recurrence_manifestation_ID,
 	intitule,
-	responsable_ID,
+	responsable_mail,
 	observations,
 	evenement
 )
@@ -674,7 +674,7 @@ INSERT INTO manifestation
 	type_manifestation_ID,
 	recurrence_manifestation_ID,
 	intitule,
-	responsable_ID,
+	responsable_mail,
 	observations,
 	evenement
 )
@@ -708,7 +708,7 @@ INSERT INTO manifestation
 	type_manifestation_ID,
 	recurrence_manifestation_ID,
 	intitule,
-	responsable_ID,
+	responsable_mail,
 	observations,
 	evenement
 )

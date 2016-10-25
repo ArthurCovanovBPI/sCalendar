@@ -92,7 +92,7 @@
 				type_manifestation_ID,
 				recurrence_manifestation_ID,
 				intitule,
-				responsable_ID,
+				responsable_mail,
 				observations,
 				evenement
 			)
@@ -177,7 +177,7 @@
 			$numConflits=0;
 			foreach($reservs as $reserv)
 			{
-				$sql =	'SELECT m.ID, intitule, m.responsable_ID, lieu, debut_reservation, fin_reservation
+				$sql =	'SELECT m.ID, intitule, m.responsable_mail, lieu, debut_reservation, fin_reservation
 					FROM reservation
 					INNER JOIN lieu AS l ON l.ID = reservation.lieu_ID
 					INNER JOIN datesManif AS dm ON dm.ID = reservation.dates_manifestation_ID
@@ -205,7 +205,7 @@
 					header('HTTP/1.1 500 Internal Server Error');
 					while($reserv = mysql_fetch_assoc($req))
 					{
-						print('L\'évènement ' . $reserv[intitule]. ' organisé par ' . $reserv[responsable_ID] . ', a déjà réservé le lieu ' . $reserv[lieu] . ', le ' . substr($reserv['debut_reservation'], 6, 2).'/'.substr($reserv['debut_reservation'], 4, 2).'/'.substr($reserv['debut_reservation'], 0, 4) . ' entre ' . substr($reserv['debut_reservation'], 8, 2) . 'h' . substr($reserv['debut_reservation'], -2) . ' et ' . substr($reserv['fin_reservation'], 8, 2) . 'h' . substr($reserv['fin_reservation'], -2) . '<br />');
+						print('L\'évènement ' . $reserv[intitule]. ' organisé par ' . $reserv[responsable_mail] . ', a déjà réservé le lieu ' . $reserv[lieu] . ', le ' . substr($reserv['debut_reservation'], 6, 2).'/'.substr($reserv['debut_reservation'], 4, 2).'/'.substr($reserv['debut_reservation'], 0, 4) . ' entre ' . substr($reserv['debut_reservation'], 8, 2) . 'h' . substr($reserv['debut_reservation'], -2) . ' et ' . substr($reserv['fin_reservation'], 8, 2) . 'h' . substr($reserv['fin_reservation'], -2) . '<br />');
 					}
 				}
 			}

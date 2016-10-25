@@ -14,7 +14,7 @@
 			mysql_query('SET character_set_results = "UTF8", character_set_client = "UTF8", character_set_connection = "UTF8", character_set_database = "UTF8", character_set_server = "UTF8"');
 			$sql =
 				'SELECT
-					responsable_ID
+					responsable_mail
 				FROM manifestation
 				WHERE manifestation.ID = ' . $_GET['eventID']
 			;
@@ -24,7 +24,7 @@
 				$data = mysql_fetch_assoc($req);
 				$numRows=mysql_num_rows($req);
 
-				if($data['responsable_ID'] == $allHeaders[AuthUser])
+				if($data['responsable_mail'] == $allHeaders[AuthUser])
 					echo('<a href="?menu=evenement&section=edition&eventID='.$_GET[eventID].'"'.(($section == 'Edition')? ' class="selected"' : '').'>Édition</a>');
 			}
 		}

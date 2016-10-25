@@ -21,7 +21,7 @@
 					FROM reservation
 					INNER JOIN datesManif AS dm ON dm.ID = reservation.dates_manifestation_ID
 					INNER JOIN manifestation AS m ON m.ID = dm.manifestation_ID
-					WHERE m.responsable_ID = ' . $_POST['respoID']
+					WHERE m.responsable_mail = ' . $_POST['respoID']
 			;
 			$req = mysql_query($sql);
 			if(!$req)
@@ -34,7 +34,7 @@
 			$sql =	'DELETE datesManif
 					FROM datesManif
 					INNER JOIN manifestation AS m ON m.ID = datesManif.manifestation_ID
-					WHERE m.responsable_ID = ' . $_POST['respoID']
+					WHERE m.responsable_mail = ' . $_POST['respoID']
 			;
 			$req = mysql_query($sql);
 			if(!$req)
@@ -44,7 +44,7 @@
 				exit();
 			}
 
-			$sql =	'DELETE FROM manifestation WHERE responsable_ID = ' . $_POST['respoID'];
+			$sql =	'DELETE FROM manifestation WHERE responsable_mail = ' . $_POST['respoID'];
 			$req = mysql_query($sql);
 			if(!$req)
 			{

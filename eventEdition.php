@@ -41,7 +41,7 @@
 					intitule,
 					tm.type,
 					sm.status,
-					responsable_ID,
+					responsable_mail,
 					observations,
 					evenement
 				FROM manifestation
@@ -81,7 +81,7 @@
 						</div>'
 					;
 				}
-				else if($data['responsable_ID'] != $allHeaders[AuthUser])
+				else if($data['responsable_mail'] != $allHeaders[AuthUser])
 				{
 					$txtError='Access denied!';
 					include('errorFieldSet.php');
@@ -187,7 +187,7 @@
 								<fieldset class="middlePart">
 									<legend>Reponsable</legend>
 									<label for="intituleEntry">Email: </label>
-									<input id="responsaBlesSelection" type="text" name="email" value="'.$data['responsable_ID'].'" disabled /><br />
+									<input id="responsaBlesSelection" type="text" name="email" value="'.$data['responsable_mail'].'" disabled /><br />
 								</fieldset>
 							</div>'
 					;

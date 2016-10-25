@@ -108,7 +108,7 @@
 				'SELECT	debut_manif,
 						fin_manif,
 						intitule,
-						manifestation.responsable_ID,
+						manifestation.responsable_mail,
 						manifestation.ID
 				FROM manifestation
 				INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_id = tm.id
