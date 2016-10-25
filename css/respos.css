@@ -1,12 +1,12 @@
 input[type="checkbox"] + label:before
 {
-	width: 17px;
+	width: 18px;
 	height: 17px;
 }
 
 input[type="checkbox"] + label:after
 {
-	width: 13px;
+	width: 14px;
 	height: 13px;
 }
 

@@ -118,7 +118,7 @@
 			echo '<tr>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoMail" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoName" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="adminCheck" name="adminCheck" /><label style="width: 100%; height=100%;" for="adminCheck" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="adminCheck" name="adminCheck" /><label for="adminCheck" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribCentreCheck" name="contribCentreCheck" /><label for="contribCentreCheck" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="ontribBPICheck" name="contribBPICheck" /><label for="ontribBPICheck" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribExterneCheck" name="contribExterneCheck" /><label for="contribExterneCheck" /></td>';
