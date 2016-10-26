@@ -120,7 +120,7 @@
 				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoName" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="adminCheck" name="adminCheck" /><label for="adminCheck" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="contribCentreCheck" name="contribCentreCheck" /><label for="contribCentreCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="ontribBPICheck" name="contribBPICheck" /><label for="ontribBPICheck" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribBPICheck" name="contribBPICheck" /><label for="ontribBPICheck" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribExterneCheck" name="contribExterneCheck" /><label for="contribExterneCheck" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribAtelierCheck" name="contribAtelierCheck" /><label for="contribAtelierCheck" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="contribManifPubliqueCheck" name="contribManifPubliqueCheck" /><label for="contribManifPubliqueCheck" /></td>';
