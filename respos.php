@@ -92,7 +92,7 @@
 		{
 			echo '<table style="width: 100%; cursor: default; border-collapse: collapse;">';
 			$i = 0;
-			echo '<tr><th rowspan=2  style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th rowspan=2 >Nom</th><th rowspan=2 style="border-left: double;" title="Admin?">a</th><th colspan=4 style="border-left: double;">Manifestations</th><th colspan=6 style="border-left: double;">Reservations</th><th style="border-left: double;">-</th></tr>';
+			echo '<tr><th rowspan=2  style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th rowspan=2 >Nom</th><th rowspan=2 style="border-left: double;" title="Admin?">a</th><th colspan=6 style="border-left: double;">Manifestations</th><th colspan=4 style="border-left: double;">Reservations</th><th style="border-left: double;">-</th></tr>';
 			echo '<tr><th style="border-left: double;" title="Contributeur centre?">c</th><th title="Contributeur BPI?">b</th><th title="Contributeur espace externe?">e</th><th title="Contributeur atelier?">a</th><th style="border-left: double;" title="Contributeur manifestations publiques?">mp</th><th title="Contributeur manifestations/reunions internes?">mi</th><th title="Contributeur administratif?">ma</th><th title="Contributeur ressources humaines?">rh</th><th title="Contributeur financier?">f</th><th title="Contributeur événements de type calendaire?">ec</th><th style="border-left: double;">-</th></tr>';
 			while($data = mysql_fetch_assoc($req))
 			{
@@ -100,16 +100,16 @@
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right; width: 100%;">'.$data['email'].'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right;">'.$data['nom'].'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['admin']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['contributeur_centre']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_bpi']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_externe']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_atelier']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['contributeur_manif_publique']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_interne']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_admin']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_rh']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_financier']==true)? '✓' : '✕').'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_calendar']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['contributeur_centre']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_bpi']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_externe']==true)? '✓' : '✕').'</td>';
+					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_atelier']==true)? '✓' : '✕').'</td>';
 					echo '<td onclick="deleteRespo(\'' . $data['ID'] . '\', \'' . $data['email'] . '\', \'' . $page . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer; border-left: double;">×</td>';
 				echo '</tr>';
 			}
@@ -120,16 +120,16 @@
 				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoMail" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoName" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="adminCheck" name="adminCheck" /><label for="adminCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="contribCentreCheck" checked name="contribCentreCheck" /><label for="contribCentreCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribBPICheck" name="contribBPICheck" checked /><label for="contribBPICheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribExterneCheck" name="contribExterneCheck" checked /><label for="contribExterneCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribAtelierCheck" name="contribAtelierCheck" checked /><label for="contribAtelierCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="contribManifPubliqueCheck" name="contribManifPubliqueCheck" /><label for="contribManifPubliqueCheck" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="contribManifPubliqueCheck" name="contribManifPubliqueCheck" checked /><label for="contribManifPubliqueCheck" /></td>';
 				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifInterneCheck" name="contribManifInterneCheck" checked /><label for="contribManifInterneCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifAdminCheck" name="contribManifAdminCheck" /><label for="contribManifAdminCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifRHCheck" name="contribManifRHCheck" /><label for="contribManifRHCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifFinancierCheck" name="contribManifFinancierCheck" /><label for="contribManifFinancierCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifCalendarCheck" name="contribManifCalendarCheck" /><label for="contribManifCalendarCheck" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifAdminCheck" name="contribManifAdminCheck" checked /><label for="contribManifAdminCheck" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifRHCheck" name="contribManifRHCheck" checked /><label for="contribManifRHCheck" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifFinancierCheck" name="contribManifFinancierCheck" checked /><label for="contribManifFinancierCheck" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifCalendarCheck" name="contribManifCalendarCheck" checked /><label for="contribManifCalendarCheck" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="contribCentreCheck" name="contribCentreCheck" /><label for="contribCentreCheck" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribBPICheck" name="contribBPICheck" /><label for="contribBPICheck" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribExterneCheck" name="contribExterneCheck" /><label for="contribExterneCheck" /></td>';
+				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribAtelierCheck" name="contribAtelierCheck" /><label for="contribAtelierCheck" /></td>';
 				echo '<td onclick="addRespo(\'inputRespoMail\', \'' . $resultPerPages . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer; border-left: double;">+</td>';
 			echo '</tr>';
 			echo '</table>';

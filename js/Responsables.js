@@ -45,10 +45,6 @@ function addRespo(inputRespo, divpage)
 {
 	respoMail = document.getElementById("inputRespoMail").value;
 	respoName = document.getElementById("inputRespoName").value;
-	respoAdmin = document.getElementById("adminCheck").checked;
-	respoCentre = document.getElementById("contribCentreCheck").checked;
-	respoExterne = document.getElementById("contribBPICheck").checked;
-	respoBPI = document.getElementById("contribExterneCheck").checked;
 	respoAtelier = document.getElementById("contribAtelierCheck").checked;
 	respoManifPublique = document.getElementById("contribManifPubliqueCheck").checked;
 	respoManifInterne = document.getElementById("contribManifInterneCheck").checked;
@@ -56,14 +52,19 @@ function addRespo(inputRespo, divpage)
 	respoManifRH = document.getElementById("contribManifRHCheck").checked;
 	respoManifFiancier = document.getElementById("contribManifFinancierCheck").checked;
 	respoManifCalendaire = document.getElementById("contribManifCalendarCheck").checked;
+	respoAdmin = document.getElementById("adminCheck").checked;
+	respoCentre = document.getElementById("contribCentreCheck").checked;
+	respoExterne = document.getElementById("contribBPICheck").checked;
+	respoBPI = document.getElementById("contribExterneCheck").checked;
 
 	message = "";
 	if(!respoMail)
 		message += "Veuillez entrer un mail pour le responsable.\n";
 	if(!respoName)
 		message += "Veuillez entrer un nom pour le responsable.\n";
-	if(!respoCentre && !respoExterne && !respoBPI && !respoAtelier)
-		message += "Veuillez autoriser au moins un type de manifestation (c/b/e/a).";
+
+	if(!respoManifPublique && !respoManifInterne && !respoManifAdmin && !respoManifRH && !respoManifFiancier && !respoManifCalendaire)
+		message += "Veuillez autoriser au moins un type de manifestation (mp/mi/ma/rh/f/ec).";
 	if(message != "")
 		alert(message);
 	else if(confirm("Souhaitez-vous vraiment ajouter le responsable " + respoName + "?"))
@@ -73,7 +74,7 @@ function addRespo(inputRespo, divpage)
 		({
 			type: 'POST',
 			url: addurl,
-			data: {mail:respoMail, name:respoName, admin:respoAdmin, centre:respoCentre, externe:respoExterne, BPI:respoBPI, atelier:respoAtelier, manifPublique:respoManifPublique, manifInterne:respoManifInterne, manifAdmin:respoManifAdmin, manifRH:respoManifRH, manifFiancier:respoManifFiancier, manifCalendaire:respoManifCalendaire},
+			data: {mail:respoMail, name:respoName, admin:respoAdmin, manifPublique:respoManifPublique, manifInterne:respoManifInterne, manifAdmin:respoManifAdmin, manifRH:respoManifRH, manifFiancier:respoManifFiancier, manifCalendaire:respoManifCalendaire, centre:respoCentre, externe:respoExterne, BPI:respoBPI, atelier:respoAtelier},
 			async: false,
 			cache: false,
 			timeout: 30000,
