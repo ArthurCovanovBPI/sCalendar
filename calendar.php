@@ -219,27 +219,28 @@
 	}
 	else
 	{
-		echo('<table class="monthTable" border="1" style="width:100%;">');
-
 		echo '<input type="checkbox" id="checkTout" name="checkTout" /><label for="checkTout">Tout </label>';
 		echo '<input type="checkbox" id="checkManifPublique" name="checkManifPublique" checked /><label for="checkManifPublique">Manifestation publique </label>';
 		echo '<input type="checkbox" id="checkManifInterne" name="checkManifInterne" checked /><label for="checkManifInterne">Manfestation / réunion interne </label>';
 		echo '<input type="checkbox" id="checkCalendaire" name="checkCalendaire" checked /><label for="checkCalendaire">Événement de type calendaire (vacances, jours fériés) </label>';
 		echo '<input type="checkbox" id="checkAdminRH" name="checkAdminRH" /><label for="checkAdminRH">Administratif et RH (pas d\'envoi à la presse) </label>';
-		echo '<input type="checkbox" id="checkFinancier" name="checkFinancier" /><label for="checkFinancier">Financier (pas d\'envoi à la presse)</label>';
-
-
 		echo '<br />';
 
-		echo('<tr>
-			<th>Lundi</th>
-			<th>Mardi</th>
-			<th>Mercredi</th>
-			<th>Jeudi</th>
-			<th>Vendredi</th>
-			<th>Samedi</th>
-			<th>Dimanche</th>
-		</tr>');
+		echo '<input type="checkbox" id="checkFinancier" name="checkFinancier" /><label for="checkFinancier">Financier (pas d\'envoi à la presse)</label>';
+		echo('<table class="monthTable" border="1" style="width:100%;">');
+
+		echo
+		(
+				'<tr>
+					<th>Lundi</th>
+					<th>Mardi</th>
+					<th>Mercredi</th>
+					<th>Jeudi</th>
+					<th>Vendredi</th>
+					<th>Samedi</th>
+					<th>Dimanche</th>
+				</tr>'
+		);
 		$today_mday = $today[mday];
 		$first_mday = $today[mday] % 7;
 		$today_wday = $today[wday];
