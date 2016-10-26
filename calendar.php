@@ -220,6 +220,9 @@
 	else
 	{
 		echo('<table class="monthTable" border="1" style="width:100%;">');
+
+		echo '<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="Check" name="Check" checked /><label for="Check">Check</label>'</td>';
+
 		echo('<tr>
 			<th>Lundi</th>
 			<th>Mardi</th>
