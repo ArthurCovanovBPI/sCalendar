@@ -43,19 +43,19 @@ function deleteRespo(id, respo, page)
 
 function addRespo(inputRespo, divpage)
 {
-	respoMail = document.getElementById(inputRespoMail).value;
-	respoName = document.getElementById(inputRespoName).value;
-	respoAdmin = document.getElementById(adminCheck).value;
-	respoCentre = document.getElementById(contribCentreCheck).value;
-	respoExterne = document.getElementById(contribBPICheck).value;
-	respoBPI = document.getElementById(contribExterneCheck).value;
-	respoAtelier = document.getElementById(contribAtelierCheck).value;
-	respoManifPublique = document.getElementById(contribManifPubliqueCheck).value;
-	respoManifInterne = document.getElementById(contribManifInterneCheck).value;
-	respoManifAdmin = document.getElementById(contribManifAdminCheck).value;
-	respoManifRH = document.getElementById(contribManifRHCheck).value;
-	respoManifFiancier = document.getElementById(contribManifFinancierCheck).value;
-	respoManifCalendaire = document.getElementById(contribManifCalendarCheck).value;
+	respoMail = document.getElementById("inputRespoMail").value;
+	respoName = document.getElementById("inputRespoName").value;
+	respoAdmin = document.getElementById("adminCheck").value;
+	respoCentre = document.getElementById("contribCentreCheck").value;
+	respoExterne = document.getElementById("contribBPICheck").value;
+	respoBPI = document.getElementById("contribExterneCheck").value;
+	respoAtelier = document.getElementById("contribAtelierCheck").value;
+	respoManifPublique = document.getElementById("contribManifPubliqueCheck").value;
+	respoManifInterne = document.getElementById("contribManifInterneCheck").value;
+	respoManifAdmin = document.getElementById("contribManifAdminCheck").value;
+	respoManifRH = document.getElementById("contribManifRHCheck").value;
+	respoManifFiancier = document.getElementById("contribManifFinancierCheck").value;
+	respoManifCalendaire = document.getElementById("contribManifCalendarCheck").value;
 
 	alert(respoMail + " - " + respoName + " - " + respoAdmin + " - " + respoCentre + " - " + respoExterne + " - " + respoBPI + " - " + respoAtelier + " - " + respoManifPublique + " - " + respoManifInterne + " - " + respoManifAdmin + " - " + respoManifRH + " - " + respoManifFiancier + " - " + respoManifCalendaire + " - ");
 
