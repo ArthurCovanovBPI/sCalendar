@@ -68,11 +68,11 @@ function addRespo(inputRespo, divpage)
 		alert(message);
 	else if(confirm("Souhaitez-vous vraiment ajouter le responsable " + name + "?"))
 	{
-		delurl="addRespo.php";
+		addurl="addRespo.php";
 		$.ajax
 		({
 			type: 'POST',
-			url: delurl,
+			url: addurl,
 			data: {mail:respoMail, name:respoName, admin:respoAdmin, centre:respoCentre, externe:respoExterne, BPI:respoBPI, atelier:respoAtelier, manifPublique:respoManifPublique, manifInterne:respoManifInterne, manifAdmin:respoManifAdmin, manifRH:respoManifRH, manifFiancier:respoManifFiancier, manifCalendaire:respoManifCalendaire},
 			async: false,
 			cache: false,
