@@ -213,7 +213,7 @@ INSERT INTO type_manifestation(type) VALUES ('Manfestation / réunion interne');
 INSERT INTO type_manifestation(type) VALUES ('Administratif (pas d''envoi à la presse)');
 INSERT INTO type_manifestation(type) VALUES ('RH (pas d''envoi à la presse)');
 INSERT INTO type_manifestation(type) VALUES ('Financier (pas d''envoi à la presse)');
-INSERT INTO type_manifestation(type) VALUES ('Évènement de type calendaire (vacances, jours fériés)');
+INSERT INTO type_manifestation(type) VALUES ('Événement de type calendaire (vacances, jours fériés)');
 
 INSERT INTO recurrence_manifestation(recurrence) VALUES (NULL);
 INSERT INTO recurrence_manifestation(recurrence) VALUES ('Quotidien');

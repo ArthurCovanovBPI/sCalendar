@@ -221,7 +221,13 @@
 	{
 		echo('<table class="monthTable" border="1" style="width:100%;">');
 
-		echo '<input type="checkbox" id="Check" name="Check" checked /><label for="Check">Check</label>';
+		echo '<input type="checkbox" id="Tout" name="Tout" /><label for="Tout">Tout</label>';
+		echo '<input type="checkbox" id="Check" name="Check" checked /><label for="Check">Manifestation publique</label>';
+		echo '<input type="checkbox" id="Check" name="Check" checked /><label for="Check">Manfestation / réunion interne</label>';
+		echo '<input type="checkbox" id="Check" name="Check" checked /><label for="Check">Événement de type calendaire (vacances, jours fériés)</label>';
+		echo '<input type="checkbox" id="Check" name="Check" /><label for="Check">Administratif et RH (pas d\'envoi à la presse)</label>';
+		echo '<input type="checkbox" id="Check" name="Check" /><label for="Check">Financier (pas d\'envoi à la presse)</label>';
+
 
 		echo '<br />';
 
