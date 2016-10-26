@@ -57,8 +57,6 @@ function addRespo(inputRespo, divpage)
 	respoManifFiancier = document.getElementById("contribManifFinancierCheck").checked;
 	respoManifCalendaire = document.getElementById("contribManifCalendarCheck").checked;
 
-	alert(respoMail + " - " + respoName + " - " + respoAdmin + " - " + respoCentre + " - " + respoExterne + " - " + respoBPI + " - " + respoAtelier + " - " + respoManifPublique + " - " + respoManifInterne + " - " + respoManifAdmin + " - " + respoManifRH + " - " + respoManifFiancier + " - " + respoManifCalendaire + " - ");
-
 	message = "";
 	if(!respoMail)
 		message += "Veuillez entrer un mail pour le responsable.\n";
@@ -70,14 +68,12 @@ function addRespo(inputRespo, divpage)
 		alert(message);
 	else if(confirm("Souhaitez-vous vraiment ajouter le responsable " + name + "?"))
 	{
-
-		return;
 		delurl="addRespo.php";
 		$.ajax
 		({
 			type: 'POST',
 			url: delurl,
-			data: {name:respoName},
+			data: {mail:respoMail, name:respoName, admin:respoAdmin, centre:respoCentre, externe:respoExterne, BPI:respoBPI, atelier:respoAtelier, manifPublique:respoManifPublique, manifInterne:respoManifInterne, manifAdmin:respoManifAdmin, manifRH:respoManifRH, manifFiancier:respoManifFiancier, manifCalendaire:respoManifCalendaire},
 			async: false,
 			cache: false,
 			timeout: 30000,
