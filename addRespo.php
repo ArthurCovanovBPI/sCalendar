@@ -1,7 +1,8 @@
 <?php
 	header('HTTP/1.1 500 Internal Server Error');
 	print('aaa');
-	if(isset($_POST['mail'])&&isset($_POST['name'])&&isset($_POST['admin'])&&isset($_POST['centre'])&&isset($_POST['externe'])&&isset($_POST['BPI'])&&isset($_POST['atelier'])&&isset($_POST['manifPublique'])&&isset($_POST['manifInterne'])&&isset($_POST['manifAdmin'])&&isset($_POST['manifRH'])&&isset($_POST['manifFiancier'])&&isset($_POST['manifCalendaire'])&&is_bool($_POST['admin'])&&is_bool($_POST['centre'])&&is_bool($_POST['externe'])&&is_bool($_POST['BPI'])&&is_bool($_POST['atelier'])&&is_bool($_POST['manifPublique'])&&is_bool($_POST['manifInterne'])&&is_bool($_POST['manifAdmin'])&&is_bool(_POST['manifRH'])&&is_bool($_POST['manifFiancier'])&&is_bool($_POST['manifCalendaire']))
+	if(isset($_POST['mail'])&&isset($_POST['name'])&&isset($_POST['admin'])&&isset($_POST['centre'])&&isset($_POST['externe'])&&isset($_POST['BPI'])&&isset($_POST['atelier'])&&isset($_POST['manifPublique'])&&isset($_POST['manifInterne'])&&isset($_POST['manifAdmin'])&&isset($_POST['manifRH'])&&isset($_POST['manifFiancier'])&&isset($_POST['manifCalendaire']))
+//&&is_bool($_POST['admin'])&&is_bool($_POST['centre'])&&is_bool($_POST['externe'])&&is_bool($_POST['BPI'])&&is_bool($_POST['atelier'])&&is_bool($_POST['manifPublique'])&&is_bool($_POST['manifInterne'])&&is_bool($_POST['manifAdmin'])&&is_bool(_POST['manifRH'])&&is_bool($_POST['manifFiancier'])&&is_bool($_POST['manifCalendaire']))
 	{
 		print('bbb');
 		$servername = "127.0.0.1";
