@@ -59,14 +59,15 @@ function addRespo(inputRespo, divpage)
 
 	alert(respoMail + " - " + respoName + " - " + respoAdmin + " - " + respoCentre + " - " + respoExterne + " - " + respoBPI + " - " + respoAtelier + " - " + respoManifPublique + " - " + respoManifInterne + " - " + respoManifAdmin + " - " + respoManifRH + " - " + respoManifFiancier + " - " + respoManifCalendaire + " - ");
 
+	message = "";
 	if(!respoMail)
-		alert("Veuillez entrer un mail pour le responsable.");
+		message += "Veuillez entrer un mail pour le responsable.\n";
 	if(!respoName)
-		alert("Veuillez entrer un nom pour le responsable.");
-
+		message += "Veuillez entrer un nom pour le responsable.\n";
 	if(!respoCentre && !respoExterne && !respoBPI && !respoAtelier)
-		alert("Veuillez autoriser au moins 1 type de manifestation.");
-
+		message += "Veuillez autoriser au moins un type de manifestation (c/b/e/a).";
+	if(message != "")
+		alert(message);
 	else if(confirm("Souhaitez-vous vraiment ajouter le responsable " + name + "?"))
 	{
 
