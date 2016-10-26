@@ -66,7 +66,7 @@ function addRespo(inputRespo, divpage)
 		message += "Veuillez autoriser au moins un type de manifestation (c/b/e/a).";
 	if(message != "")
 		alert(message);
-	else if(confirm("Souhaitez-vous vraiment ajouter le responsable " + name + "?"))
+	else if(confirm("Souhaitez-vous vraiment ajouter le responsable " + respoName + "?"))
 	{
 		addurl="addRespo.php";
 		$.ajax
