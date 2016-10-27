@@ -39,12 +39,12 @@
 		$sqlManifTypeAddition = (" AND (" . $sqlManifTypeAddition . ")");
 	}
 
-	echo '<input onchange="newManifType();" type="checkbox" id="checkTout" name="checkTout"' . (($_a != 0)? ' checked' : '') . '/><label for="checkTout">Tout </label>';
-	echo '<input onchange="newManifType();" type="checkbox" id="checkManifPublique" name="checkManifPublique"' . (($_0 != 0)? ' checked' : '') . ' /><label for="checkManifPublique">Manifestation publique </label>';
-	echo '<input onchange="newManifType();" type="checkbox" id="checkManifInterne" name="checkManifInterne"' . (($_1 != 0)? ' checked' : '') . ' /><label for="checkManifInterne">Manfestation / réunion interne </label>';
-	echo '<input onchange="newManifType();" type="checkbox" id="checkCalendaire" name="checkCalendaire"' . (($_2 != 0)? ' checked' : '') . ' /><label for="checkCalendaire">Événement de type calendaire (vacances, jours fériés) </label>';
-	echo '<input onchange="newManifType();" type="checkbox" id="checkAdminRH" name="checkAdminRH"' . (($_3 != 0)? ' checked' : '') . ' /><label for="checkAdminRH">Administratif et RH (pas d\'envoi à la presse) </label>';
-	echo '<input onchange="newManifType();" type="checkbox" id="checkFinancier" name="checkFinancier"' . (($_4 != 0)? ' checked' : '') . ' /><label for="checkFinancier">Financier (pas d\'envoi à la presse)</label>';
+	echo '<input onchange="changeManifType();" type="checkbox" id="checkTout" name="checkTout"' . (($_a != 0)? ' checked' : '') . '/><label for="checkTout">Tout </label>';
+	echo '<input onchange="changeManifType();" type="checkbox" id="checkManifPublique" name="checkManifPublique"' . (($_0 != 0)? ' checked' : '') . ' /><label for="checkManifPublique">Manifestation publique </label>';
+	echo '<input onchange="changeManifType();" type="checkbox" id="checkManifInterne" name="checkManifInterne"' . (($_1 != 0)? ' checked' : '') . ' /><label for="checkManifInterne">Manfestation / réunion interne </label>';
+	echo '<input onchange="changeManifType();" type="checkbox" id="checkCalendaire" name="checkCalendaire"' . (($_2 != 0)? ' checked' : '') . ' /><label for="checkCalendaire">Événement de type calendaire (vacances, jours fériés) </label>';
+	echo '<input onchange="changeManifType();" type="checkbox" id="checkAdminRH" name="checkAdminRH"' . (($_3 != 0)? ' checked' : '') . ' /><label for="checkAdminRH">Administratif et RH (pas d\'envoi à la presse) </label>';
+	echo '<input onchange="changeManifType();" type="checkbox" id="checkFinancier" name="checkFinancier"' . (($_4 != 0)? ' checked' : '') . ' /><label for="checkFinancier">Financier (pas d\'envoi à la presse)</label>';
 	echo '<br />';
 
 	$servername = "127.0.0.1";
