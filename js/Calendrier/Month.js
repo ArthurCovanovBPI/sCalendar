@@ -16,6 +16,8 @@ function changeManifType()
 	if(_a)
 		newManifType = "11111";
 
+	alert(location.href)
+
 key = encodeURI("calendarCheck");
 value = encodeURI(newManifType);
 
@@ -31,6 +33,8 @@ kvp[i] = x.join('=');
 break;
 }
 }
+
+	alert(kvp)
 
 if(i<0) {kvp[kvp.length] = [key,value].join('=');}
 
