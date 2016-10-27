@@ -15,12 +15,12 @@ for(i=0; i<cols.length; i++)
 	}
 }
 
-function eventDescription(timeStamp)
+function eventDescription(timeStamp, calendarCheck)
 {
-	$("#eventDescription").load("eventsDesc.php?timeStamp="+timeStamp);
+	$("#eventDescription").load("eventsDesc.php?timeStamp="+timeStamp+"&calendarCheck="+calendarCheck);
 }
 
-function monthEventDescription(timeStamp)
+function monthEventDescription(timeStamp, calendarCheck)
 {
-	$("#eventDescription").load("eventsDesc.php?timeStamp="+timeStamp+"&month=true");
+	$("#eventDescription").load("eventsDesc.php?timeStamp="+timeStamp+"&calendarCheck="+calendarCheck+"&month=true");
 }

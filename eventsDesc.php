@@ -1,4 +1,37 @@
 <?php
+	$_0 = 1;
+	$_1 = 1;
+	$_2 = 1;
+	$_3 = 0;
+	$_4 = 0;
+
+	if(isset($_GET['calendarCheck']) && is_numeric($_GET['calendarCheck']) && strlen($_GET['calendarCheck']) == 5)
+	{
+		$_arr = str_split($_GET['calendarCheck']);
+
+		$_0 = $_arr[0];
+		$_1 = $_arr[1];
+		$_2 = $_arr[2];
+		$_3 = $_arr[3];
+		$_4 = $_arr[4];
+
+		$urlManifTypeAddition = ("&calendarCheck=".$_0.$_1.$_2.$_3.$_4);
+	}
+
+	$sqlManifTypeAddition = "";
+	if(!($_0 == 0 && $_1 == 0 && $_2 == 0 && $_3 == 0 && $_4 == 0))
+	{
+		$sqlManifTypeAddition .= (($_0 != 0)? " OR type_manifestation_ID = 1" : "");
+		$sqlManifTypeAddition .= (($_1 != 0)? " OR type_manifestation_ID = 2" : "");
+		$sqlManifTypeAddition .= (($_2 != 0)? " OR type_manifestation_ID = 6" : "");
+		$sqlManifTypeAddition .= (($_3 != 0)? " OR type_manifestation_ID = 3 OR type_manifestation_ID = 4" : "");
+		$sqlManifTypeAddition .= (($_4 != 0)? " OR type_manifestation_ID = 5" : "");
+
+		$sqlManifTypeAddition = substr($sqlManifTypeAddition, 4);
+
+		$sqlManifTypeAddition = (" AND (" . $sqlManifTypeAddition . ")");
+	}
+
 	if(isset($_GET['timeStamp']) && is_numeric($_GET['timeStamp']))
 	{
 		$servername = "127.0.0.1";
@@ -101,8 +134,7 @@
 			<?php
 				mysql_select_db($dbname, $conn);
 				mysql_query('SET character_set_results = "UTF8", character_set_client = "UTF8", character_set_connection = "UTF8", character_set_database = "UTF8", character_set_server = "UTF8"');
-				//$sql = 'SELECT * FROM manifestation WHERE debut_manif_date >= FROM_UNIXTIME(' . (intval($_GET['timeStamp'])) . ') AND fin_manif_date >= FROM_UNIXTIME(' . $_GET['timeStamp'] . ')';
-				//$sql = 'SELECT * FROM manifestation WHERE debut_manif_date <= FROM_UNIXTIME(' . (intval($_GET['timeStamp'])+86400) . ') AND fin_manif_date > FROM_UNIXTIME(' . $_GET['timeStamp'] . ')';
+
 				$endDay=$curdate['mday'];
 				$endMonth=$curdate['mon'];
 				$endYear=$curdate['year'];
@@ -122,15 +154,15 @@
 						'SELECT COUNT(*) AS count
 						FROM manifestation
 						INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
-						WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . '312359  AND fin_manif >= ' . $curdate['year'] . sprintf("%02d", $curdate['mon']) . '000000)';
+						WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . '312359  AND fin_manif >= ' . $curdate['year'] . sprintf("%02d", $curdate['mon']) . '000000)' . $sqlManifTypeAddition;
 				}
 				else
 					$sql =
 						'SELECT COUNT(*) AS count
 						FROM manifestation
 						INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
-						WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . sprintf("%02d", $curdate['mday']) . '2359  AND fin_manif >= ' . $endYear . sprintf("%02d", $endMonth) . sprintf("%02d", $endDay) . '0000)';
-				//echo($sql);
+						WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . sprintf("%02d", $curdate['mday']) . '2359  AND fin_manif >= ' . $endYear . sprintf("%02d", $endMonth) . sprintf("%02d", $endDay) . '0000)' . $sqlManifTypeAddition;
+
 				$req = mysql_query($sql);
 				if(!$req)
 				{
@@ -159,7 +191,7 @@
 						INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
 						INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_id = tm.id
 						INNER JOIN status_manifestation AS stat ON manifestation.status_manifestation_id = stat.id
-						WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . '312359  AND fin_manif >= ' . $curdate['year'] . sprintf("%02d", $curdate['mon']) . '000000)';
+						WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . '312359  AND fin_manif >= ' . $curdate['year'] . sprintf("%02d", $curdate['mon']) . '000000)' . $sqlManifTypeAddition;
 				else
 					$sql =
 						'SELECT	intitule,
@@ -172,10 +204,10 @@
 						INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
 						INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_id = tm.id
 						INNER JOIN status_manifestation AS stat ON manifestation.status_manifestation_id = stat.id
-						WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . sprintf("%02d", $curdate['mday']) . '2359  AND fin_manif >= ' . $endYear . sprintf("%02d", $endMonth) . sprintf("%02d", $endDay) . '0000)';
-				//echo($sql);
+						WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . sprintf("%02d", $curdate['mday']) . '2359  AND fin_manif >= ' . $endYear . sprintf("%02d", $endMonth) . sprintf("%02d", $endDay) . '0000)' . $sqlManifTypeAddition;
+
 				$req = mysql_query($sql);
-					//print_r(mysql_num_rows($req));
+
 				if(!$req)
 				{
 					echo(mysql_errno($conn) . ' : ' . mysql_error($conn));
@@ -202,18 +234,17 @@
 						{
 							$data = mysql_fetch_assoc($req);
 							echo '<tr>';
-							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['intitule'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['status'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['type'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['responsable_mail'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['observations'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['evenement'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['intitule'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['status'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['type'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['responsable_mail'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['observations'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['evenement'].'</td>';
 							echo '</tr>';
 							$i=$i+1;
 						}
 						echo '<tr>';
-						echo '<td COLSPAN=7 style="border: 1px solid #A0A0A0; white-space: nowrap;text-align: left; margin-left: 5px;">+ ' . ($count-$i) . ' autres</td>';
-						//echo '<td COLSPAN=7 style="border: 1px solid #A0A0A0; white-space: nowrap;text-align: left; margin-left: 5px;">+ ' . ($count-$i) . ' autre'.((($count-$i)>1)?'s':'').'</td>';
+						echo 	'<td COLSPAN=7 style="border: 1px solid #A0A0A0; white-space: nowrap;text-align: left; margin-left: 5px;">+ ' . ($count-$i) . ' autres</td>';
 						echo '</tr>';
 					}
 					else
@@ -221,12 +252,12 @@
 						while($data = mysql_fetch_assoc($req))
 						{
 							echo '<tr>';
-							echo '<td style="white-space: nowrap;text-align: right;">'.$data['intitule'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right;">'.$data['status'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right;">'.$data['type'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right;">'.$data['responsable_mail'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right;">'.$data['observations'].'</td>';
-							echo '<td style="white-space: nowrap;text-align: right;">'.$data['evenement'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: right;">'.$data['intitule'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: right;">'.$data['status'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: right;">'.$data['type'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: right;">'.$data['responsable_mail'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: right;">'.$data['observations'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: right;">'.$data['evenement'].'</td>';
 							echo '</tr>';
 						}
 					}
