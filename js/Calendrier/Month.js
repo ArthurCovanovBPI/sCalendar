@@ -20,11 +20,11 @@ function changeManifType()
 
 	if(url.indexOf("?")==-1)
 	{
-		url += "?calendarCheck"+newManifType);
+		url += ("?calendarCheck"+newManifType);
 	}
 	else if(url.indexOf("calendarCheck")==-1)
 	{
-		url += "&calendarCheck"+newManifType);
+		url += ("&calendarCheck"+newManifType);
 	}
 	else
 	{
@@ -40,7 +40,7 @@ function changeManifType()
 		{
 			x = kvp[i].split('=');
 
-			if (x[0]==key)
+			if(x[0]==key)
 			{
 				x[1] = value;
 				kvp[i] = x.join('=');
