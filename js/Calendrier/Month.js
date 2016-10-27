@@ -5,7 +5,6 @@ function eventDescription(timeStamp, calendarCheck)
 
 function changeManifType()
 {
-	var _a = document.getElementById("checkTout").checked;
 	var _0 = document.getElementById("checkManifPublique").checked;
 	var _1 = document.getElementById("checkManifInterne").checked;
 	var _2 = document.getElementById("checkCalendaire").checked;
@@ -13,8 +12,6 @@ function changeManifType()
 	var _4 = document.getElementById("checkFinancier").checked;
 
 	var newManifType = ((_0)?"1":"0") + ((_1)?"1":"0") + ((_2)?"1":"0") + ((_3)?"1":"0") + ((_4)?"1":"0");
-	if(_a)
-		newManifType = "11111";
 
 	var url = location.href;
 

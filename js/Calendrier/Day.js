@@ -5,7 +5,6 @@ function eventDescription(eventID)
 
 function changeManifType()
 {
-	var _a = document.getElementById("checkTout").checked;
 	var _0 = document.getElementById("checkManifPublique").checked;
 	var _1 = document.getElementById("checkManifInterne").checked;
 	var _2 = document.getElementById("checkCalendaire").checked;
@@ -13,8 +12,6 @@ function changeManifType()
 	var _4 = document.getElementById("checkFinancier").checked;
 
 	var newManifType = ((_0)?"1":"0") + ((_1)?"1":"0") + ((_2)?"1":"0") + ((_3)?"1":"0") + ((_4)?"1":"0");
-	if(_a)
-		newManifType = "11111";
 
 	var url = location.href;
 
@@ -63,16 +60,16 @@ function changeA()
 		document.getElementById("checkManifPublique").checked=true;
 		document.getElementById("checkManifInterne").checked=true;
 		document.getElementById("checkCalendaire").checked=true;
-		document.getElementById("checkAdminRH").checked=false;
-		document.getElementById("checkFinancier").checked=false;
+		document.getElementById("checkAdminRH").checked=true;
+		document.getElementById("checkFinancier").checked=true;
 	}
 	else
 	{
 		document.getElementById("checkManifPublique").checked=true;
 		document.getElementById("checkManifInterne").checked=true;
 		document.getElementById("checkCalendaire").checked=true;
-		document.getElementById("checkAdminRH").checked=true;
-		document.getElementById("checkFinancier").checked=true;
+		document.getElementById("checkAdminRH").checked=false;
+		document.getElementById("checkFinancier").checked=false;
 	}
 
 	changeManifType();
