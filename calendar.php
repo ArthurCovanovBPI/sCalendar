@@ -93,7 +93,7 @@
 					'SELECT COUNT(*) AS count
 					FROM manifestation
 					INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
-					WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . sprintf("%02d", $curdate['mday']) . '2359  AND fin_manif >= ' . $curdate['year'] . sprintf("%02d", $curdate['mon']) . sprintf("%02d", $curdate['mday']) . '0000)';
+					WHERE (debut_manif <= '. $curdate['year'] . sprintf("%02d", $curdate['mon']) . sprintf("%02d", $curdate['mday']) . '2359  AND fin_manif >= ' . $curdate['year'] . sprintf("%02d", $curdate['mon']) . sprintf("%02d", $curdate['mday']) . '0000)' . $sqlManifTypeAddition;
 
 				$req = mysql_query($sql);
 				$data = mysql_fetch_assoc($req);
@@ -149,7 +149,7 @@
 				FROM manifestation
 				INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_id = tm.id
 				INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
-				WHERE (debut_manif <= '. $today['year'] . sprintf("%02d", $today['mon']) . sprintf("%02d", $today['mday']) . '2359  AND fin_manif >= ' . $today['year'] . sprintf("%02d", $today['mon']) . sprintf("%02d", $today['mday']) . '0000)';
+				WHERE (debut_manif <= '. $today['year'] . sprintf("%02d", $today['mon']) . sprintf("%02d", $today['mday']) . '2359  AND fin_manif >= ' . $today['year'] . sprintf("%02d", $today['mon']) . sprintf("%02d", $today['mday']) . '0000)' . $sqlManifTypeAddition;
 			$req = mysql_query($sql);
 			while($data = mysql_fetch_assoc($req))
 			{
@@ -282,7 +282,7 @@
 					'SELECT COUNT(*) AS count
 					FROM manifestation
 					INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
-					WHERE (debut_manif <= '. $curDayDate['year'] . sprintf("%02d", $curDayDate['mon']) . sprintf("%02d", $curDayDate['mday']) . '2359  AND fin_manif >= ' . $curDayDate['year'] . sprintf("%02d", $curDayDate['mon']) . sprintf("%02d", $curDayDate['mday']) . '0000)';
+					WHERE (debut_manif <= '. $curDayDate['year'] . sprintf("%02d", $curDayDate['mon']) . sprintf("%02d", $curDayDate['mday']) . '2359  AND fin_manif >= ' . $curDayDate['year'] . sprintf("%02d", $curDayDate['mon']) . sprintf("%02d", $curDayDate['mday']) . '0000)' . $sqlManifTypeAddition;
 
 				$req = mysql_query($sql);
 				$data = mysql_fetch_assoc($req);
@@ -294,7 +294,7 @@
 							fin_manif
 					FROM manifestation
 					INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
-					WHERE (debut_manif <= '. $curDayDate['year'] . sprintf("%02d", $curDayDate['mon']) . sprintf("%02d", $curDayDate['mday']) . '2359  AND fin_manif >= ' . $curDayDate['year'] . sprintf("%02d", $curDayDate['mon']) . sprintf("%02d", $curDayDate['mday']) . '0000)';
+					WHERE (debut_manif <= '. $curDayDate['year'] . sprintf("%02d", $curDayDate['mon']) . sprintf("%02d", $curDayDate['mday']) . '2359  AND fin_manif >= ' . $curDayDate['year'] . sprintf("%02d", $curDayDate['mon']) . sprintf("%02d", $curDayDate['mday']) . '0000)' . $sqlManifTypeAddition;
 
 				$req = mysql_query($sql);
 
