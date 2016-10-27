@@ -23,11 +23,11 @@
 	$sqlManifTypeAddition = "";
 	if($_a == 0)
 	{
-		$sqlManifTypeAddition .= (($_0 != 0)? " OR type_manifestation_ID == 1" : "");
-		$sqlManifTypeAddition .= (($_1 != 0)? " OR type_manifestation_ID == 2" : "");
-		$sqlManifTypeAddition .= (($_2 != 0)? " OR type_manifestation_ID == 6" : "");
-		$sqlManifTypeAddition .= (($_3 != 0)? " OR type_manifestation_ID == 3 OR type_manifestation_ID == 4" : "");
-		$sqlManifTypeAddition .= (($_4 != 0)? " OR type_manifestation_ID == 5" : "");
+		$sqlManifTypeAddition .= (($_0 != 0)? " OR type_manifestation_ID = 1" : "");
+		$sqlManifTypeAddition .= (($_1 != 0)? " OR type_manifestation_ID = 2" : "");
+		$sqlManifTypeAddition .= (($_2 != 0)? " OR type_manifestation_ID = 6" : "");
+		$sqlManifTypeAddition .= (($_3 != 0)? " OR type_manifestation_ID = 3 OR type_manifestation_ID = 4" : "");
+		$sqlManifTypeAddition .= (($_4 != 0)? " OR type_manifestation_ID = 5" : "");
 
 		$sqlManifTypeAddition = substr($sqlManifTypeAddition, 4);
 
