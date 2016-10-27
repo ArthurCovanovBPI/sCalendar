@@ -141,7 +141,7 @@
 			}
 		}
 
-		function generateEventArray($today)
+		function generateEventArray($today, $sqlManifTypeAddition)
 		{
 			$eventArray = array();
 			$sql = 
@@ -232,7 +232,7 @@
 		}
 
 		echo('<div style="position: relative; width:100%; height: 770px; overflow: auto; overflow-y:hidden;">');
-		$eventArray = generateEventArray($today);
+		$eventArray = generateEventArray($today, $sqlManifTypeAddition);
 		$ret = createDayColumns($eventArray);
 		echo('<table class="dayTable" border="1" style="position: absolute; min-width: 100%; width:'.(count($ret)*150+81).'px;">');
 		echo('<tr style="">
