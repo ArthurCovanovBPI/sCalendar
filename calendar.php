@@ -1,4 +1,11 @@
 <?php
+	echo '<input type="checkbox" id="checkTout" name="checkTout" /><label for="checkTout">Tout </label>';
+	echo '<input type="checkbox" id="checkManifPublique" name="checkManifPublique" checked /><label for="checkManifPublique">Manifestation publique </label>';
+	echo '<input type="checkbox" id="checkManifInterne" name="checkManifInterne" checked /><label for="checkManifInterne">Manfestation / réunion interne </label>';
+	echo '<input type="checkbox" id="checkCalendaire" name="checkCalendaire" checked /><label for="checkCalendaire">Événement de type calendaire (vacances, jours fériés) </label>';
+	echo '<input type="checkbox" id="checkAdminRH" name="checkAdminRH" /><label for="checkAdminRH">Administratif et RH (pas d\'envoi à la presse) </label>';
+	echo '<input type="checkbox" id="checkFinancier" name="checkFinancier" /><label for="checkFinancier">Financier (pas d\'envoi à la presse)</label>';
+	echo '<br />';
 
 	$servername = "127.0.0.1";
 	$username = "root";
@@ -24,7 +31,6 @@
 		echo('<table class="yearTable" border="1" style="width: 100%; table-layout: fixed;">');
 		echo(
 			'<tr style="background-color: rgba(200, 200, 200, 0.6);">'.
-				//'<th style="width:30px;"></th>'.
 				'<th class="col1" onmouseover="highlightColumn(\'col1\');monthEventDescription('.strtotime(($today[year]) . '/1/1').');" onmouseleave="lowlightColumn(\'col1\');"><a href="?timeStamp='.strtotime(($today[year]) . '/1/1').'">Janvier</a></th>
 				<th class="col2" onmouseover="highlightColumn(\'col2\');monthEventDescription('.strtotime(($today[year]) . '/2/1').');" onmouseleave="lowlightColumn(\'col2\');"><a href="?timeStamp='.strtotime(($today[year]) . '/2/1').'">Février</a></th>
 				<th class="col3" onmouseover="highlightColumn(\'col3\');monthEventDescription('.strtotime(($today[year]) . '/3/1').');" onmouseleave="lowlightColumn(\'col3\');"><a href="?timeStamp='.strtotime(($today[year]) . '/3/1').'">Mars</a></th>
@@ -42,17 +48,12 @@
 		for($d = 1; $d <= 31; $d++)
 		{
 			echo('<tr>');
-			//echo('<th style="width:30px;background-color: rgba(200, 200, 200, 0.6);">'.$d.'</th>');
+
 			for($m = 1; $m<=12; $m++)
 			{
 				$curTimeStamp=strtotime(($today[year]).'/'.$m.'/'.$d);
 				$curdate=getdate($curTimeStamp);
-				/*$sql =
-					'SELECT COUNT(*) AS count
-					FROM manifestation
-					INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
-					WHERE (debut_manif_year < '. $curdate['year'] . ' OR (debut_manif_year = '. $curdate['year'] . ' AND (debut_manif_month < ' . $curdate['mon'] . ' OR (debut_manif_month = ' . $curdate['mon'] . ' AND debut_manif_day <= ' . $curdate['mday'] . ')))) AND (fin_manif_year > '. $curdate['year'] . ' OR (fin_manif_year = '. $curdate['year'] . ' AND (fin_manif_month > ' . $curdate['mon'] . ' OR (fin_manif_month = ' . $curdate['mon'] . ' AND fin_manif_day >= ' . $curdate['mday'] . '))))';
-*/
+
 				$sql =
 					'SELECT COUNT(*) AS count
 					FROM manifestation
@@ -179,20 +180,13 @@
 				foreach($dayColumn->events as $ev)
 				{
 					$b = mt_rand(0x000000, 0xFFFFFF);
-					//echo sprintf('#%06X', $b);
-					/*$t = ($b>>16)&0x0000FF;
-					$t = ($t|(($b<<8)&0xFFFF00));*/
 					$t = (~$b)&0xFFFFFF;
+
 					if((($b&0xFF0000)<=0xA00000)&&(($b&0xFF00)<=0xA000))
 						$t=$t|0xF0F0F0;
 					else
 						$t=$t&0x3F3F3F;
-					/*$t = 0xFF0000-($b&0xFF0000);
-					$t = $t|(0x00FF00-($b&0x00FF00));
-					$t = $t|(0x0000FF-($b&0x0000FF));*/
-					/*$t = ($b<<16)&0xFF0000;
-					$t = $t|($b&0x00FF00);*/
-					//echo sprintf('#%06X', $t);
+
 					echo('<a class="eventCase" href="?menu=evenement&eventID='.$ev->id.'" onmouseover="eventDescription('.$ev->id.');" style="background-color:'.sprintf('#%06X', $b).'; position: absolute; left: '.(80+150*$i).'px; top: '.(30+$ev->start*15).'px; width: 147px; height: '.(($ev->end-$ev->start)*15-3).'px; overflow:hidden; text-overflow: ellipsis; color: '.sprintf('#%06X', $t).';">'.$ev->txt.'</a>');
 				}
 			}
@@ -219,14 +213,6 @@
 	}
 	else
 	{
-		echo '<input type="checkbox" id="checkTout" name="checkTout" /><label for="checkTout">Tout </label>';
-		echo '<input type="checkbox" id="checkManifPublique" name="checkManifPublique" checked /><label for="checkManifPublique">Manifestation publique </label>';
-		echo '<input type="checkbox" id="checkManifInterne" name="checkManifInterne" checked /><label for="checkManifInterne">Manfestation / réunion interne </label>';
-		echo '<input type="checkbox" id="checkCalendaire" name="checkCalendaire" checked /><label for="checkCalendaire">Événement de type calendaire (vacances, jours fériés) </label>';
-		echo '<input type="checkbox" id="checkAdminRH" name="checkAdminRH" /><label for="checkAdminRH">Administratif et RH (pas d\'envoi à la presse) </label>';
-		echo '<input type="checkbox" id="checkFinancier" name="checkFinancier" /><label for="checkFinancier">Financier (pas d\'envoi à la presse)</label>';
-		echo '<br />';
-
 		echo('<table class="monthTable" border="1" style="width:100%;">');
 
 		echo
@@ -254,32 +240,8 @@
 			echo('<tr>');
 			for($d = 0; $d < 7; $d++, $daysCursor++)
 			{
-				/*$curDayTimeStamp = $today[0]-(($today[mday]-1)*86400)+($daysCursor*86400);
-				$curDayDate = getdate($curDayTimeStamp);
-
-				$sql =
-					'SELECT COUNT(*) AS count
-					FROM manifestation
-					INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
-					WHERE (debut_manif <= '. $curDayDate['year'] . sprintf("%02d", $curDayDate['mon']) . sprintf("%02d", $curDayDate['mday']) . '2359  AND fin_manif >= ' . $curDayDate['year'] . sprintf("%02d", $curDayDate['mon']) . sprintf("%02d", $curDayDate['mday']) . '0000)';
-
-				$req = mysql_query($sql);
-				$data = mysql_fetch_assoc($req);
-
-				echo('<td' . ((($curDayDate[yday] == $realToday[yday])&&($curDayDate[year] == $realToday[year])) ? ' id="today"' : '') . (($curDayDate[mon] != $today[mon]) ? ' class="outMonth"' : '') . '>');
-				//echo($daysCursor);
-				//echo("<br />");
-				//onmouseover="eventDescription('.$curDayTimeStamp.');
-				echo('<a onmouseover="eventDescription('.$curDayTimeStamp.');" href="?timeAdvance=day&timeStamp='.$curDayTimeStamp.'" style="padding:5px;">');
-				//echo(date('D jS F Y ',$curDayDate[0]));
-				echo(wday2tritter($curDayDate[wday]).' '.$curDayDate[mday].' '.mon2mois($curDayDate[mon]).' '.$curDayDate[year]);
-				echo('<br /><br /><br />');
-				echo((!$req)? 'ERROR' : (($data['count']>0)?($data['count'].' événement'.(($data['count']>1)?'s':'')):''));
-				echo('</a>');
-				echo('</td>');*/
 				$curDayTimeStamp = $today[0]-(($today[mday]-1)*86400)+($daysCursor*86400);
 				$curDayDate = getdate($curDayTimeStamp);
-
 
 				$sql =
 					'SELECT COUNT(*) AS count
@@ -290,7 +252,6 @@
 				$req = mysql_query($sql);
 				$data = mysql_fetch_assoc($req);
 				$count = $data[count];
-
 
 				$sql =
 					'SELECT	intitule,
@@ -303,19 +264,15 @@
 				$req = mysql_query($sql);
 
 				echo('<td' . ((($curDayDate[yday] == $realToday[yday])&&($curDayDate[year] == $realToday[year])) ? ' id="today"' : '') . (($curDayDate[mon] != $today[mon]) ? ' class="outMonth"' : '') . '>');
-				//echo($daysCursor);
-				//echo("<br />");
-				//onmouseover="eventDescription('.$curDayTimeStamp.');
+
 				echo('<a onmouseover="eventDescription('.$curDayTimeStamp.');" href="?timeAdvance=day&timeStamp='.$curDayTimeStamp.'" style="padding:5px;">');
-				//echo(date('D jS F Y ',$curDayDate[0]));
+
 				echo(wday2tritter($curDayDate[wday]).' '.$curDayDate[mday].' '.mon2mois($curDayDate[mon]).' '.$curDayDate[year]);
 				echo('<br /><br />');
 				if($count <= 5)
 				{
 					while($data = mysql_fetch_assoc($req))
 					{
-						//echo('<div style="text-overflow: ellipsis;">');
-
 						if((float)$data['debut_manif'] < (float)($curDayDate['year'].sprintf('%02d', $curDayDate['mon']).sprintf('%02d', $curDayDate['mday']).'0000'))
 						{
 							echo(substr($data['debut_manif'], 6, 2) . '/' . substr($data['debut_manif'], 4, 2) . '/' . substr($data['debut_manif'], 0, 4));
@@ -324,18 +281,10 @@
 						{
 							echo(substr($data['debut_manif'], 8, 2) . 'h' .  substr($data['debut_manif'], -2));
 						}
-						/*if((float)$data['fin_manif'] > (float)($curDayDate['year'].sprintf('%02d', $curDayDate['mon']).sprintf('%02d', $curDayDate['mday']).'2359'))
-						{
-							echo(' - ' .substr($data['fin_manif'], 6, 2) . '/' . substr($data['fin_manif'], 4, 2) . '/' . substr($data['fin_manif'], 0, 4));
-						}
-						else
-						{
-							echo(' - ' . substr($data['fin_manif'], 8, 2) . 'h' . substr($data['fin_manif'], -2));
-						}*/
+
 						echo(' - ');
 						echo($data['intitule']);
 						echo('<br />');
-						//echo('</div>');
 					}
 				}
 				else
@@ -353,14 +302,7 @@
 						{
 							echo(substr($data['debut_manif'], 8, 2) . 'h' .  substr($data['debut_manif'], -2));
 						}
-						/*if((float)$data['fin_manif'] > (float)($curDayDate['year'].sprintf('%02d', $curDayDate['mon']).sprintf('%02d', $curDayDate['mday']).'2359'))
-						{
-							echo(' - ' .substr($data['fin_manif'], 6, 2) . '/' . substr($data['fin_manif'], 4, 2) . '/' . substr($data['fin_manif'], 0, 4));
-						}
-						else
-						{
-							echo(' - ' . substr($data['fin_manif'], 8, 2) . 'h' . substr($data['fin_manif'], -2));
-						}*/
+
 						echo(' - ');
 						echo($data['intitule']);
 
