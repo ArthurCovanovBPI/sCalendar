@@ -39,11 +39,11 @@ function changeManifType()
 
 	if(url.indexOf("?")==-1)
 	{
-		url += ("?calendarCheck"+newManifType);
+		url += ("?calendarCheck="+newManifType);
 	}
 	else if(url.indexOf("calendarCheck")==-1)
 	{
-		url += ("&calendarCheck"+newManifType);
+		url += ("&calendarCheck="+newManifType);
 	}
 	else
 	{
