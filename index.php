@@ -229,6 +229,7 @@
 								default:
 								break;
 							}
+							echo('<script src="js/Calendrier/Calendrier.js" type="text/javascript"></script>');
 						break;
 						default:
 						break;
