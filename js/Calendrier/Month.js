@@ -12,7 +12,7 @@ function changeManifType()
 	var _3 = document.getElementById("checkAdminRH").checked;
 	var _4 = document.getElementById("checkFinancier").checked;
 
-	var newManifType = _a + _0 + _1 + _2 + _3 + _4;
+	var newManifType = "" + _a + _0 + _1 + _2 + _3 + _4;
 
 	alert(newManifType);
 }
