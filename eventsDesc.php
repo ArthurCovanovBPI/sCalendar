@@ -14,8 +14,6 @@
 		$_2 = $_arr[2];
 		$_3 = $_arr[3];
 		$_4 = $_arr[4];
-
-		$urlManifTypeAddition = ("&calendarCheck=".$_0.$_1.$_2.$_3.$_4);
 	}
 
 	$sqlManifTypeAddition = "";

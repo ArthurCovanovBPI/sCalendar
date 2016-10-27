@@ -21,7 +21,7 @@ function changeManifType()
 key = encodeURI("calendarCheck");
 value = encodeURI(newManifType);
 
-var kvp = document.location.split('&');
+var kvp = location.href.split('&');
 while(i--) 
 {
 x = kvp[i].split('=');

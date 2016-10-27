@@ -71,18 +71,18 @@
 		echo('<table class="yearTable" border="1" style="width: 100%; table-layout: fixed;">');
 		echo(
 				'<tr style="background-color: rgba(200, 200, 200, 0.6);">'.
-					'<th class="col1" onmouseover="highlightColumn(\'col1\');monthEventDescription('.strtotime(($today[year]) . '/1/1').', '.$flagsManifTypeAddition.');" onmouseleave="lowlightColumn(\'col1\');"><a href="?timeStamp='.strtotime(($today[year]) . '/1/1').$urlManifTypeAddition.'">Janvier</a></th>
-					<th class="col2" onmouseover="highlightColumn(\'col2\');monthEventDescription('.strtotime(($today[year]) . '/2/1').', '.$flagsManifTypeAddition.');" onmouseleave="lowlightColumn(\'col2\');"><a href="?timeStamp='.strtotime(($today[year]) . '/2/1').$urlManifTypeAddition.'">Février</a></th>
-					<th class="col3" onmouseover="highlightColumn(\'col3\');monthEventDescription('.strtotime(($today[year]) . '/3/1').', '.$flagsManifTypeAddition.');" onmouseleave="lowlightColumn(\'col3\');"><a href="?timeStamp='.strtotime(($today[year]) . '/3/1').$urlManifTypeAddition.'">Mars</a></th>
-					<th class="col4" onmouseover="highlightColumn(\'col4\');monthEventDescription('.strtotime(($today[year]) . '/4/1').', '.$flagsManifTypeAddition.');" onmouseleave="lowlightColumn(\'col4\');"><a href="?timeStamp='.strtotime(($today[year]) . '/4/1').$urlManifTypeAddition.'">Avril</a></th>
-					<th class="col5" onmouseover="highlightColumn(\'col5\');monthEventDescription('.strtotime(($today[year]) . '/5/1').', '.$flagsManifTypeAddition.');" onmouseleave="lowlightColumn(\'col5\');"><a href="?timeStamp='.strtotime(($today[year]) . '/5/1').$urlManifTypeAddition.'">Mai</a></th>
-					<th class="col6" onmouseover="highlightColumn(\'col6\');monthEventDescription('.strtotime(($today[year]) . '/6/1').', '.$flagsManifTypeAddition.');" onmouseleave="lowlightColumn(\'col6\');"><a href="?timeStamp='.strtotime(($today[year]) . '/6/1').$urlManifTypeAddition.'">Juin</a></th>
-					<th class="col7" onmouseover="highlightColumn(\'col7\');monthEventDescription('.strtotime(($today[year]) . '/7/1').', '.$flagsManifTypeAddition.');" onmouseleave="lowlightColumn(\'col7\');"><a href="?timeStamp='.strtotime(($today[year]) . '/7/1').$urlManifTypeAddition.'">Juillet</a></th>
-					<th class="col8" onmouseover="highlightColumn(\'col8\');monthEventDescription('.strtotime(($today[year]) . '/8/1').', '.$flagsManifTypeAddition.');" onmouseleave="lowlightColumn(\'col8\');"><a href="?timeStamp='.strtotime(($today[year]) . '/8/1').$urlManifTypeAddition.'">Aout</a></th>
-					<th class="col9" onmouseover="highlightColumn(\'col9\');monthEventDescription('.strtotime(($today[year]) . '/9/1').', '.$flagsManifTypeAddition.');" onmouseleave="lowlightColumn(\'col9\');"><a href="?timeStamp='.strtotime(($today[year]) . '/9/1').$urlManifTypeAddition.'">Septembre</a></th>
-					<th class="col10" onmouseover="highlightColumn(\'col10\');monthEventDescription('.strtotime(($today[year]) . '/10/1').', '.$flagsManifTypeAddition.');" onmouseleave="lowlightColumn(\'col10\');"><a href="?timeStamp='.strtotime(($today[year]) . '/10/1').$urlManifTypeAddition.'">Octobre</a></th>
-					<th class="col11" onmouseover="highlightColumn(\'col11\');monthEventDescription('.strtotime(($today[year]) . '/11/1').', '.$flagsManifTypeAddition.');" onmouseleave="lowlightColumn(\'col11\');"><a href="?timeStamp='.strtotime(($today[year]) . '/11/1').$urlManifTypeAddition.'">Novembre</a></th>
-					<th class="col12" onmouseover="highlightColumn(\'col12\');monthEventDescription('.strtotime(($today[year]) . '/12/1').', '.$flagsManifTypeAddition.');" onmouseleave="lowlightColumn(\'col12\');"><a href="?timeStamp='.strtotime(($today[year]) . '/12/1').$urlManifTypeAddition.'">Décembre</a></th>
+					'<th class="col1" onmouseover="highlightColumn(\'col1\');monthEventDescription('.strtotime(($today[year]) . '/1/1').', \''.$flagsManifTypeAddition.'\');" onmouseleave="lowlightColumn(\'col1\');"><a href="?timeStamp='.strtotime(($today[year]) . '/1/1').$urlManifTypeAddition.'">Janvier</a></th>
+					<th class="col2" onmouseover="highlightColumn(\'col2\');monthEventDescription('.strtotime(($today[year]) . '/2/1').', \''.$flagsManifTypeAddition.'\');" onmouseleave="lowlightColumn(\'col2\');"><a href="?timeStamp='.strtotime(($today[year]) . '/2/1').$urlManifTypeAddition.'">Février</a></th>
+					<th class="col3" onmouseover="highlightColumn(\'col3\');monthEventDescription('.strtotime(($today[year]) . '/3/1').', \''.$flagsManifTypeAddition.'\');" onmouseleave="lowlightColumn(\'col3\');"><a href="?timeStamp='.strtotime(($today[year]) . '/3/1').$urlManifTypeAddition.'">Mars</a></th>
+					<th class="col4" onmouseover="highlightColumn(\'col4\');monthEventDescription('.strtotime(($today[year]) . '/4/1').', \''.$flagsManifTypeAddition.'\');" onmouseleave="lowlightColumn(\'col4\');"><a href="?timeStamp='.strtotime(($today[year]) . '/4/1').$urlManifTypeAddition.'">Avril</a></th>
+					<th class="col5" onmouseover="highlightColumn(\'col5\');monthEventDescription('.strtotime(($today[year]) . '/5/1').', \''.$flagsManifTypeAddition.'\');" onmouseleave="lowlightColumn(\'col5\');"><a href="?timeStamp='.strtotime(($today[year]) . '/5/1').$urlManifTypeAddition.'">Mai</a></th>
+					<th class="col6" onmouseover="highlightColumn(\'col6\');monthEventDescription('.strtotime(($today[year]) . '/6/1').', \''.$flagsManifTypeAddition.'\');" onmouseleave="lowlightColumn(\'col6\');"><a href="?timeStamp='.strtotime(($today[year]) . '/6/1').$urlManifTypeAddition.'">Juin</a></th>
+					<th class="col7" onmouseover="highlightColumn(\'col7\');monthEventDescription('.strtotime(($today[year]) . '/7/1').', \''.$flagsManifTypeAddition.'\');" onmouseleave="lowlightColumn(\'col7\');"><a href="?timeStamp='.strtotime(($today[year]) . '/7/1').$urlManifTypeAddition.'">Juillet</a></th>
+					<th class="col8" onmouseover="highlightColumn(\'col8\');monthEventDescription('.strtotime(($today[year]) . '/8/1').', \''.$flagsManifTypeAddition.'\');" onmouseleave="lowlightColumn(\'col8\');"><a href="?timeStamp='.strtotime(($today[year]) . '/8/1').$urlManifTypeAddition.'">Aout</a></th>
+					<th class="col9" onmouseover="highlightColumn(\'col9\');monthEventDescription('.strtotime(($today[year]) . '/9/1').', \''.$flagsManifTypeAddition.'\');" onmouseleave="lowlightColumn(\'col9\');"><a href="?timeStamp='.strtotime(($today[year]) . '/9/1').$urlManifTypeAddition.'">Septembre</a></th>
+					<th class="col10" onmouseover="highlightColumn(\'col10\');monthEventDescription('.strtotime(($today[year]) . '/10/1').', \''.$flagsManifTypeAddition.'\');" onmouseleave="lowlightColumn(\'col10\');"><a href="?timeStamp='.strtotime(($today[year]) . '/10/1').$urlManifTypeAddition.'">Octobre</a></th>
+					<th class="col11" onmouseover="highlightColumn(\'col11\');monthEventDescription('.strtotime(($today[year]) . '/11/1').', \''.$flagsManifTypeAddition.'\');" onmouseleave="lowlightColumn(\'col11\');"><a href="?timeStamp='.strtotime(($today[year]) . '/11/1').$urlManifTypeAddition.'">Novembre</a></th>
+					<th class="col12" onmouseover="highlightColumn(\'col12\');monthEventDescription('.strtotime(($today[year]) . '/12/1').', \''.$flagsManifTypeAddition.'\');" onmouseleave="lowlightColumn(\'col12\');"><a href="?timeStamp='.strtotime(($today[year]) . '/12/1').$urlManifTypeAddition.'">Décembre</a></th>
 				</tr>'
 		);
 		for($d = 1; $d <= 31; $d++)
@@ -103,7 +103,7 @@
 				$req = mysql_query($sql);
 				$data = mysql_fetch_assoc($req);
 				echo(
-					($d>cal_days_in_month(CAL_GREGORIAN,$m, $today[year])) ? ('<td class="outMonth">-</td>') : ('<td onmouseover="eventDescription('.$curTimeStamp.', '.$flagsManifTypeAddition.');" class="col'.$m.'"' . (($curdate[wday]==0) ? ' style="background-color:rgba(128, 112, 240, 0.7);"' : '') . '><a href="?timeAdvance=day&timeStamp='.$curTimeStamp.$urlManifTypeAddition.'">' . wday2letter($curdate[wday]) . ' ' . $d . ' <span style="float: right; margin-right: 4px;">' . ((!$req)? (mysql_errno($conn) . ' : ' . mysql_error($conn)) : (($data['count']>0)?($data['count'].' événement'.(($data['count']>1)?'s':'')):'')) . '</span></a></td>')
+					($d>cal_days_in_month(CAL_GREGORIAN,$m, $today[year])) ? ('<td class="outMonth">-</td>') : ('<td onmouseover="eventDescription('.$curTimeStamp.', \''.$flagsManifTypeAddition.'\');" class="col'.$m.'"' . (($curdate[wday]==0) ? ' style="background-color:rgba(128, 112, 240, 0.7);"' : '') . '><a href="?timeAdvance=day&timeStamp='.$curTimeStamp.$urlManifTypeAddition.'">' . wday2letter($curdate[wday]) . ' ' . $d . ' <span style="float: right; margin-right: 4px;">' . ((!$req)? (mysql_errno($conn) . ' : ' . mysql_error($conn)) : (($data['count']>0)?($data['count'].' événement'.(($data['count']>1)?'s':'')):'')) . '</span></a></td>')
 				);
 			}
 			echo('</tr>');
@@ -305,7 +305,7 @@
 
 				echo('<td' . ((($curDayDate[yday] == $realToday[yday])&&($curDayDate[year] == $realToday[year])) ? ' id="today"' : '') . (($curDayDate[mon] != $today[mon]) ? ' class="outMonth"' : '') . '>');
 
-				echo('<a onmouseover="eventDescription('.$curDayTimeStamp.', '.$flagsManifTypeAddition.');" href="?timeAdvance=day&timeStamp='.$curDayTimeStamp.$urlManifTypeAddition.'" style="padding:5px;">');
+				echo('<a onmouseover="eventDescription('.$curDayTimeStamp.', \''.$flagsManifTypeAddition.'\');" href="?timeAdvance=day&timeStamp='.$curDayTimeStamp.$urlManifTypeAddition.'" style="padding:5px;">');
 
 				echo(wday2tritter($curDayDate[wday]).' '.$curDayDate[mday].' '.mon2mois($curDayDate[mon]).' '.$curDayDate[year]);
 				echo('<br /><br />');
