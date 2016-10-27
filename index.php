@@ -330,6 +330,9 @@
 					<label for=\"yearRadioButton\">Année</label>");
 					echo("<input type=\"hidden\" name=\"timeStamp\" value=\"" . $today[0] . "\">");
 
+					if(isset($_GET['calendarCheck']) && is_numeric($_GET['calendarCheck']) && strlen($_GET['calendarCheck']) == 5)
+						echo("<input type=\"hidden\" name=\"calendarCheck\" value=\"" . $_GET['calendarCheck'] . "\">");
+
 					if($timeAdvance == "year")
 					{
 						$middleCalendarLegend=$today[year];
@@ -402,24 +405,6 @@
 			</div>
 		</div>
 		<div class="pageMid">
-			<!--<div class="middleParts" style="display: table;">
-				<div class="middlePart">
-					<fieldset class="middleWarningMessage">
-						<legend>Warning!</legend>
-						Site en construction
-					</fieldset>
-				</div>
-			</div>
-			<div class="middleParts" style="display: table;">
-				<div class="middlePart">
-					<fieldset class="middleWarningMessage">
-						<legend>Warning!</legend>
-						<?php
-							print_r($today);
-						?>
-					</fieldset>
-				</div>
-			</div>-->
 			<?php
 				switch($menu)
 				{
