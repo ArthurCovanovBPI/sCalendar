@@ -20,6 +20,20 @@
 			$_a = 1;
 	}
 
+	$sqlManifTypeAddition = "";
+	if($_a !=0)
+	{
+		$sqlManifTypeAddition += (($_0 != 0)? " OR type_manifestation_ID == 1" : "");
+		$sqlManifTypeAddition += (($_1 != 0)? " OR type_manifestation_ID == 2" : "");
+		$sqlManifTypeAddition += (($_2 != 0)? " OR type_manifestation_ID == 6" : "");
+		$sqlManifTypeAddition += (($_3 != 0)? " OR type_manifestation_ID == 3 OR type_manifestation_ID == 4" : "");
+		$sqlManifTypeAddition += (($_4 != 0)? " OR type_manifestation_ID == 5" : "");
+
+		$sqlManifTypeAddition = substr($sqlManifTypeAddition, 4);
+	}
+	echo $sqlManifTypeAddition;
+	echo "<br />";
+
 	echo '<input type="checkbox" id="checkTout" name="checkTout"' . (($_a != 0)? ' checked' : '') . '/><label for="checkTout">Tout </label>';
 	echo '<input type="checkbox" id="checkManifPublique" name="checkManifPublique"' . (($_0 != 0)? ' checked' : '') . ' /><label for="checkManifPublique">Manifestation publique </label>';
 	echo '<input type="checkbox" id="checkManifInterne" name="checkManifInterne"' . (($_1 != 0)? ' checked' : '') . ' /><label for="checkManifInterne">Manfestation / réunion interne </label>';
