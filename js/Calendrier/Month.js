@@ -63,16 +63,16 @@ function changeA()
 		document.getElementById("checkManifPublique").checked=true;
 		document.getElementById("checkManifInterne").checked=true;
 		document.getElementById("checkCalendaire").checked=true;
-		document.getElementById("checkAdminRH").checked=false;
-		document.getElementById("checkFinancier").checked=false;
+		document.getElementById("checkAdminRH").checked=true;
+		document.getElementById("checkFinancier").checked=true;
 	}
 	else
 	{
 		document.getElementById("checkManifPublique").checked=true;
 		document.getElementById("checkManifInterne").checked=true;
 		document.getElementById("checkCalendaire").checked=true;
-		document.getElementById("checkAdminRH").checked=true;
-		document.getElementById("checkFinancier").checked=true;
+		document.getElementById("checkAdminRH").checked=false;
+		document.getElementById("checkFinancier").checked=false;
 	}
 
 	changeManifType();
