@@ -20,9 +20,9 @@ function changeManifType()
 
 key = encodeURI("calendarCheck");
 value = encodeURI(newManifType);
+var kvp = location.href.split('&');
 var i=kvp.length;
 var x;
-var kvp = location.href.split('&');
 while(i--) 
 {
 x = kvp[i].split('=');
