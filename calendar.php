@@ -1,10 +1,31 @@
 <?php
-	echo '<input type="checkbox" id="checkTout" name="checkTout" /><label for="checkTout">Tout </label>';
-	echo '<input type="checkbox" id="checkManifPublique" name="checkManifPublique" checked /><label for="checkManifPublique">Manifestation publique </label>';
-	echo '<input type="checkbox" id="checkManifInterne" name="checkManifInterne" checked /><label for="checkManifInterne">Manfestation / réunion interne </label>';
-	echo '<input type="checkbox" id="checkCalendaire" name="checkCalendaire" checked /><label for="checkCalendaire">Événement de type calendaire (vacances, jours fériés) </label>';
-	echo '<input type="checkbox" id="checkAdminRH" name="checkAdminRH" /><label for="checkAdminRH">Administratif et RH (pas d\'envoi à la presse) </label>';
-	echo '<input type="checkbox" id="checkFinancier" name="checkFinancier" /><label for="checkFinancier">Financier (pas d\'envoi à la presse)</label>';
+	$_a = 0;
+	$_0 = 1;
+	$_1 = 1;
+	$_2 = 1;
+	$_3 = 0;
+	$_4 = 0;
+
+if(isset($_GET['calendarCheck']) && is_numeric($_GET['calendarCheck']) && strlen(is_numeric($_GET['calendarCheck'])) == 5)
+{
+	$_arr = str_split($_GET['calendarCheck']);
+
+	$_0 = $_arr[0];
+	$_1 = $_arr[1];
+	$_2 = $_arr[2];
+	$_3 = $_arr[3];
+	$_4 = $_arr[4];
+
+	if($_0 != 0 && $_1 != 0 && $_2 != 0 && $_3 != 0 && $_4 != 0)
+		$_a = 1;
+}
+
+	echo '<input type="checkbox" id="checkTout" name="checkTout"' . (($_a != 0)? ' checked' : '') . '/><label for="checkTout">Tout </label>';
+	echo '<input type="checkbox" id="checkManifPublique" name="checkManifPublique"' . (($_0 != 0)? ' checked' : '') . ' /><label for="checkManifPublique">Manifestation publique </label>';
+	echo '<input type="checkbox" id="checkManifInterne" name="checkManifInterne"' . (($_1 != 0)? ' checked' : '') . ' /><label for="checkManifInterne">Manfestation / réunion interne </label>';
+	echo '<input type="checkbox" id="checkCalendaire" name="checkCalendaire"' . (($_2 != 0)? ' checked' : '') . ' /><label for="checkCalendaire">Événement de type calendaire (vacances, jours fériés) </label>';
+	echo '<input type="checkbox" id="checkAdminRH" name="checkAdminRH"' . (($_3 != 0)? ' checked' : '') . ' /><label for="checkAdminRH">Administratif et RH (pas d\'envoi à la presse) </label>';
+	echo '<input type="checkbox" id="checkFinancier" name="checkFinancier"' . (($_4 != 0)? ' checked' : '') . ' /><label for="checkFinancier">Financier (pas d\'envoi à la presse)</label>';
 	echo '<br />';
 
 	$servername = "127.0.0.1";
