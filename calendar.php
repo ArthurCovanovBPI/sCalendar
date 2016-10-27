@@ -304,7 +304,7 @@
 
 				echo('<td' . ((($curDayDate[yday] == $realToday[yday])&&($curDayDate[year] == $realToday[year])) ? ' id="today"' : '') . (($curDayDate[mon] != $today[mon]) ? ' class="outMonth"' : '') . '>');
 
-				echo('<a onmouseover="eventDescription('.$curDayTimeStamp.');" href="?timeAdvance=day&timeStamp='.$curDayTimeStamp.'" style="padding:5px;">');
+				echo('<a onmouseover="eventDescription('.$curDayTimeStamp.');" href="?timeAdvance=day&timeStamp='.$curDayTimeStamp.$urlManifTypeAddition.'" style="padding:5px;">');
 
 				echo(wday2tritter($curDayDate[wday]).' '.$curDayDate[mday].' '.mon2mois($curDayDate[mon]).' '.$curDayDate[year]);
 				echo('<br /><br />');
