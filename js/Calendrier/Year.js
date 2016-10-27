@@ -38,27 +38,43 @@ function changeManifType()
 	if(_a)
 		newManifType = "11111";
 
-key = encodeURI("calendarCheck");
-value = encodeURI(newManifType);
+	var url = location.href;
 
-var kvp = document.location.split('&');
-while(i--) 
-{
-x = kvp[i].split('=');
+	if(url.indexOf("?")==-1)
+	{
+		url += ("?calendarCheck"+newManifType);
+	}
+	else if(url.indexOf("calendarCheck")==-1)
+	{
+		url += ("&calendarCheck"+newManifType);
+	}
+	else
+	{
+		key = encodeURI("calendarCheck");
+		value = encodeURI(newManifType);
 
-if (x[0]==key)
-{
-x[1] = value;
-kvp[i] = x.join('=');
-break;
-}
-}
+		var attr = url.split('?');
 
-if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+		var kvp = attr[1].split('&');
+		var i=kvp.length;
+		var x;
+		while(i--) 
+		{
+			x = kvp[i].split('=');
 
-//this will reload the page, it's likely better to store this until finished
-//document.location.search = kvp.join('&'); 
+			if(x[0]==key)
+			{
+				x[1] = value;
+				kvp[i] = x.join('=');
+				break;
+			}
+		}
 
-	alert(kvp.join('&'));
+		if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+
+		attr[1]=(kvp.join('&'));
+		url=attr.join('?');
+	}
+	location.href = url;
 }
 

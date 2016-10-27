@@ -48,13 +48,11 @@ function changeManifType()
 			}
 		}
 
-		alert(kvp)
-
 		if(i<0) {kvp[kvp.length] = [key,value].join('=');}
 
 		attr[1]=(kvp.join('&'));
 		url=attr.join('?');
 	}
-	alert(url);
+	location.href = url;
 }
 
