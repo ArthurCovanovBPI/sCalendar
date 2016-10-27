@@ -6,19 +6,19 @@
 	$_3 = 0;
 	$_4 = 0;
 
-if(isset($_GET['calendarCheck']) && is_numeric($_GET['calendarCheck']) && strlen(is_numeric($_GET['calendarCheck'])) == 5)
-{
-	$_arr = str_split($_GET['calendarCheck']);
+	if(isset($_GET['calendarCheck']) && is_numeric($_GET['calendarCheck']) && strlen($_GET['calendarCheck']) == 5)
+	{
+		$_arr = str_split($_GET['calendarCheck']);
 
-	$_0 = $_arr[0];
-	$_1 = $_arr[1];
-	$_2 = $_arr[2];
-	$_3 = $_arr[3];
-	$_4 = $_arr[4];
+		$_0 = $_arr[0];
+		$_1 = $_arr[1];
+		$_2 = $_arr[2];
+		$_3 = $_arr[3];
+		$_4 = $_arr[4];
 
-	if($_0 != 0 && $_1 != 0 && $_2 != 0 && $_3 != 0 && $_4 != 0)
-		$_a = 1;
-}
+		if($_0 != 0 && $_1 != 0 && $_2 != 0 && $_3 != 0 && $_4 != 0)
+			$_a = 1;
+	}
 
 	echo '<input type="checkbox" id="checkTout" name="checkTout"' . (($_a != 0)? ' checked' : '') . '/><label for="checkTout">Tout </label>';
 	echo '<input type="checkbox" id="checkManifPublique" name="checkManifPublique"' . (($_0 != 0)? ' checked' : '') . ' /><label for="checkManifPublique">Manifestation publique </label>';
