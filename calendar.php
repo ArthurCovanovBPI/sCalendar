@@ -21,7 +21,7 @@
 	}
 
 	$sqlManifTypeAddition = "";
-	if($_a !=0)
+	if($_a == 0)
 	{
 		$sqlManifTypeAddition .= (($_0 != 0)? " OR type_manifestation_ID == 1" : "");
 		$sqlManifTypeAddition .= (($_1 != 0)? " OR type_manifestation_ID == 2" : "");
@@ -31,10 +31,8 @@
 
 		$sqlManifTypeAddition = substr($sqlManifTypeAddition, 4);
 
-		$sqlManifTypeAddition = (" AND " . $sqlManifTypeAddition);
+		$sqlManifTypeAddition = (" AND (" . $sqlManifTypeAddition . ")");
 	}
-	echo $sqlManifTypeAddition;
-	echo "<br />";
 
 	echo '<input type="checkbox" id="checkTout" name="checkTout"' . (($_a != 0)? ' checked' : '') . '/><label for="checkTout">Tout </label>';
 	echo '<input type="checkbox" id="checkManifPublique" name="checkManifPublique"' . (($_0 != 0)? ' checked' : '') . ' /><label for="checkManifPublique">Manifestation publique </label>';
