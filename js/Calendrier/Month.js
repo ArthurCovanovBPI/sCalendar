@@ -16,32 +16,45 @@ function changeManifType()
 	if(_a)
 		newManifType = "11111";
 
-	alert(location.href)
+	var url = location.href;
 
-key = encodeURI("calendarCheck");
-value = encodeURI(newManifType);
-var kvp = location.href.split('&');
-var i=kvp.length;
-var x;
-while(i--) 
-{
-x = kvp[i].split('=');
+	if(url.indexOf("?")==-1)
+	{
+		url += "?calendarCheck"+newManifType);
+	}
+	else if(url.indexOf("calendarCheck")==-1)
+	{
+		url += "&calendarCheck"+newManifType);
+	}
+	else
+	{
+		key = encodeURI("calendarCheck");
+		value = encodeURI(newManifType);
 
-if (x[0]==key)
-{
-x[1] = value;
-kvp[i] = x.join('=');
-break;
-}
-}
+		var attr = url.split('?');
 
-	alert(kvp)
+		var kvp = attr[1].split('&');
+		var i=kvp.length;
+		var x;
+		while(i--) 
+		{
+			x = kvp[i].split('=');
 
-if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+			if (x[0]==key)
+			{
+				x[1] = value;
+				kvp[i] = x.join('=');
+				break;
+			}
+		}
 
-//this will reload the page, it's likely better to store this until finished
-//document.location.search = kvp.join('&'); 
+		alert(kvp)
 
-	alert(kvp.join('&'));
+		if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+
+		attr[1]=(kvp.join('&'));
+		url=attr.join('?');
+	}
+	alert(url);
 }
 
