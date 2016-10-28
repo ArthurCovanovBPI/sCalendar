@@ -214,7 +214,7 @@
 				;
 
 				echo
-								' De: <input id="aaaT" type="time" onkeydown="return false;" name="manifStart" min="08:00:00" max="21:30:00" value="08:00:00" /><input onclick="document.getElementById(\'aaaT\').stepUp(30);" type="button" value="UP" />'.
+								' De: <input id="aaaT" type="time" onkeydown="return false;" name="manifStart" min="08:00:00" max="21:30:00" value="08:00:00" step="1800" /><input onclick="document.getElementById(\'aaaT\').stepUp(1);" type="button" value="UP" /><input onclick="document.getElementById(\'aaaT\').stepDown(1);" type="button" value="DOWN" />'.
 								' à: <input type="time" onkeydown="return false;" name="manifEnd" min="08:30:00" max="22:00:00" value="09:00:00" step="1800" />'
 				;
 
