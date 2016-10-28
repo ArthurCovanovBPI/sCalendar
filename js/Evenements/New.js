@@ -1,3 +1,11 @@
+function updateManifTimeStart()
+{
+}
+
+function updateManifTimeEnd()
+{
+}
+
 function testRecurrence(a)
 {
 	var x = a.selectedIndex;
