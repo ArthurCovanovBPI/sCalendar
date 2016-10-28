@@ -214,9 +214,12 @@
 				;
 
 				echo
+								'De: <input type="time" name="usr_time" min="8:00" max="21:30" value="8:00" />'.
+								' à: <input type="time" name="usr_time" min="8:30" max="22:00" value="9:00" />'
+				;
+
+				echo
 								'<label for="manifTimeStartSelection"> De: </label>'.
-'Select a time:
-  <input type="time" name="usr_time">'.
 								'<select onchange="updateManifTimeStart();" name="manifTimeStartSelection" id="manifTimeStartSelection">'
 				;
 
