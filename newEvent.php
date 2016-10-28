@@ -215,7 +215,7 @@
 
 				echo
 								'<label for="manifTimeStartSelection"> De: </label>'.
-								'<select name="manifTimeStartSelection" id="manifTimeStartSelection">'
+								'<select onchange="updateManifTimeStart();" name="manifTimeStartSelection" id="manifTimeStartSelection">'
 				;
 
 				for($h=8; $h<=21; $h++)
@@ -234,7 +234,7 @@
 
 				echo
 								'<label for="manifTimeEndSelection"> à </label>'.
-								'<select name="manifTimeEndSelection" id="manifTimeEndSelection">'
+								'<select onchange="updateManifTimeEnd();" name="manifTimeEndSelection" id="manifTimeEndSelection">'
 				;
 
 				for($h=8; $h<=21; $h++)

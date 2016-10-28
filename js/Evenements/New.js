@@ -1,9 +1,11 @@
 function updateManifTimeStart()
 {
+	alert();
 }
 
 function updateManifTimeEnd()
 {
+	alert();
 }
 
 function testRecurrence(a)
