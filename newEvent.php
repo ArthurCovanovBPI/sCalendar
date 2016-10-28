@@ -215,7 +215,8 @@
 
 				echo
 								'<label for="manifTimeStartSelection"> De: </label>'.
-								'<input type="text" value="75" class="dial">'.
+'Select a time:
+  <input type="time" name="usr_time">'.
 								'<select onchange="updateManifTimeStart();" name="manifTimeStartSelection" id="manifTimeStartSelection">'
 				;
 
