@@ -1,3 +1,7 @@
+$(function() {
+    $(".dial").knob();
+});
+
 function updateManifTimeStart()
 {
 	alert();
