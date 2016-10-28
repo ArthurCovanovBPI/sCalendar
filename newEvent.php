@@ -214,8 +214,8 @@
 				;
 
 				echo
-								'De: <input type="time" name="manifStart" min="08:00" max="21:30" value="08:00" step="1800" readonly = "readonly">'.
-								' à: <input type="time" name="manifEnd" min="08:30" max="22:00" value="09:00" step="1800">'
+								'De: <input type="time" onkeydown="return false;" name="manifStart" min="08:00" max="21:30" value="08:00" step="1800">'.
+								' à: <input type="time" onkeydown="return false;" name="manifEnd" min="08:30" max="22:00" value="09:00" step="1800">'
 				;
 
 				echo
