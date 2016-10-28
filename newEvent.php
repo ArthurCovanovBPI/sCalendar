@@ -247,7 +247,7 @@
 					}
 				}
 				echo
-									'<option value="2400"'. (($h==8&&$m==0)? ' selected' : '') .'>' . '22h00' . '</option>'
+									'<option value="2200"'. (($h==8&&$m==0)? ' selected' : '') .'>' . '22h00' . '</option>'
 				;
 
 				echo
@@ -350,7 +350,7 @@
 							}
 						}
 						echo
-											'<option value="2400"'. (($h==8&&$m==0)? ' selected' : '') .'>' . '22h00' . '</option>'
+											'<option value="2200"'. (($h==8&&$m==0)? ' selected' : '') .'>' . '22h00' . '</option>'
 						;
 
 						echo
