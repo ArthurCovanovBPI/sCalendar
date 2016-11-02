@@ -325,7 +325,11 @@
 
 						$curDate = getdate();
 						$curDay = $curDate[mday];
+						if($curDay < 10)
+							$curDay = '0'.$curDay;
 						$curMonth = $curDate[mon];
+						if($curMonth < 10)
+							$curMonth = '0'.$curMonth;
 						$curYear = $curDate[year];
 						echo
 							'<div class="middleParts">'
