@@ -157,12 +157,12 @@ function updateManif(manifID)
 	var newLieuID = -1;
 	if(document.getElementById("remplacerHoraires").checked)
 	{
-		if(document.getElementById("manifTimeStartSelection").value>=document.getElementById("manifTimeEndSelection").value)
+		/*if(document.getElementById("manifTimeStartSelection").value>=document.getElementById("manifTimeEndSelection").value)
 		{
 			document.getElementById("manifEditMessg").innerHTML = "Veuillez choisir une heure de fin de manifestation supérieur à l'heure de départ.";
 			document.getElementById("manifEditMessg").style.color = "#FF0000";
 			return;
-		}
+		}*/
 		if(document.getElementById("reserverLieu").checked)
 		{
 			newLieuID=getLieuValue();
@@ -172,7 +172,7 @@ function updateManif(manifID)
 				document.getElementById("manifEditMessg").style.color = "#FF0000";
 				return;
 			}
-			if(document.getElementById("reservTimeStartSelection").value>=document.getElementById("reservTimeEndSelection").value)
+			/*if(document.getElementById("reservTimeStartSelection").value>=document.getElementById("reservTimeEndSelection").value)
 			{
 				document.getElementById("manifEditMessg").innerHTML = "Veuillez choisir une heure de fin de réservation supérieur à l'heure de départ.";
 				document.getElementById("manifEditMessg").style.color = "#FF0000";
@@ -183,7 +183,7 @@ function updateManif(manifID)
 				document.getElementById("manifEditMessg").innerHTML = "Les horaires de réservation doivent inclure les horaires de la manifestation.";
 				document.getElementById("manifEditMessg").style.color = "#FF0000";
 				return;
-			}
+			}*/
 		}
 		mD=document.getElementById("manifYearSelection").value;
 		if(document.getElementById("manifMonthSelection").value<10)
@@ -210,11 +210,11 @@ function updateManif(manifID)
 	{
 		if(confirm("Remplacera les informations actuelles."))
 		{
-			delurl="updateManifestation.php";
+			eddurl="updateManifestation.php";
 			$.ajax
 			({
 				type: 'POST',
-				url: delurl,
+				url: eddurl,
 				data:
 					{
 						mID:manifID,
@@ -226,12 +226,12 @@ function updateManif(manifID)
 						observations:document.getElementById("observationsText").value,
 
 						manifDate:mD,
-						manifStart:document.getElementById("manifTimeStartSelection").value,
-						manifEnd:document.getElementById("manifTimeEndSelection").value,
+						manifStart:document.getElementById("manifStartTime").value.replace(':',''),
+						manifEnd:document.getElementById("manifEndTime").value.replace(':',''),
 
 						lieuID:newLieuID,
-						reservStart:document.getElementById("reservTimeStartSelection").value,
-						reservEnd:document.getElementById("reservTimeEndSelection").value,
+						reservStart:document.getElementById("reservStartTime").value.replace(':',''),
+						reservEnd:document.getElementById("reservEndTime").value.replace(':',''),
 
 						recurenceID:document.getElementById("recurrenceSelection").value,
 						endRecurence:endRecur
@@ -251,5 +251,65 @@ function updateManif(manifID)
 			});
 		}
 	}
+}
+
+function upManifStart()
+{
+	document.getElementById("manifStartTime").stepUp(1);
+	upReservStart();
+	while(document.getElementById("manifStartTime").value >= document.getElementById("manifEndTime").value)
+		document.getElementById("manifEndTime").stepUp(1);
+	while(document.getElementById("manifStartTime").value > document.getElementById("reservStartTime").value)
+		upReservStart();
+}
+
+function downManifStart()
+{
+	document.getElementById("manifStartTime").stepDown(1);
+	downReservStart();
+}
+
+function upManifEnd()
+{
+	document.getElementById("manifEndTime").stepUp(1);
+	upReservEnd();
+}
+
+function downManifEnd()
+{
+	document.getElementById("manifEndTime").stepDown(1);
+	downReservEnd();
+	while(document.getElementById("manifStartTime").value >= document.getElementById("manifEndTime").value)
+		document.getElementById("manifStartTime").stepDown(1);
+	while(document.getElementById("manifEndTime").value < document.getElementById("reservEndTime").value)
+		downReservEnd();
+}
+
+function upReservStart()
+{
+	document.getElementById("reservStartTime").stepUp(1);
+	while(document.getElementById("reservStartTime").value >= document.getElementById("reservEndTime").value)
+		upReservEnd();
+}
+
+function downReservStart()
+{
+	document.getElementById("reservStartTime").stepDown(1);
+	while(document.getElementById("manifStartTime").value > document.getElementById("reservStartTime").value)
+		document.getElementById("manifStartTime").stepDown(1);
+}
+
+function upReservEnd()
+{
+	document.getElementById("reservEndTime").stepUp(1);
+	while(document.getElementById("manifEndTime").value < document.getElementById("reservEndTime").value)
+		document.getElementById("manifEndTime").stepUp(1);
+}
+
+function downReservEnd()
+{
+	document.getElementById("reservEndTime").stepDown(1);
+	while(document.getElementById("reservStartTime").value >= document.getElementById("reservEndTime").value)
+		downReservStart();
 }
 
