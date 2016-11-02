@@ -155,14 +155,9 @@ function updateManif(manifID)
 	var mD=-1;
 	var rD=-1;
 	var newLieuID = -1;
+
 	if(document.getElementById("remplacerHoraires").checked)
 	{
-		/*if(document.getElementById("manifTimeStartSelection").value>=document.getElementById("manifTimeEndSelection").value)
-		{
-			document.getElementById("manifEditMessg").innerHTML = "Veuillez choisir une heure de fin de manifestation supérieur à l'heure de départ.";
-			document.getElementById("manifEditMessg").style.color = "#FF0000";
-			return;
-		}*/
 		if(document.getElementById("reserverLieu").checked)
 		{
 			newLieuID=getLieuValue();
@@ -172,26 +167,7 @@ function updateManif(manifID)
 				document.getElementById("manifEditMessg").style.color = "#FF0000";
 				return;
 			}
-			/*if(document.getElementById("reservTimeStartSelection").value>=document.getElementById("reservTimeEndSelection").value)
-			{
-				document.getElementById("manifEditMessg").innerHTML = "Veuillez choisir une heure de fin de réservation supérieur à l'heure de départ.";
-				document.getElementById("manifEditMessg").style.color = "#FF0000";
-				return;
-			}
-			if(document.getElementById("reservTimeStartSelection").value>document.getElementById("manifTimeStartSelection").value || document.getElementById("reservTimeEndSelection").value<document.getElementById("manifTimeEndSelection").value)
-			{
-				document.getElementById("manifEditMessg").innerHTML = "Les horaires de réservation doivent inclure les horaires de la manifestation.";
-				document.getElementById("manifEditMessg").style.color = "#FF0000";
-				return;
-			}*/
 		}
-		mD=document.getElementById("manifYearSelection").value;
-		if(document.getElementById("manifMonthSelection").value<10)
-			mD+="0";
-		mD+=document.getElementById("manifMonthSelection").value;
-		if(document.getElementById("manifDaySelection").value<10)
-			mD+="0";
-		mD+=document.getElementById("manifDaySelection").value;
 	}
 
 	var endRecur=document.getElementById("recurYearSelection").value;
@@ -225,7 +201,7 @@ function updateManif(manifID)
 						description:document.getElementById("descriptionText").value,
 						observations:document.getElementById("observationsText").value,
 
-						manifDate:mD,
+						manifDate:document.getElementById("manifDate").value.replace(/-/g,''),
 						manifStart:document.getElementById("manifStartTime").value.replace(':',''),
 						manifEnd:document.getElementById("manifEndTime").value.replace(':',''),
 

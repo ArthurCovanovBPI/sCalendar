@@ -168,97 +168,15 @@
 							<fieldset>
 								<legend>Nouveaux Horaires et Reservations</legend>'
 				;
-
-				/*echo
-								'<label for="manifDaySelection"> Le: </label>'.
-								'<select name="manifDaySelection" id="manifDaySelection">'
-				;
-
-				for($i=1; $i<=31; $i++)
-				{
-					echo
-									'<option value="'.$i.'"'. (($i==$curDay)? ' selected' : '') .'>' . $i . '</option>'
-					;
-				}
-
-				echo			'</select>';
-				echo
-								'<label for="manifMonthSelection"> - </label>'.
-								'<select onchange="updateDayManifestation()" name="manifMonthSelection" id="manifMonthSelection">'
-				;
-
-				for($i=1; $i<=12; $i++)
-				{
-					echo
-									'<option value="'.$i.'"'. (($i==$curMonth)? ' selected' : '') .'>' . $i . '</option>'
-					;
-				}
-
-				echo
-								'</select>'
-				;
-				echo
-								'<label for="manifYearSelection"> - </label>'.
-								'<select onchange="updateDayManifestation()" name="manifYearSelection" id="manifYearSelection">'
-				;
-
-				for($i=(date("Y")-10); $i<=(date("Y")+20)&&$i<=2037; $i++)
-				{
-					echo
-									'<option value="'.$i.'"'. (($i==$curYear)? ' selected' : '') .'>' . $i . '</option>'
-					;
-				}
-
-				echo
-								'</select>'
-				;*/
-				echo				'Le: <input id="manifDate" onkeydown="return false;" type="date" name="manifDate" value="'.$curYear.'-'.$curMonth.'-'.$curDay.'" />';
+						echo
+								'<label for="manifDate">Le: </label>'.
+								'<input id="manifDate" onkeydown="return false;" type="date" name="manifDate" value="'.$curYear.'-'.$curMonth.'-'.$curDay.'" />'
+						;
 
 				echo
 								' De: <span class="spinsIn"><input id="manifStartTime" type="time" onkeydown="return false;" name="manifStart" min="08:00" max="21:30" value="08:00" step="1800" required="required" /><!--<input onclick="upManifStart();" type="button" value="UP" /><input onclick="downManifStart();" type="button" value="DOWN" />--><span class="spins"><span onclick="upManifStart();" class="spinBoxUp"><span></span></span><span onclick="downManifStart();" class="spinBoxDown"><span></span></span></span></span>'.
 								' à: <span class="spinsIn"><input id="manifEndTime" type="time" onkeydown="return false;" name="manifEnd" min="08:30" max="22:00" value="08:30" step="1800" required="required" /><!--<input onclick="upManifEnd();" type="button" value="UP" /><input onclick="downManifEnd()" type="button" value="DOWN" />--><span class="spins"><span onclick="upManifEnd();" class="spinBoxUp"><span></span></span><span onclick="downManifEnd();" class="spinBoxDown"><span></span></span></span></span>'
 				;
-
-				/*echo
-								'<label for="manifTimeStartSelection"> De: </label>'.
-								'<select onchange="updateManifTimeStart();" name="manifTimeStartSelection" id="manifTimeStartSelection">'
-				;
-
-				for($h=8; $h<=21; $h++)
-				{
-					for($m=0; $m<60; $m+=30)
-					{
-						echo
-									'<option value="'.sprintf('%02d%02d', $h, $m).'"'. (($h==8&&$m==0)? ' selected' : '') .'>' . sprintf('%2d', $h) . 'h' . sprintf('%02d', $m) . '</option>'
-						;
-					}
-				}
-
-				echo
-								'</select>'
-				;
-
-				echo
-								'<label for="manifTimeEndSelection"> à </label>'.
-								'<select onchange="updateManifTimeEnd();" name="manifTimeEndSelection" id="manifTimeEndSelection">'
-				;
-
-				for($h=8; $h<=21; $h++)
-				{
-					for($m=0; $m<60; $m+=30)
-					{
-						echo
-									'<option value="'.sprintf('%02d%02d', $h, $m).'"'. (($h==8&&$m==0)? ' selected' : '') .'>' . sprintf('%2d', $h) . 'h' . sprintf('%02d', $m) . '</option>'
-						;
-					}
-				}
-				echo
-									'<option value="2200"'. (($h==8&&$m==0)? ' selected' : '') .'>' . '22h00' . '</option>'
-				;
-
-				echo
-								'</select>'
-				;*/
 
 				echo			'<br />';
 
@@ -326,48 +244,6 @@
 										' De: <span class="spinsIn"><input id="reservStartTime" type="time" onkeydown="return false;" name="manifStart" min="08:00" max="21:30" value="08:00" step="1800" required="required" /><!--<input onclick="upReservStart();" type="button" value="UP" /><input onclick="downReservStart();" type="button" value="DOWN" />--><span class="spins"><span onclick="upReservStart();" class="spinBoxUp"><span></span></span><span onclick="downReservStart();" class="spinBoxDown"><span></span></span></span></span>'.
 										' à: <span class="spinsIn"><input id="reservEndTime" type="time" onkeydown="return false;" name="manifEnd" min="08:30" max="22:00" value="08:30" step="1800" required="required" /><!--input onclick="upReservEnd();" type="button" value="UP" /><input onclick="downReservEnd()" type="button" value="DOWN" />--><span class="spins"><span onclick="upReservEnd();" class="spinBoxUp"><span></span></span><span onclick="downReservEnd();" class="spinBoxDown"><span></span></span></span></span>'
 						;
-
-						/*echo
-										'<label for="reservTimeStartSelection"> De: </label>'.
-										'<select name="reservTimeStartSelection" id="reservTimeStartSelection">'
-						;
-
-						for($h=8; $h<=21; $h++)
-						{
-							for($m=0; $m<60; $m+=30)
-							{
-								echo
-											'<option value="'.sprintf('%02d%02d', $h, $m).'"'. (($h==8&&$m==0)? ' selected' : '') .'>' . sprintf('%2d', $h) . 'h' . sprintf('%02d', $m) . '</option>'
-								;
-							}
-						}
-
-						echo
-										'</select>'
-						;
-
-						echo
-										'<label for="reservTimeEndSelection"> à </label>'.
-										'<select name="reservTimeEndSelection" id="reservTimeEndSelection">'
-						;
-
-						for($h=8; $h<=21; $h++)
-						{
-							for($m=0; $m<60; $m+=30)
-							{
-								echo
-											'<option value="'.sprintf('%02d%02d', $h, $m).'"'. (($h==8&&$m==0)? ' selected' : '') .'>' . sprintf('%2d', $h) . 'h' . sprintf('%02d', $m) . '</option>'
-								;
-							}
-						}
-						echo
-											'<option value="2200"'. (($h==8&&$m==0)? ' selected' : '') .'>' . '22h00' . '</option>'
-						;
-
-						echo
-										'</select>'
-						;*/
-
 		
 					}
 					echo

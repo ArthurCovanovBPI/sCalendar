@@ -115,12 +115,7 @@ function addManif()
 	var mD=-1;
 	var rD=-1;
 	var newLieuID = -1;
-	/*if(document.getElementById("manifTimeStartSelection").value>=document.getElementById("manifTimeEndSelection").value)
-	{
-		document.getElementById("manifEditMessg").innerHTML = "Veuillez choisir une heure de fin de manifestation supérieur à l'heure de départ.";
-		document.getElementById("manifEditMessg").style.color = "#FF0000";
-		return;
-	}*/
+
 	if(document.getElementById("reserverLieu").checked)
 	{
 		newLieuID=getLieuValue();
@@ -130,26 +125,7 @@ function addManif()
 			document.getElementById("manifEditMessg").style.color = "#FF0000";
 			return;
 		}
-		/*if(document.getElementById("reservTimeStartSelection").value>=document.getElementById("reservTimeEndSelection").value)
-		{
-			document.getElementById("manifEditMessg").innerHTML = "Veuillez choisir une heure de fin de réservation supérieur à l'heure de départ.";
-			document.getElementById("manifEditMessg").style.color = "#FF0000";
-			return;
-		}
-		if(document.getElementById("reservTimeStartSelection").value>document.getElementById("manifTimeStartSelection").value || document.getElementById("reservTimeEndSelection").value<document.getElementById("manifTimeEndSelection").value)
-		{
-			document.getElementById("manifEditMessg").innerHTML = "Les horaires de réservation doivent inclure les horaires de la manifestation.";
-			document.getElementById("manifEditMessg").style.color = "#FF0000";
-			return;
-		}*/
 	}
-	/*mD=document.getElementById("manifYearSelection").value;
-	if(document.getElementById("manifMonthSelection").value<10)
-		mD+="0";
-	mD+=document.getElementById("manifMonthSelection").value;
-	if(document.getElementById("manifDaySelection").value<10)
-		mD+="0";
-	mD+=document.getElementById("manifDaySelection").value;*/
 
 	var endRecur=document.getElementById("recurYearSelection").value;
 	if(document.getElementById("recurMonthSelection").value<10)
@@ -158,9 +134,6 @@ function addManif()
 	if(document.getElementById("recurDaySelection").value<10)
 		endRecur+="0";
 	endRecur+=document.getElementById("recurDaySelection").value;
-
-	/*alert(document.getElementById("manifDate").value.replace(/-/g,''));
-	return;*/
 
 	addurl="newManifestation.php";
 	$.ajax
@@ -201,11 +174,6 @@ function addManif()
 		}
 	});
 }
-
-/*window.onload = function(e)
-{
-	alert();
-}*/
 
 function upManifStart()
 {
