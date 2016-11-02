@@ -214,11 +214,11 @@
 				;
 
 				echo
-								' De: <input id="aaaT" type="time" onkeydown="return false;" name="manifStart" min="08:00:00" max="21:30:00" value="08:00:00" step="1800" /><input onclick="document.getElementById(\'aaaT\').stepUp(1);" type="button" value="UP" /><input onclick="document.getElementById(\'aaaT\').stepDown(1);" type="button" value="DOWN" />'.
-								' à: <input type="time" onkeydown="return false;" name="manifEnd" min="08:30:00" max="22:00:00" value="09:00:00" step="1800" />'
+								' De: <span class="spinsIn"><input id="manifStartTime" type="time" onkeydown="return false;" name="manifStart" min="08:00" max="21:30" value="08:00" step="1800" required="required" /><!--<input onclick="upManifStart();" type="button" value="UP" /><input onclick="downManifStart();" type="button" value="DOWN" />--><span class="spins"><span onclick="upManifStart();" class="spinBoxUp"><span></span></span><span onclick="downManifStart();" class="spinBoxDown"><span></span></span></span></span>'.
+								' à: <span class="spinsIn"><input id="manifEndTime" type="time" onkeydown="return false;" name="manifEnd" min="08:30" max="22:00" value="08:30" step="1800" required="required" /><!--<input onclick="upManifEnd();" type="button" value="UP" /><input onclick="downManifEnd()" type="button" value="DOWN" />--><span class="spins"><span onclick="upManifEnd();" class="spinBoxUp"><span></span></span><span onclick="downManifEnd();" class="spinBoxDown"><span></span></span></span></span>'
 				;
 
-				echo
+				/*echo
 								'<label for="manifTimeStartSelection"> De: </label>'.
 								'<select onchange="updateManifTimeStart();" name="manifTimeStartSelection" id="manifTimeStartSelection">'
 				;
@@ -257,7 +257,7 @@
 
 				echo
 								'</select>'
-				;
+				;*/
 
 				echo			'<br />';
 
@@ -322,6 +322,11 @@
 						;
 
 						echo
+										' De: <span class="spinsIn"><input id="reservStartTime" type="time" onkeydown="return false;" name="manifStart" min="08:00" max="21:30" value="08:00" step="1800" required="required" /><!--<input onclick="upReservStart();" type="button" value="UP" /><input onclick="downReservStart();" type="button" value="DOWN" />--><span class="spins"><span onclick="upReservStart();" class="spinBoxUp"><span></span></span><span onclick="downReservStart();" class="spinBoxDown"><span></span></span></span></span>'.
+										' à: <span class="spinsIn"><input id="reservEndTime" type="time" onkeydown="return false;" name="manifEnd" min="08:30" max="22:00" value="08:30" step="1800" required="required" /><!--input onclick="upReservEnd();" type="button" value="UP" /><input onclick="downReservEnd()" type="button" value="DOWN" />--><span class="spins"><span onclick="upReservEnd();" class="spinBoxUp"><span></span></span><span onclick="downReservEnd();" class="spinBoxDown"><span></span></span></span></span>'
+						;
+
+						/*echo
 										'<label for="reservTimeStartSelection"> De: </label>'.
 										'<select name="reservTimeStartSelection" id="reservTimeStartSelection">'
 						;
@@ -360,7 +365,7 @@
 
 						echo
 										'</select>'
-						;
+						;*/
 
 		
 					}

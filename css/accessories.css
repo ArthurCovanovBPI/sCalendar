@@ -104,3 +104,74 @@ input[type="checkbox"][disabled] + label:after
 	content: '✔';
 }
 
+input[type="time"]::-webkit-outer-spin-button,
+input[type="time"]::-webkit-inner-spin-button,
+input[type="time"]::-webkit-clear-button
+{
+	/* display: none; <- Crashes Chrome on hover */
+	-webkit-appearance: none !important;
+	margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.spinsIn
+{
+	display: inline-block;
+	padding-right: 0.75em;
+}
+
+.spinsIn input
+{
+	display: inline;
+	height: 1.35em;
+	margin: 0;
+	padding: 0;
+}
+
+.spins
+{
+	display: inline-table;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	border: 1px solid rgb(224,224,224);
+	//height: 100%;
+}
+
+.spinBoxUp,
+.spinBoxDown
+{
+	//position: absolute;
+	display: table-row;
+	//right: 0;
+	width: 0.75em;
+	height: 0.75em;
+	border: 1px solid rgb(224,224,224);
+	background: rgb(248,248,248);
+	cursor: pointer;
+}
+
+.spinBoxUp span,
+.spinBoxDown span
+{
+	display: block;
+	width: 0.75em;
+	height: 0.75em;
+}
+
+.spinBoxUp:hover,
+.spinBoxDown:hover
+{
+	background: rgb(175,175,175);
+}
+
+.spinBoxUp span
+{
+	background: url('../img/arrow-up.png') no-repeat center center;
+}
+
+.spinBoxDown span
+{
+	background: url('../img/arrow-down.png') no-repeat center center;
+}
+
+
