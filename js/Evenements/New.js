@@ -143,13 +143,13 @@ function addManif()
 			return;
 		}*/
 	}
-	mD=document.getElementById("manifYearSelection").value;
+	/*mD=document.getElementById("manifYearSelection").value;
 	if(document.getElementById("manifMonthSelection").value<10)
 		mD+="0";
 	mD+=document.getElementById("manifMonthSelection").value;
 	if(document.getElementById("manifDaySelection").value<10)
 		mD+="0";
-	mD+=document.getElementById("manifDaySelection").value;
+	mD+=document.getElementById("manifDaySelection").value;*/
 
 	var endRecur=document.getElementById("recurYearSelection").value;
 	if(document.getElementById("recurMonthSelection").value<10)
@@ -158,6 +158,9 @@ function addManif()
 	if(document.getElementById("recurDaySelection").value<10)
 		endRecur+="0";
 	endRecur+=document.getElementById("recurDaySelection").value;
+
+	/*alert(document.getElementById("manifDate").value.replace(/-/g,''));
+	return;*/
 
 	addurl="newManifestation.php";
 	$.ajax
@@ -173,7 +176,7 @@ function addManif()
 				description:document.getElementById("descriptionText").value,
 				observations:document.getElementById("observationsText").value,
 
-				manifDate:mD,
+				manifDate:document.getElementById("manifDate").value.replace(/-/g,''),
 				manifStart:document.getElementById("manifStartTime").value.replace(':',''),
 				manifEnd:document.getElementById("manifEndTime").value.replace(':',''),
 
