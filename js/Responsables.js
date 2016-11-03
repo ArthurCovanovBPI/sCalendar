@@ -90,6 +90,18 @@ function addRespo(inputRespo, divpage)
 	}
 }
 
+function editRespo(respo)
+{
+    var my = document.getElementById('viewRespo'+respo).style.display="none";
+    var my = document.getElementById('editRespo'+respo).style.display="table-row";
+}
+
+function cancelEditRespo(respo)
+{
+    var my = document.getElementById('viewRespo'+respo).style.display="table-row";
+    var my = document.getElementById('editRespo'+respo).style.display="none";
+}
+
 window.onload = function()
 {
 	loadRespos();

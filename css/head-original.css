@@ -63,9 +63,9 @@ a.headTitle.headButton:hover
 
 .headTitle.toogled
 {
-	background-color: orange !important;
+	background-color: #333333 !important;
 	border-bottom-color: #333333 !important;
-	color: #000000 !important;
+	color: #FFFFFF !important;
 }
 
 .headSelections
@@ -100,8 +100,7 @@ a.headTitle.headButton:hover
 .headSelections a.selected, .headSelections a:active
 {
 	border-bottom: 5px double #FFFFFF;
-	color: #000000;
-	background-color: orange;
+	color: #FFFFFF;
 }
 
 .headSelection

@@ -7,7 +7,7 @@
 	min-height:      -o-calc(100% - 122px); /* Opera */
 	min-height:         calc(100% - 122px); /* Standard */
 	margin: auto;
-	background-color: lightgray;
+	background-color: #FFFFFF;
 	font-size: 13px;
 	line-height: 15px;
 }

@@ -347,7 +347,7 @@
 
 						echo
 												'<label for="manifDate">Le: </label>'.
-												'<input id="manifDate" onkeydown="return false;" type="date" name="manifDate" value="'.$curYear.'-'.$curMonth.'-'.$curDay.'" />'
+												'<input id="manifDate" onkeydown="return false;" type="date" name="manifDate" style="height:1.35em;" value="'.$curYear.'-'.$curMonth.'-'.$curDay.'" />'
 						;
 
 						echo

@@ -305,10 +305,10 @@
 
 				echo('<td' . ((($curDayDate[yday] == $realToday[yday])&&($curDayDate[year] == $realToday[year])) ? ' id="today"' : '') . (($curDayDate[mon] != $today[mon]) ? ' class="outMonth"' : '') . '>');
 
-				echo('<a onmouseover="eventDescription('.$curDayTimeStamp.', \''.$flagsManifTypeAddition.'\');" href="?timeAdvance=day&timeStamp='.$curDayTimeStamp.$urlManifTypeAddition.'" style="padding:5px;"><strong>');
+				echo('<a onmouseover="eventDescription('.$curDayTimeStamp.', \''.$flagsManifTypeAddition.'\');" href="?timeAdvance=day&timeStamp='.$curDayTimeStamp.$urlManifTypeAddition.'" style="padding:5px;">');
 
-				echo($curDayDate[mday].' '.mon2mois($curDayDate[mon]).' '.$curDayDate[year]);
-				echo('</strong><br /><br />');
+				echo(wday2tritter($curDayDate[wday]).' '.$curDayDate[mday].' '.mon2mois($curDayDate[mon]).' '.$curDayDate[year]);
+				echo('<br /><br />');
 				if($count <= 5)
 				{
 					while($data = mysql_fetch_assoc($req))

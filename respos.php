@@ -42,35 +42,35 @@
 			if($page<=0)$page=1;
 			echo '<span style="line-height: 17px;">Page ' . $page . '/' . $numPages.'</span>';
 			echo '<span style="float: right;">';
-				echo '<span onclick="loadRespos(1)" class="pageButton clickablePageButton">≪</span>';
-				echo '<span onclick="loadRespos(' . ($page-1) . ')" class="pageButton clickablePageButton"><</span>';
-				if($page>3)
-				{
-					echo '<span class="pageButton">...</span>';
-				}
-				if($page>2)
-				{
-					echo '<span onclick="loadRespos(' . ($page-2) . ')" class="pageButton clickablePageButton">' . ($page-2) . '</span>';
-				}
-				if($page>1)
-				{
-					echo '<span onclick="loadRespos(' . ($page-1) . ')" class="pageButton clickablePageButton">' . ($page-1) . '</span>';
-				}
-				echo '<span class="pageButton" style="font-size: 115%; font-weight: bold;">' . ($page) . '</span>';
-				if($page<=$numPages-1)
-				{
-					echo '<span onclick="loadRespos(' . ($page+1) . ')" class="pageButton clickablePageButton">' . ($page+1) . '</span>';
-				}
-				if($page<=$numPages-2)
-				{
-					echo '<span onclick="loadRespos(' . ($page+2) . ')" class="pageButton clickablePageButton">' . ($page+2) . '</span>';
-				}
-				if($page<=$numPages-3)
-				{
-					echo '<span class="pageButton">...</span>';
-				}
-				echo '<span onclick="loadRespos(' . ($page+1) . ')" class="pageButton clickablePageButton">></span>';
-				echo '<span onclick="loadRespos(' . $numPages . ')" class="pageButton clickablePageButton">≫</span>';
+			echo	'<span onclick="loadRespos(1)" class="pageButton clickablePageButton">≪</span>';
+			echo	'<span onclick="loadRespos(' . ($page-1) . ')" class="pageButton clickablePageButton"><</span>';
+			if($page>3)
+			{
+				echo '<span class="pageButton">...</span>';
+			}
+			if($page>2)
+			{
+				echo '<span onclick="loadRespos(' . ($page-2) . ')" class="pageButton clickablePageButton">' . ($page-2) . '</span>';
+			}
+			if($page>1)
+			{
+				echo '<span onclick="loadRespos(' . ($page-1) . ')" class="pageButton clickablePageButton">' . ($page-1) . '</span>';
+			}
+			echo '<span class="pageButton" style="font-size: 115%; font-weight: bold;">' . ($page) . '</span>';
+			if($page<=$numPages-1)
+			{
+				echo '<span onclick="loadRespos(' . ($page+1) . ')" class="pageButton clickablePageButton">' . ($page+1) . '</span>';
+			}
+			if($page<=$numPages-2)
+			{
+				echo '<span onclick="loadRespos(' . ($page+2) . ')" class="pageButton clickablePageButton">' . ($page+2) . '</span>';
+			}
+			if($page<=$numPages-3)
+			{
+				echo '<span class="pageButton">...</span>';
+			}
+			echo	'<span onclick="loadRespos(' . ($page+1) . ')" class="pageButton clickablePageButton">></span>';
+			echo	'<span onclick="loadRespos(' . $numPages . ')" class="pageButton clickablePageButton">≫</span>';
 			echo '</span>';
 		}
 	?>
@@ -92,46 +92,72 @@
 		{
 			echo '<table style="width: 100%; cursor: default; border-collapse: collapse;">';
 			$i = 0;
-			echo '<tr><th rowspan=2  style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th rowspan=2 >Nom</th><th rowspan=2 style="border-left: double;" title="Admin?">a</th><th colspan=6 style="border-left: double;">Manifestations</th><th colspan=4 style="border-left: double;">Reservations</th><th style="border-left: double;">-</th></tr>';
-			echo '<tr><th style="border-left: double;" title="Contributeur manifestations publiques?">mp</th><th title="Contributeur manifestations/reunions internes?">mi</th><th title="Contributeur administratif?">ma</th><th title="Contributeur ressources humaines?">rh</th><th title="Contributeur financier?">f</th><th title="Contributeur événements de type calendaire?">ec</th><th style="border-left: double;" title="Contributeur centre?">c</th><th title="Contributeur BPI?">b</th><th title="Contributeur espace externe?">e</th><th title="Contributeur atelier?">a</th><th style="border-left: double;">-</th></tr>';
+			echo	'<tr>';
+			echo	 	'<th rowspan=2  style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th rowspan=2 >Nom</th><th rowspan=2 style="border-left: double;" title="Admin?">a</th><th colspan=6 style="border-left: double;">Manifestations</th><th colspan=4 style="border-left: double;">Reservations</th>';
+			echo		'<th style="border-left: double;">✎</td>';
+			echo	 	'<th>-</th>';
+			echo	'</tr>';
+			echo	'<tr>';
+			echo		'<th style="border-left: double;" title="Contributeur manifestations publiques?">mp</th><th title="Contributeur manifestations/reunions internes?">mi</th><th title="Contributeur administratif?">ma</th><th title="Contributeur ressources humaines?">rh</th><th title="Contributeur financier?">f</th><th title="Contributeur événements de type calendaire?">ec</th><th style="border-left: double;" title="Contributeur centre?">c</th><th title="Contributeur BPI?">b</th><th title="Contributeur espace externe?">e</th><th title="Contributeur atelier?">a</th>';
+			echo		'<th style="border-left: double;">✎</th>';
+			echo		'<th>-</th>';
+			echo	'</tr>';
 			while($data = mysql_fetch_assoc($req))
 			{
-				echo '<tr>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right; width: 100%;">'.$data['email'].'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right;">'.$data['nom'].'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['admin']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['contributeur_manif_publique']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_interne']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_admin']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_rh']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_financier']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_calendar']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['contributeur_centre']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_bpi']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_externe']==true)? '✓' : '✕').'</td>';
-					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_atelier']==true)? '✓' : '✕').'</td>';
-					echo '<td onclick="deleteRespo(\'' . $data['ID'] . '\', \'' . $data['email'] . '\', \'' . $page . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer; border-left: double;">×</td>';
+				echo '<tr id="viewRespo'.$data['ID'].'">';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right; width: 100%;">'.$data['email'].'</td>';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right;">'.$data['nom'].'</td>';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['admin']==true)? '✓' : '✕').'</td>';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['contributeur_manif_publique']==true)? '✓' : '✕').'</td>';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_interne']==true)? '✓' : '✕').'</td>';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_admin']==true)? '✓' : '✕').'</td>';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_rh']==true)? '✓' : '✕').'</td>';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_financier']==true)? '✓' : '✕').'</td>';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_calendar']==true)? '✓' : '✕').'</td>';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['contributeur_centre']==true)? '✓' : '✕').'</td>';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_bpi']==true)? '✓' : '✕').'</td>';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_externe']==true)? '✓' : '✕').'</td>';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_atelier']==true)? '✓' : '✕').'</td>';
+				echo	'<td onclick="editRespo(\'' . $data['ID'] . '\');" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double; cursor: pointer;">✎</td>';
+				echo	'<td onclick="deleteRespo(\'' . $data['ID'] . '\', \'' . $data['email'] . '\', \'' . $page . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">×</td>';
+				echo '</tr>';
+				echo '<tr id="editRespo'.$data['ID'].'" style="border: 1px solid #A0A0A0; display: none;">';
+				echo	'<td style="white-space: nowrap; text-align: center;"><input id="" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" value="'.$data['email'].'" /></td>';
+				echo	'<td style="white-space: nowrap; text-align: center;"><input id="" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" value="'.$data['nom'].'" /></td>';
+				echo	'<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="" name="" '.(($data['admin']==true)? 'checked ' : '').'/><label for="" /></td>';
+				echo	'<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="" name="" '.(($data['contributeur_manif_publique']==true)? 'checked ' : '').'/><label for="" /></td>';
+				echo	'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="" name="" '.(($data['contributeur_manif_interne']==true)? 'checked ' : '').'/><label for="" /></td>';
+				echo	'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="" name="" '.(($data['contributeur_manif_admin']==true)? 'checked ' : '').'/><label for="" /></td>';
+				echo	'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="" name="" '.(($data['contributeur_manif_rh']==true)? 'checked ' : '').'/><label for="" /></td>';
+				echo	'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="" name="" '.(($data['contributeur_manif_financier']==true)? 'checked ' : '').'/><label for="" /></td>';
+				echo	'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="" name="" '.(($data['contributeur_manif_calendar']==true)? 'checked ' : '').'/><label for="" /></td>';
+				echo	'<td style="white-space: nowrap; text-align: center; border-left: double;""><input type="checkbox" id="" name="" '.(($data['contributeur_centre']==true)? 'checked ' : '').'/><label for="" /></td>';
+				echo	'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="" name="" '.(($data['contributeur_bpi']==true)? 'checked ' : '').'/><label for="" /></td>';
+				echo	'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="" name="" '.(($data['contributeur_externe']==true)? 'checked ' : '').'/><label for="" /></td>';
+				echo	'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="" name="" '.(($data['contributeur_atelier']==true)? 'checked ' : '').'/><label for="" /></td>';
+				echo	'<td onclick="insertEdit(\'' . $data['ID'] . '\');" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer; border-left: double;">↘</td>';
+				echo	'<td onclick="cancelEditRespo(\'' . $data['ID'] . '\');" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">×</td>';
 				echo '</tr>';
 			}
-			echo '<tr>';
-				echo '<td colspan=14 style="padding-left: 2px; padding-right: 2px; border: 1px solid #A0A0A0; white-space: nowrap; text-align: center;">Ajouter un Responsable:</td>';
-			echo '</tr>';
-			echo '<tr>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoMail" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input id="inputRespoName" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="adminCheck" name="adminCheck" /><label for="adminCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="contribManifPubliqueCheck" name="contribManifPubliqueCheck" checked /><label for="contribManifPubliqueCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifInterneCheck" name="contribManifInterneCheck" checked /><label for="contribManifInterneCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifAdminCheck" name="contribManifAdminCheck" checked /><label for="contribManifAdminCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifRHCheck" name="contribManifRHCheck" checked /><label for="contribManifRHCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifFinancierCheck" name="contribManifFinancierCheck" checked /><label for="contribManifFinancierCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifCalendarCheck" name="contribManifCalendarCheck" checked /><label for="contribManifCalendarCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="contribCentreCheck" name="contribCentreCheck" /><label for="contribCentreCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribBPICheck" name="contribBPICheck" /><label for="contribBPICheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribExterneCheck" name="contribExterneCheck" /><label for="contribExterneCheck" /></td>';
-				echo '<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribAtelierCheck" name="contribAtelierCheck" /><label for="contribAtelierCheck" /></td>';
-				echo '<td onclick="addRespo(\'inputRespoMail\', \'' . $resultPerPages . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer; border-left: double;">+</td>';
-			echo '</tr>';
+			echo	'<tr>';
+			echo		'<td colspan=15 style="padding-left: 2px; padding-right: 2px; border: 1px solid #A0A0A0; white-space: nowrap; text-align: center;">Ajouter un Responsable:</td>';
+			echo	'</tr>';
+			echo	'<tr>';
+			echo		'<td style="white-space: nowrap; text-align: center;"><input id="inputRespoMail" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
+			echo		'<td style="white-space: nowrap; text-align: center;"><input id="inputRespoName" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" /></td>';
+			echo		'<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="adminCheck" name="adminCheck" /><label for="adminCheck" /></td>';
+			echo		'<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="contribManifPubliqueCheck" name="contribManifPubliqueCheck" checked /><label for="contribManifPubliqueCheck" /></td>';
+			echo		'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifInterneCheck" name="contribManifInterneCheck" checked /><label for="contribManifInterneCheck" /></td>';
+			echo		'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifAdminCheck" name="contribManifAdminCheck" checked /><label for="contribManifAdminCheck" /></td>';
+			echo		'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifRHCheck" name="contribManifRHCheck" checked /><label for="contribManifRHCheck" /></td>';
+			echo		'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifFinancierCheck" name="contribManifFinancierCheck" checked /><label for="contribManifFinancierCheck" /></td>';
+			echo		'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifCalendarCheck" name="contribManifCalendarCheck" checked /><label for="contribManifCalendarCheck" /></td>';
+			echo		'<td style="white-space: nowrap; text-align: center; border-left: double;"><input type="checkbox" id="contribCentreCheck" name="contribCentreCheck" /><label for="contribCentreCheck" /></td>';
+			echo		'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribBPICheck" name="contribBPICheck" /><label for="contribBPICheck" /></td>';
+			echo		'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribExterneCheck" name="contribExterneCheck" /><label for="contribExterneCheck" /></td>';
+			echo		'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribAtelierCheck" name="contribAtelierCheck" /><label for="contribAtelierCheck" /></td>';
+			echo		'<td colspan=2 onclick="addRespo(\'inputRespoMail\', \'' . $resultPerPages . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer; border-left: double;">+</td>';
+			echo	'</tr>';
 			echo '</table>';
 		}
 	?>

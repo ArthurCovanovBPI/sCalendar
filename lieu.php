@@ -141,7 +141,7 @@
 				echo '<tr id=\'seeLieu' . $data['ID'] . '\' style=\'display:table-row;\'>';
 					//echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.$data['ID'].'</td>';
 					echo '<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right;">'.$data['lieu'].'</td>';
-					echo '<td onclick="editLieu(\'' . $data['ID'] . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">✎</td>';
+					echo '<td onclick="editLieu(\'' . $data['ID'] . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; cursor:pointer;">✎</td>';
 					echo '<td onclick="deleteLieu(\'' . $data['ID'] . '\', \'' . $data['lieu'] . '\', \'' . $_GET['espaceID'] . '\', \'' . $espaceName . '\', \'' . $page . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">×</td>';
 				echo '</tr>';
 				echo '<tr id=\'editLieu' . $data['ID'] . '\' style=\'display:none;\'>';
