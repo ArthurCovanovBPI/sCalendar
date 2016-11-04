@@ -447,7 +447,7 @@
 							while($recurrence = mysql_fetch_assoc($req))
 							{
 								echo
-														'<option value="'.$recurrence['ID'].'">' . $recurrence['recurrence'] . '</option>'
+														'<option value="'.$recurrence['ID'].'"'.(($recurrence['ID']==7)?' disabled':'').'>' . $recurrence['recurrence'] . '</option>'
 								;
 
 						
