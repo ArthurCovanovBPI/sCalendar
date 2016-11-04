@@ -221,6 +221,7 @@ INSERT INTO recurrence_manifestation(recurrence) VALUES ('Hebdomadaire');
 INSERT INTO recurrence_manifestation(recurrence) VALUES ('Bimensuel');
 INSERT INTO recurrence_manifestation(recurrence) VALUES ('Mensuel');
 INSERT INTO recurrence_manifestation(recurrence) VALUES ('Trimestriel');
+INSERT INTO recurrence_manifestation(recurrence) VALUES ('Annuel');
 
 INSERT INTO espace(espace) VALUES ('Espaces Centre');
 INSERT INTO espace(espace) VALUES ('Espaces BPI');
