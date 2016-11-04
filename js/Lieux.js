@@ -104,7 +104,7 @@ function cancelEditLieu(lieu)
     var my = document.getElementById('editLieu'+lieu).style.display="none";
 }
 
-function uploadLieu(oldname, lieuID, espaceID, espace, page)
+function updateLieu(oldname, lieuID, espaceID, espace, page)
 {
 	if(typeof lieuID === "undefined")
 	{
@@ -130,11 +130,11 @@ function uploadLieu(oldname, lieuID, espaceID, espace, page)
 			alert("Veuillez entrer un lieu.");
 		else if(confirm("Souhaitez-vous vraiment renommer " + oldname + " en " + newname +"?"))
 		{
-			delurl="editLieu.php";
+			uploadurl="updateLieu.php";
 			$.ajax
 			({
 				type: 'POST',
-				url: delurl,
+				url: uploadurl,
 				data: {lID:lieuID, name:newname},
 				async: false,
 				cache: false,

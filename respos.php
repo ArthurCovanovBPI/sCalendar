@@ -93,7 +93,7 @@
 			echo '<table style="width: 100%; cursor: default; border-collapse: collapse;">';
 			$i = 0;
 			echo	'<tr>';
-			echo	 	'<th rowspan=2  style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th rowspan=2 >Nom</th><th rowspan=2 style="border-left: double;" title="Admin?">a</th><th colspan=6 style="border-left: double;">Manifestations</th><th colspan=4 style="border-left: double;">Reservations</th>';
+			echo	 	'<th rowspan=2  style="padding-left: 2px; padding-right: 2px; text-align: right; width :90%;">Email</th><th rowspan=2 style="min-width: 120px;">Nom</th><th rowspan=2 style="border-left: double;" title="Admin?">a</th><th colspan=6 style="border-left: double;">Manifestations</th><th colspan=4 style="border-left: double;">Reservations</th>';
 			echo		'<th style="border-left: double;">✎</td>';
 			echo	 	'<th>-</th>';
 			echo	'</tr>';
@@ -106,7 +106,7 @@
 			{
 				echo '<tr id="viewRespo'.$data['ID'].'">';
 				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right; width: 100%;">'.$data['email'].'</td>';
-				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: right;">'.$data['nom'].'</td>';
+				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.$data['nom'].'</td>';
 				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['admin']==true)? '✓' : '✕').'</td>';
 				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; border-left: double;">'.(($data['contributeur_manif_publique']==true)? '✓' : '✕').'</td>';
 				echo	'<td style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center;">'.(($data['contributeur_manif_interne']==true)? '✓' : '✕').'</td>';
@@ -133,9 +133,9 @@
 				echo	'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribManifCalendarCheck'.$data['ID'].'" name="contribManifCalendarCheck'.$data['ID'].'" '.(($data['contributeur_manif_calendar']==true)? 'checked ' : '').'/><label for="contribManifCalendarCheck'.$data['ID'].'" /></td>';
 				echo	'<td style="white-space: nowrap; text-align: center; border-left: double;""><input type="checkbox" id="contribCentreCheck'.$data['ID'].'" name="contribCentreCheck'.$data['ID'].'" '.(($data['contributeur_centre']==true)? 'checked ' : '').'/><label for="contribCentreCheck'.$data['ID'].'" /></td>';
 				echo	'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribBPICheck'.$data['ID'].'" name="contribBPICheck'.$data['ID'].'" '.(($data['contributeur_bpi']==true)? 'checked ' : '').'/><label for="contribBPICheck'.$data['ID'].'" /></td>';
-				echo	'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribExterneChec'.$data['ID'].'" name="contribExterneChec'.$data['ID'].'" '.(($data['contributeur_externe']==true)? 'checked ' : '').'/><label for="contribExterneChec'.$data['ID'].'" /></td>';
+				echo	'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribExterneCheck'.$data['ID'].'" name="contribExterneCheck'.$data['ID'].'" '.(($data['contributeur_externe']==true)? 'checked ' : '').'/><label for="contribExterneCheck'.$data['ID'].'" /></td>';
 				echo	'<td style="white-space: nowrap; text-align: center;"><input type="checkbox" id="contribAtelierCheck'.$data['ID'].'" name="contribAtelierCheck'.$data['ID'].'" '.(($data['contributeur_atelier']==true)? 'checked ' : '').'/><label for="contribAtelierCheck'.$data['ID'].'" /></td>';
-				echo	'<td onclick="insertEdit(\'' . $data['ID'] . '\');" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer; border-left: double;">↘</td>';
+				echo	'<td onclick="updateRespo(\'' . $data['ID'] . '\', \''.$page.'\');" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer; border-left: double;">↘</td>';
 				echo	'<td onclick="cancelEditRespo(\'' . $data['ID'] . '\');" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">×</td>';
 				echo '</tr>';
 			}

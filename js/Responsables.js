@@ -54,8 +54,8 @@ function addRespo(inputRespo, divpage)
 	respoManifCalendaire = document.getElementById("contribManifCalendarCheck").checked;
 	respoAdmin = document.getElementById("adminCheck").checked;
 	respoCentre = document.getElementById("contribCentreCheck").checked;
-	respoExterne = document.getElementById("contribBPICheck").checked;
-	respoBPI = document.getElementById("contribExterneCheck").checked;
+	respoBPI = document.getElementById("contribBPICheck").checked;
+	respoExterne = document.getElementById("contribExterneCheck").checked;
 
 	message = "";
 	if(!respoMail)
@@ -100,6 +100,56 @@ function cancelEditRespo(respo)
 {
     var my = document.getElementById('viewRespo'+respo).style.display="table-row";
     var my = document.getElementById('editRespo'+respo).style.display="none";
+}
+
+function updateRespo(respoID, page)
+{
+	//alert(respoID + " - " + page);
+	respoMail = document.getElementById("inputRespoMail"+respoID).value;
+	respoName = document.getElementById("inputRespoName"+respoID).value;
+	respoAtelier = document.getElementById("contribAtelierCheck"+respoID).checked;
+	respoManifPublique = document.getElementById("contribManifPubliqueCheck"+respoID).checked;
+	respoManifInterne = document.getElementById("contribManifInterneCheck"+respoID).checked;
+	respoManifAdmin = document.getElementById("contribManifAdminCheck"+respoID).checked;
+	respoManifRH = document.getElementById("contribManifRHCheck"+respoID).checked;
+	respoManifFiancier = document.getElementById("contribManifFinancierCheck"+respoID).checked;
+	respoManifCalendaire = document.getElementById("contribManifCalendarCheck"+respoID).checked;
+	respoAdmin = document.getElementById("adminCheck"+respoID).checked;
+	respoCentre = document.getElementById("contribCentreCheck"+respoID).checked;
+	respoBPI = document.getElementById("contribBPICheck"+respoID).checked;
+	respoExterne = document.getElementById("contribExterneCheck"+respoID).checked;
+
+	message = "";
+	if(!respoMail)
+		message += "Veuillez entrer un mail pour le responsable.\n";
+	if(!respoName)
+		message += "Veuillez entrer un nom pour le responsable.\n";
+
+	if(!respoManifPublique && !respoManifInterne && !respoManifAdmin && !respoManifRH && !respoManifFiancier && !respoManifCalendaire)
+		message += "Veuillez autoriser au moins un type de manifestation (mp/mi/ma/rh/f/ec).";
+	if(message != "")
+		alert(message);
+	else if(confirm("Souhaitez-vous vraiment valider cette edition?"))
+	{
+		updateurl="updateRespo.php";
+		$.ajax
+		({
+			type: 'POST',
+			url: updateurl,
+			data: {ID:respoID, mail:respoMail, name:respoName, admin:respoAdmin, manifPublique:respoManifPublique, manifInterne:respoManifInterne, manifAdmin:respoManifAdmin, manifRH:respoManifRH, manifFiancier:respoManifFiancier, manifCalendaire:respoManifCalendaire, centre:respoCentre, externe:respoExterne, BPI:respoBPI, atelier:respoAtelier},
+			async: false,
+			cache: false,
+			timeout: 30000,
+			success: function(data)
+			{
+				loadRespos(page);
+			},
+			error: function(xhr, status, error)
+			{
+				alert(xhr.responseText);
+			}
+		});
+	}
 }
 
 window.onload = function()

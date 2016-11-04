@@ -41,11 +41,11 @@
 
 	echo '<input onchange="changeA();" type="checkbox" id="checkTout" name="checkTout"' . (($_a != 0)? ' checked' : '') . '/><label for="checkTout">Tout </label>';
 	echo '<input onchange="changeManifType();" type="checkbox" id="checkManifPublique" name="checkManifPublique"' . (($_0 != 0)? ' checked' : '') . ' /><label for="checkManifPublique">Manifestation publique </label>';
-	echo '<input onchange="changeManifType();" type="checkbox" id="checkManifInterne" name="checkManifInterne"' . (($_1 != 0)? ' checked' : '') . ' /><label for="checkManifInterne">Manfestation / réunion interne </label>';
+	echo '<input onchange="changeManifType();" type="checkbox" id="checkManifInterne" name="checkManifInterne"' . (($_1 != 0)? ' checked' : '') . ' /><label for="checkManifInterne">Manifestation / réunion interne </label>';
 	echo '<input onchange="changeManifType();" type="checkbox" id="checkCalendaire" name="checkCalendaire"' . (($_2 != 0)? ' checked' : '') . ' /><label for="checkCalendaire">Événement de type calendaire (vacances, jours fériés) </label>';
-	echo '<input onchange="changeManifType();" type="checkbox" id="checkAdminRH" name="checkAdminRH"' . (($_3 != 0)? ' checked' : '') . ' /><label for="checkAdminRH">Administratif et RH (pas d\'envoi à la presse) </label>';
-	echo '<input onchange="changeManifType();" type="checkbox" id="checkFinancier" name="checkFinancier"' . (($_4 != 0)? ' checked' : '') . ' /><label for="checkFinancier">Financier (pas d\'envoi à la presse)</label>';
-	echo '<br />';
+	echo '<input onchange="changeManifType();" type="checkbox" id="checkAdminRH" name="checkAdminRH"' . (($_3 != 0)? ' checked' : '') . ' /><label for="checkAdminRH">Administratif et RH </label>';
+	echo '<input onchange="changeManifType();" type="checkbox" id="checkFinancier" name="checkFinancier"' . (($_4 != 0)? ' checked' : '') . ' /><label for="checkFinancier">Financier </label>';
+	echo '<br /><br />';
 
 	$servername = "127.0.0.1";
 	$username = "root";
@@ -308,7 +308,7 @@
 				echo('<a onmouseover="eventDescription('.$curDayTimeStamp.', \''.$flagsManifTypeAddition.'\');" href="?timeAdvance=day&timeStamp='.$curDayTimeStamp.$urlManifTypeAddition.'" style="padding:5px;"><strong>');
 
 				echo($curDayDate[mday].' '.mon2mois($curDayDate[mon]).' '.$curDayDate[year]);
-				echo('</strong><br /><br />');
+				echo('</strong><br /><br /><span class="textEvent">');
 				if($count <= 5)
 				{
 					while($data = mysql_fetch_assoc($req))
@@ -351,7 +351,7 @@
 					}
 					echo '+ ' . ($count-$i) . ' autres';
 				}
-				echo('</a>');
+				echo('</span></a>');
 				echo('</td>');
 			}
 			echo('</tr>');

@@ -146,7 +146,7 @@
 				echo '</tr>';
 				echo '<tr id=\'editLieu' . $data['ID'] . '\' style=\'display:none;\'>';
 					echo '<td style="white-space: nowrap; text-align: center;"><input id="editionlieu'.$data['ID'].'" type="text" maxlength="255" style="width: 100%; box-sizing: border-box;" value="' . $data['lieu'] . '" /></td>';
-					echo '<td onclick="uploadLieu(\''.$data['lieu'].'\', \'' . $data['ID'] . '\', \'' . $_GET['espaceID'] . '\', \'' . $espaceName . '\', \'' . $numPages . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">↘</td>';
+					echo '<td onclick="updateLieu(\''.$data['lieu'].'\', \'' . $data['ID'] . '\', \'' . $_GET['espaceID'] . '\', \'' . $espaceName . '\', \'' . $numPages . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">↘</td>';
 					echo '<td onclick="cancelEditLieu(\'' . $data['ID'] . '\')" style="padding-left: 2px; padding-right: 2px; white-space: nowrap; text-align: center; font-weight: bold; cursor:pointer;">×</td>';
 				echo '</tr>';
 			}
