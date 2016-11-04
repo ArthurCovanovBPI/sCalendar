@@ -168,10 +168,10 @@
 							<fieldset>
 								<legend>Nouveaux Horaires et Reservations</legend>'
 				;
-						echo
+				echo
 								'<label for="manifDate">Le: </label>'.
 								'<input id="manifDate" onkeydown="return false;" type="date" name="manifDate" value="'.$curYear.'-'.$curMonth.'-'.$curDay.'" />'
-						;
+				;
 
 				echo
 								' De: <span class="spinsIn"><input id="manifStartTime" type="time" onkeydown="return false;" name="manifStart" min="08:00" max="21:30" value="08:00" step="1800" required="required" /><!--<input onclick="upManifStart();" type="button" value="UP" /><input onclick="downManifStart();" type="button" value="DOWN" />--><span class="spins"><span onclick="upManifStart();" class="spinBoxUp"><span></span></span><span onclick="downManifStart();" class="spinBoxDown"><span></span></span></span></span>'.
@@ -266,6 +266,11 @@
 									'<label for="statusSelection">Recurrence: </label>'.
 									'<select onchange="testRecurrence(this)" name="recurrenceSelection" id="recurrenceSelection">'
 					;
+
+					/*echo
+									'<label for="manifDate">Le: </label>'.
+									'<input id="manifDate" onkeydown="return false;" type="date" name="manifDate" value="'.$curYear.'-'.$curMonth.'-'.$curDay.'" />'
+					;*/
 
 					while($recurrence = mysql_fetch_assoc($req))
 					{
