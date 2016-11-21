@@ -170,14 +170,6 @@ function updateManif(manifID)
 		}
 	}
 
-	var endRecur=document.getElementById("recurYearSelection").value;
-	if(document.getElementById("recurMonthSelection").value<10)
-		endRecur+="0";
-	endRecur+=document.getElementById("recurMonthSelection").value;
-	if(document.getElementById("recurDaySelection").value<10)
-		endRecur+="0";
-	endRecur+=document.getElementById("recurDaySelection").value;
-
 	if(typeof manifID === "undefined")
 	{
 		alert("Undefined manifID");
@@ -192,26 +184,26 @@ function updateManif(manifID)
 				type: 'POST',
 				url: eddurl,
 				data:
-					{
-						mID:manifID,
-						intitule:document.getElementById("intituleEntry").value,
-						type:document.getElementById("typeSelection").value,
-						status:document.getElementById("statusSelection").value,
-						responsable: respo,
-						description:document.getElementById("descriptionText").value,
-						observations:document.getElementById("observationsText").value,
+				{
+					mID:manifID,
+					intitule:document.getElementById("intituleEntry").value,
+					type:document.getElementById("typeSelection").value,
+					status:document.getElementById("statusSelection").value,
+					responsable: respo,
+					description:document.getElementById("descriptionText").value,
+					observations:document.getElementById("observationsText").value,
 
-						manifDate:document.getElementById("manifDate").value.replace(/-/g,''),
-						manifStart:document.getElementById("manifStartTime").value.replace(':',''),
-						manifEnd:document.getElementById("manifEndTime").value.replace(':',''),
+					manifDate:document.getElementById("manifDate").value.replace(/-/g,''),
+					manifStart:document.getElementById("manifStartTime").value.replace(':',''),
+					manifEnd:document.getElementById("manifEndTime").value.replace(':',''),
 
-						lieuID:newLieuID,
-						reservStart:document.getElementById("reservStartTime").value.replace(':',''),
-						reservEnd:document.getElementById("reservEndTime").value.replace(':',''),
+					lieuID:newLieuID,
+					reservStart:document.getElementById("reservStartTime").value.replace(':',''),
+					reservEnd:document.getElementById("reservEndTime").value.replace(':',''),
 
-						recurenceID:document.getElementById("recurrenceSelection").value,
-						endRecurence:endRecur
-					},
+					recurenceID:document.getElementById("recurrenceSelection").value,
+					endRecurence:document.getElementById("recurDateEnd").value.replace(/-/g,'')
+				},
 				async: false,
 				cache: false,
 				timeout: 30000,

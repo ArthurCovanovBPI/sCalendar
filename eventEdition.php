@@ -458,49 +458,8 @@
 													'<span id="recurrenceEnd" style="visibility:hidden;">'
 							;
 							echo
-														'<label for="recurDaySelection"> Jusqu\'au: </label>'.
-														'<select name="recurDaySelection" id="recurDaySelection">'
-							;
-
-							for($i=1; $i<=31; $i++)
-							{
-								echo
-															'<option value="'.$i.'"'. (($i==$curDay)? ' selected' : '') .'>' . $i . '</option>'
-								;
-							}
-
-							echo
-														'</select>'
-							;
-							echo
-														'<label for="recurMonthSelection"> - </label>'.
-														'<select onchange="updateDayRecurrence()" name="recurMonthSelection" id="recurMonthSelection">'
-							;
-
-							for($i=1; $i<=12; $i++)
-							{
-								echo
-															'<option value="'.$i.'"'. (($i==$curMonth)? ' selected' : '') .'>' . $i . '</option>'
-								;
-							}
-
-							echo
-														'</select>'
-							;
-							echo
-														'<label for="recurYearSelection"> - </label>'.
-														'<select onchange="updateDayRecurrence()" name="recurYearSelection" id="recurYearSelection">'
-							;
-
-							for($i=(date("Y")-10); $i<=(date("Y")+20)&&$i<=2037; $i++)
-							{
-								echo
-															'<option value="'.$i.'"'. (($i==$curYear)? ' selected' : '') .'>' . $i . '</option>'
-								;
-							}
-
-							echo
-														'</select>'
+													'<label for="recurDateEnd">Jusqu\'au: </label>'.
+													'<input id="recurDateEnd" onkeydown="return false;" type="date" min="'.$curYear.'-'.$curMonth.'-'.$curDay.'" name="recurDateEnd" value="'.$curYear.'-'.$curMonth.'-'.$curDay.'" />'
 							;
 							echo
 													'</span>'
