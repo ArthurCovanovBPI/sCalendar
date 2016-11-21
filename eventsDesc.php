@@ -170,10 +170,13 @@
 				{
 					$data = mysql_fetch_assoc($req);
 					$count = $data['count'];
-					if(isset($_GET['month']) && $_GET['month']=="true")
-						echo('<p>Vous avez '.$count.' événement'.(($count>1)?'s':'').' ce mois-ci:</p>');
-					else
-						echo('<p>Vous avez '.$count.' événement'.(($count>1)?'s':'').' ce jour là:</p>');
+					if($count>0)
+					{	
+						if(isset($_GET['month']) && $_GET['month']=="true")
+								echo('<p><strong>'.$count.' événement'.(($count>1)?'s':'').' ce mois-ci :</strong></p>');
+						else
+								echo('<p><strong>'.$count.' événement'.(($count>1)?'s':'').' ce jour-là:</strong></p>');
+					}					
 				}
 
 				
@@ -212,19 +215,22 @@
 				}
 				else
 				{
-					echo'<table class="eventsDescTable">';
-					$i = 0;
-					echo '<tr>';
-					while ($i < mysql_num_fields($req))
+					if($count>0)
 					{
-						$meta = mysql_fetch_field($req, $i);
-						if($meta->name=="responsable_mail")
-							echo '<th>reponsable</th>';
-						else
-							echo '<th>' . $meta->name . '</th>';
-						$i++;
+						echo'<table class="eventsDescTable">';
+						$i = 0;
+						echo '<tr>';
+						while ($i < mysql_num_fields($req))
+						{
+							$meta = mysql_fetch_field($req, $i);
+							if($meta->name=="responsable_mail")
+								echo '<th>responsable</th>';
+							else
+								echo '<th>' . $meta->name . '</th>';
+							$i++;
+						}
+						echo '</tr>';
 					}
-					echo '</tr>';
 					if($count>5)
 					{
 						$i = 0;
@@ -232,12 +238,12 @@
 						{
 							$data = mysql_fetch_assoc($req);
 							echo '<tr>';
-							echo	'<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['intitule'].'</td>';
-							echo	'<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['status'].'</td>';
-							echo	'<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['type'].'</td>';
-							echo	'<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['responsable_mail'].'</td>';
-							echo	'<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['observations'].'</td>';
-							echo	'<td style="white-space: nowrap;text-align: right; margin-left:2px; margin-right: 2px;">'.$data['evenement'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: left; margin-left:2px; margin-right: 2px;">'.$data['intitule'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: left; margin-left:2px; margin-right: 2px;">'.$data['status'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: left; margin-left:2px; margin-right: 2px;">'.$data['type'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: left; margin-left:2px; margin-right: 2px;">'.$data['responsable_mail'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: left; margin-left:2px; margin-right: 2px;">'.$data['observations'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: left; margin-left:2px; margin-right: 2px;">'.$data['evenement'].'</td>';
 							echo '</tr>';
 							$i=$i+1;
 						}
@@ -250,12 +256,12 @@
 						while($data = mysql_fetch_assoc($req))
 						{
 							echo '<tr>';
-							echo	'<td style="white-space: nowrap;text-align: right;">'.$data['intitule'].'</td>';
-							echo	'<td style="white-space: nowrap;text-align: right;">'.$data['status'].'</td>';
-							echo	'<td style="white-space: nowrap;text-align: right;">'.$data['type'].'</td>';
-							echo	'<td style="white-space: nowrap;text-align: right;">'.$data['responsable_mail'].'</td>';
-							echo	'<td style="white-space: nowrap;text-align: right;">'.$data['observations'].'</td>';
-							echo	'<td style="white-space: nowrap;text-align: right;">'.$data['evenement'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: left;">'.$data['intitule'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: left;">'.$data['status'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: left;">'.$data['type'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: left;">'.$data['responsable_mail'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: left;">'.$data['observations'].'</td>';
+							echo	'<td style="white-space: nowrap;text-align: left;">'.$data['evenement'].'</td>';
 							echo '</tr>';
 						}
 					}

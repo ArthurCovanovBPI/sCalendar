@@ -127,13 +127,18 @@ function addManif()
 		}
 	}
 
-	var endRecur=document.getElementById("recurYearSelection").value;
+	/*var endRecur=document.getElementById("recurYearSelection").value;
 	if(document.getElementById("recurMonthSelection").value<10)
 		endRecur+="0";
 	endRecur+=document.getElementById("recurMonthSelection").value;
 	if(document.getElementById("recurDaySelection").value<10)
 		endRecur+="0";
 	endRecur+=document.getElementById("recurDaySelection").value;
+
+
+	alert(endRecur);*/
+	/*alert(document.getElementById("recurDateEnd").value.replace(/-/g,''));
+	return;*/
 
 	addurl="newManifestation.php";
 	$.ajax
@@ -158,7 +163,7 @@ function addManif()
 				reservEnd:document.getElementById("reservEndTime").value.replace(':',''),
 
 				recurenceID:document.getElementById("recurrenceSelection").value,
-				endRecurence:endRecur
+				endRecurence:document.getElementById("recurDateEnd").value.replace(/-/g,'')//endRecur
 			},
 		async: false,
 		cache: false,

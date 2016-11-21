@@ -283,7 +283,7 @@
 									'</select>'.
 									'<span id="recurrenceEnd" style="visibility:hidden;">'
 					;
-					echo
+					/*echo
 										'<label for="recurDaySelection"> Jusqu\'au: </label>'.
 										'<select name="recurDaySelection" id="recurDaySelection">'
 					;
@@ -327,6 +327,10 @@
 
 					echo
 										'</select>'
+					;*/
+					echo
+								'<label for="recurDateEnd">Jusqu\'au: </label>'.
+								'<input id="recurDateEnd" onkeydown="return false;" type="date" min="'.$curYear.'-'.$curMonth.'-'.$curDay.'" name="recurDateEnd" value="'.$curYear.'-'.$curMonth.'-'.$curDay.'" />'
 					;
 					echo
 									'</span>'

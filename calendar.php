@@ -40,7 +40,7 @@
 	}
 
 	echo '<input onchange="changeA();" type="checkbox" id="checkTout" name="checkTout"' . (($_a != 0)? ' checked' : '') . '/><label for="checkTout">Tout </label>';
-	echo '<input onchange="changeManifType();" type="checkbox" id="checkManifPublique" name="checkManifPublique"' . (($_0 != 0)? ' checked' : '') . ' /><label for="checkManifPublique">Manifestation publique </label>';
+	echo '<input onchange="changeManifType();" type="checkbox" id="checkManifPublique" name="checkManifPublique"' . (($_0 != 0)? ' checked' : '') . ' /><label for="checkManifPublique">Manifestation publique      </label>';
 	echo '<input onchange="changeManifType();" type="checkbox" id="checkManifInterne" name="checkManifInterne"' . (($_1 != 0)? ' checked' : '') . ' /><label for="checkManifInterne">Manifestation / réunion interne </label>';
 	echo '<input onchange="changeManifType();" type="checkbox" id="checkCalendaire" name="checkCalendaire"' . (($_2 != 0)? ' checked' : '') . ' /><label for="checkCalendaire">Événement de type calendaire (vacances, jours fériés) </label>';
 	echo '<input onchange="changeManifType();" type="checkbox" id="checkAdminRH" name="checkAdminRH"' . (($_3 != 0)? ' checked' : '') . ' /><label for="checkAdminRH">Administratif et RH </label>';
@@ -122,8 +122,8 @@
 
 		class dayColumn
 		{
-			//48xfalse. One for each half hours
-			public $lines = array(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+			//30xfalse. /*48xfalse.*/ One for each half hours
+			public $lines = array(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);//, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
 			public $events = array();
 
 			function insertEvent($eI)
@@ -154,7 +154,7 @@
 				FROM manifestation
 				INNER JOIN type_manifestation AS tm ON manifestation.type_manifestation_id = tm.id
 				INNER JOIN datesManif AS dm ON dm.manifestation_ID = manifestation.ID
-				WHERE (debut_manif <= '. $today['year'] . sprintf("%02d", $today['mon']) . sprintf("%02d", $today['mday']) . '2359  AND fin_manif >= ' . $today['year'] . sprintf("%02d", $today['mon']) . sprintf("%02d", $today['mday']) . '0000)' . $sqlManifTypeAddition;
+				WHERE (debut_manif <= '. $today['year'] . sprintf("%02d", $today['mon']) . sprintf("%02d", $today['mday']) . '2159  AND fin_manif >= ' . $today['year'] . sprintf("%02d", $today['mon']) . sprintf("%02d", $today['mday']) . '0800)' . $sqlManifTypeAddition;
 			$req = mysql_query($sql);
 			while($data = mysql_fetch_assoc($req))
 			{
@@ -162,8 +162,8 @@
 				$obj = new eventInfos();
 				$obj->id = $data['ID'];
 				$obj->txt = $data['intitule'];
-				if((float)$data['debut_manif'] < (float)($today['year'].sprintf('%02d', $today['mon']).sprintf('%02d', $today['mday']).'0000')
-				|| (float)$data['fin_manif'] > (float)($today['year'].sprintf('%02d', $today['mon']).sprintf('%02d', $today['mday']).'2359'))
+				if((float)$data['debut_manif'] < (float)($today['year'].sprintf('%02d', $today['mon']).sprintf('%02d', $today['mday']).'0800')
+				|| (float)$data['fin_manif'] > (float)($today['year'].sprintf('%02d', $today['mon']).sprintf('%02d', $today['mday']).'2159'))
 				{
 					$obj->txt .= ('<br />' . substr($data['debut_manif'], 6, 2) . '/' . substr($data['debut_manif'], 4, 2) . '/' . substr($data['debut_manif'], 0, 4));
 					$obj->txt .= (' - ' . substr($data['debut_manif'], 8, 2) . 'h' .  substr($data['debut_manif'], -2));
@@ -173,14 +173,14 @@
 				}
 				else
 					$obj->txt .= ('<br />' . substr($data['debut_manif'], 8, 2) . 'h' . substr($data['debut_manif'], -2) . ' - ' . substr($data['fin_manif'], 8, 2) . 'h' . substr($data['fin_manif'], -2));
-				if((float)$data['debut_manif'] < (float)($today['year'].sprintf('%02d', $today['mon']).sprintf('%02d', $today['mday']).'0000'))
+				if((float)$data['debut_manif'] < (float)($today['year'].sprintf('%02d', $today['mon']).sprintf('%02d', $today['mday']).'0800'))
 					$obj->start = 0;
 				else
-					$obj->start = substr($data['debut_manif'], 8, 2)*2+((substr($data['debut_manif'], -2)>=30)?1:0);
-				if((float)$data['fin_manif'] > (float)($today['year'].sprintf('%02d', $today['mon']).sprintf('%02d', $today['mday']).'2359'))
-					$obj->end = 48;
+					$obj->start = ((substr($data['debut_manif'], 8, 2)*2)-16)+((substr($data['debut_manif'], -2)>=30)?1:0);
+				if((float)$data['fin_manif'] > (float)($today['year'].sprintf('%02d', $today['mon']).sprintf('%02d', $today['mday']).'2159'))
+					$obj->end = 30;
 				else
-					$obj->end = substr($data['fin_manif'], 8, 2)*2+((substr($data['fin_manif'], -2)>=30)?1:0);
+					$obj->end = ((substr($data['fin_manif'], 8, 2)*2)-16)+((substr($data['fin_manif'], -2)>=30)?1:0);
 				$eventArray[]=$obj;
 			}
 			
@@ -227,24 +227,24 @@
 					else
 						$t=$t&0x3F3F3F;
 
-					echo('<a class="eventCase" href="?menu=evenement&eventID='.$ev->id.'" onmouseover="eventDescription('.$ev->id.');" style="background-color:'.sprintf('#%06X', $b).'; position: absolute; left: '.(80+150*$i).'px; top: '.(30+$ev->start*15).'px; width: 147px; height: '.(($ev->end-$ev->start)*15-3).'px; overflow:hidden; text-overflow: ellipsis; color: '.sprintf('#%06X', $t).';">'.$ev->txt.'</a>');
+					echo('<a class="eventCase" href="?menu=evenement&eventID='.$ev->id.'" onmouseover="eventDescription('.$ev->id.');" style="background-color:'.sprintf('#%06X', $b).'; position: absolute; left: '.(80+150*$i).'px; top: '.(50+$ev->start*25).'px; width: 147px; height: '.(($ev->end-$ev->start)*25-3).'px; overflow:hidden; text-overflow: ellipsis; color: '.sprintf('#%06X', $t).';">'.$ev->txt.'</a>');
 				}
 			}
 		}
 
-		echo('<div style="position: relative; width:100%; height: 770px; overflow: auto; overflow-y:hidden;">');
+		echo('<div style="position: relative; width:100%; height: 760px; overflow: auto; overflow-y:hidden;">');
 		$eventArray = generateEventArray($today, $sqlManifTypeAddition);
 		$ret = createDayColumns($eventArray);
 		echo('<table class="dayTable" border="1" style="position: absolute; min-width: 100%; width:'.(count($ret)*150+81).'px;">');
 		echo('<tr style="">
-			<th style="width: 79px; height: 29px;">Heure</th>
-			<th style="height: 29px;">Événements</th>
+			<th style="width: 79px; height: 49px;">Heure</th>
+			<th style="height: 49px;">Événements</th>
 		</tr>');
-		for($h = 0; $h < 24; $h++)
+		for($h = 8; $h < 22; $h++)
 		{
 			echo('<tr>'
-				.'<th style="width: 79px; height: 29px;">' . $h . " - " . ($h+1) . '</th>'
-				.'<td style="height: 29px;"></td>'
+				.'<th style="width: 79px; height: 49px;">' . $h . " - " . ($h+1) . '</th>'
+				.'<td style="height: 49px;"></td>'
 			.'</tr>');
 		}
 		echo('</table>');

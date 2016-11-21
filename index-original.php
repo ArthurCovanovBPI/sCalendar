@@ -181,7 +181,7 @@
 	?>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Calendrier Bpi</title>
+		<title>S-Calendar</title>
 		<link rel="stylesheet" type="text/css" href="css/body.css" />
 		<link rel="stylesheet" type="text/css" href="css/head.css" />
 		<link rel="stylesheet" type="text/css" href="css/table.css" />
@@ -264,7 +264,7 @@
 		<div class="pageHead">
 			<div class="headTitles">
 				<div class="headTitle" id="title">
-					<p>Calendrier Bpi</p>
+					<p>S-Calendar</p>
 				</div>
 				<?php
 					include('adminButton.php');
